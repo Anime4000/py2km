@@ -78,6 +78,12 @@ namespace py2km.api
 
 			for (int i = 0; i < Tx.Length; i++)
 			{
+				if (Tx[i].Contains("ian"))
+					Tx[i] = Tx[i].Replace("ian", "iën");
+
+				if (Tx[i].Contains("ju") || Tx[i].Contains("qu") || Tx[i].Contains("xu"))
+					Tx[i] = Tx[i].Replace("u", "uiy");
+
 				for (int x = 0; x < Py.Length; x++)
 				{
 					if (Tx[i].Contains(Py[x]))
