@@ -39,7 +39,8 @@ namespace py2km.api
 							  "zei", "zēi", "zéi", "zĕi", "zèi",
 							  "zhei", "zhēi", "zhéi", "zhĕi", "zhèi",
 							  "we", "wē", "wé", "wĕ", "wè", 
-							  "ye", "yē", "yé", "yĕ", "yè", "yue", "yuē", "yué", "yuĕ", "yuè",
+							  "ye", "yē", "yé", "yĕ", "yè", 
+							  "yue", "yuē", "yué", "yuĕ", "yuè",
 							  "b", "p", "d", "t", "zh", "c", "z", "j", "q", "x", "g", "k", 
 						  };
 			string[] Km = {
@@ -70,7 +71,8 @@ namespace py2km.api
 							  "cëi", "c¡i", "c¢i", "c£i", "c¤i",
 							  "cëi", "c¡i", "c¢i", "c£i", "c¤i",
 							  "wë", "w¡", "w¢", "w£", "w¤", 
-							  "yë", "y¡", "y¢", "y£", "y¤", "yuë", "yu¡", "yu¢", "yu£", "yu¤",
+							  "yë", "y¡", "y¢", "y£", "y¤", 
+							  "yuë", "yu¡", "yu¢", "yu£", "yu¤",
 							  "p", "ph", "t", "th", "c", "ch", "c", "c", "ch", "sh", "k", "kh",
 						  };
 
@@ -88,6 +90,12 @@ namespace py2km.api
 				{
 					if (Tx[i].Contains(Py[x]))
 					{
+						char[] a = Tx[i].ToCharArray();
+						char[] b = Py[x].ToCharArray();
+
+						if (a[0] != b[0])
+							break;
+
 						Tx[i] = Tx[i].Replace(Py[x], Km[x]);
 						break;
 					}
@@ -195,7 +203,7 @@ namespace py2km.api
 					break;
 			}
 
-			return Regex.Replace(input, "[0-9]", ""); ;
+			return Regex.Replace(input, "[0-9]", "");
 		}
     }
 }
