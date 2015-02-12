@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "py2km", "py2km\py2km.csproj", "{F6071B52-226F-45CD-A4F1-E94FEE25F328}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "py2km.api", "py2km.api\py2km.api.csproj", "{B658DFC3-1941-4D03-95F7-4B0CEDF50991}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F6071B52-226F-45CD-A4F1-E94FEE25F328}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6071B52-226F-45CD-A4F1-E94FEE25F328}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6071B52-226F-45CD-A4F1-E94FEE25F328}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6071B52-226F-45CD-A4F1-E94FEE25F328}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B658DFC3-1941-4D03-95F7-4B0CEDF50991}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B658DFC3-1941-4D03-95F7-4B0CEDF50991}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B658DFC3-1941-4D03-95F7-4B0CEDF50991}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B658DFC3-1941-4D03-95F7-4B0CEDF50991}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
