@@ -41,7 +41,12 @@ namespace py2km.api
 							  "we", "wē", "wé", "wĕ", "wè", 
 							  "ye", "yē", "yé", "yĕ", "yè", 
 							  "yue", "yuē", "yué", "yuĕ", "yuè",
-							  "b", "p", "d", "t", "zh", "c", "z", "j", "q", "x", "g", "k", 
+							  "b", "p", "d", "t", "zh", "c", "z", "j", "q", "x", "k",
+							  "ga","gā","gá","gă","gà",
+							  "ge","gē","gé","gĕ","gè",
+							  "go","gō","gó","gŏ","gò",
+							  "gu","gū","gú","gŭ","gù",
+							  "gi","gī","gí","gĭ","gì",
 						  };
 			string[] Km = {
 							  "fëi", "f¡i", "f¢i", "f£i", "f¤i",
@@ -73,7 +78,12 @@ namespace py2km.api
 							  "wë", "w¡", "w¢", "w£", "w¤", 
 							  "yë", "y¡", "y¢", "y£", "y¤", 
 							  "yuë", "yu¡", "yu¢", "yu£", "yu¤",
-							  "p", "ph", "t", "th", "c", "ch", "c", "c", "ch", "sh", "k", "kh",
+							  "p", "ph", "t", "th", "c", "ch", "c", "c", "ch", "sh", "kh",
+							  "ka","kā","ká","kă","kà",
+							  "ke","kē","ké","kĕ","kè",
+							  "ko","kō","kó","kŏ","kò",
+							  "ku","kū","kú","kŭ","kù",
+							  "ki","kī","kí","kĭ","kì",
 						  };
 
 			input = "";
@@ -90,11 +100,7 @@ namespace py2km.api
 				{
 					if (Tx[i].Contains(Py[x]))
 					{
-						char[] a = Tx[i].ToCharArray();
-						char[] b = Py[x].ToCharArray();
 
-						if (a[0] != b[0])
-							break;
 
 						Tx[i] = Tx[i].Replace(Py[x], Km[x]);
 						break;

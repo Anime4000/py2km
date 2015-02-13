@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Kwik Mandarin (M) Sdn. Bhd.")]
 [assembly: AssemblyProduct("py2km")]
-[assembly: AssemblyCopyright("Copyright © 2015 Anime4000")]
+[assembly: AssemblyCopyright("© 2015 Anime4000. All rights reserved.")]
 [assembly: AssemblyTrademark("py2km")]
 [assembly: AssemblyCulture("")]
 
