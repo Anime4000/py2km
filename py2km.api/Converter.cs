@@ -232,8 +232,6 @@ namespace py2km.api
 				{
 					if (Tx[i].Contains(Py[x]))
 					{
-
-
 						Tx[i] = Tx[i].Replace(Py[x], Km[x]);
 						break;
 					}
