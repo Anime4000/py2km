@@ -1129,7 +1129,15 @@ namespace py2km.api
 			values.Add("zhŭn", "cŭn");
 			values.Add("zhùn", "cùn");
 
-			// What to do?
+			string test;
+
+			for (int x = 0; x < Tx.Length; x++)
+			{
+				if (values.TryGetValue(Tx[x], out test))
+				{
+					Tx[x] = Tx[x].Replace(Tx[x], test);
+				}
+			}
 
 			input = "";
 
