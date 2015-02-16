@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 using System.Text.RegularExpressions;
 
 namespace py2km.api
@@ -466,18 +467,33 @@ namespace py2km.api
 
 			for (int i = 0; i < Tx.Length; i++)
 			{
-				if (Tx[i].Contains("ian"))
-					Tx[i] = Tx[i].Replace("ian", "iën");
-
-				if (Tx[i].Contains("ju") || Tx[i].Contains("qu") || Tx[i].Contains("xu"))
-					Tx[i] = Tx[i].Replace("u", "uiy");
-
 				for (int x = 0; x < Py.Length; x++)
 				{
 					if (Tx[i].Contains(Py[x]))
 					{
-						Tx[i] = Tx[i].Replace(Py[x], Km[x]);
-						break;
+						foreach (string item in File.ReadAllLines("Excluded.lst"))
+						{
+							if (item.Contains(';'))
+							{
+								continue;
+							}
+
+							if (String.Equals(item, Tx[i], StringComparison.CurrentCultureIgnoreCase))
+							{
+								i++;
+								break;
+							}
+						}
+						if (Tx[i].Length > Py[x].Length)
+						{
+							Tx[i] = Tx[i].Replace(Py[x], Km[x]);
+							continue;
+						}
+						else if (Tx[i].Length == Py[x].Length)
+						{
+							Tx[i] = Tx[i].Replace(Py[x], Km[x]);
+							break;
+						}
 					}
 				}
 			}
@@ -534,7 +550,9 @@ namespace py2km.api
 			switch (tone)
 			{
 				case 1:
-					if (input.Contains('a'))
+					if (input.Contains("ui"))
+						input = input.Replace('i', 'ī');
+					else if (input.Contains('a'))
 						input = input.Replace('a', 'ā');
 					else if (input.Contains('e'))
 						input = input.Replace('e', 'ē');
@@ -546,7 +564,9 @@ namespace py2km.api
 						input = input.Replace('i', 'ī');
 					break;
 				case 2:
-					if (input.Contains('a'))
+					if (input.Contains("ui"))
+						input = input.Replace('i', 'í');
+					else if (input.Contains('a'))
 						input = input.Replace('a', 'á');
 					else if (input.Contains('e'))
 						input = input.Replace('e', 'é');
@@ -558,7 +578,9 @@ namespace py2km.api
 						input = input.Replace('i', 'í');
 					break;
 				case 3:
-					if (input.Contains('a'))
+					if (input.Contains("ui"))
+						input = input.Replace('i', 'ĭ');
+					else if (input.Contains('a'))
 						input = input.Replace('a', 'ă');
 					else if (input.Contains('e'))
 						input = input.Replace('e', 'ĕ');
@@ -570,7 +592,9 @@ namespace py2km.api
 						input = input.Replace('i', 'ĭ');
 					break;
 				case 4:
-					if (input.Contains('a'))
+					if (input.Contains("ui"))
+						input = input.Replace('i', 'ì');
+					else if (input.Contains('a'))
 						input = input.Replace('a', 'à');
 					else if (input.Contains('e'))
 						input = input.Replace('e', 'è');
