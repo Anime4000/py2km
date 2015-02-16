@@ -12,491 +12,1126 @@ namespace py2km.api
 		public static string PinyinToKwikMandarin(string input)
 		{
 			string[] Tx = input.ToLower().Split(' ');
-			string[] Py = {
-							  "fei", "fēi", "féi", "fĕi", "fèi",
-							  "hei", "hēi", "héi", "hĕi", "hèi",
-							  "lei", "lēi", "léi", "lĕi", "lèi",
-							  "lian", "liān", "lián", "liăn", "liàn",
-							  "lie", "liē", "lié", "liĕ", "liè",
-							  "lüe", "lüē", "lüé", "lüĕ", "lüè",
-							  "mei", "mēi", "méi", "mĕi", "mèi",
-							  "mian", "miān", "mián", "miăn", "miàn", 
-							  "mie", "miē", "mié", "miĕ", "miè",
-							  "nei", "nēi", "néi", "nĕi", "nèi",
-							  "nian", "niān", "nián", "niăn", "niàn",
-							  "nüe", "nüē", "nüé", "nüĕ", "nüè",
-							  "ri","rī","rí","rĭ","rì",
-							  "si","sī","sí","sĭ","sì",
-							  "shei", "shēi", "shéi", "shĕi", "shèi",
-							  "shi","shī","shí","shĭ","shì",
-							  "wei", "wēi", "wéi", "wĕi", "wèi",
-							  "ye", "yē", "yé", "yĕ", "yè",
-							  "yu", "yū", "yú", "yŭ", "yù",
-							  "yuan", "yuān", "yuán", "yuăn", "yuàn",
-							  "yue", "yuē", "yué", "yuĕ", "yuè",
-							  "yun", "yūn", "yún", "yŭn", "yùn",
-							  "ba", "bā", "bá", "bă", "bà",
-							  "bai", "bāi", "bái", "băi", "bài",
-							  "ban", "bān", "bán", "băn", "bàn",
-							  "bang", "bāng", "báng", "băng", "bàng",
-							  "bao", "bāo", "báo", "băo", "bào",
-							  "bei", "bēi", "béi", "bĕi", "bèi",
-							  "ben", "bēn", "bén", "bĕn", "bèn",
-							  "beng", "bēng", "béng", "bĕng", "bèng",
-							  "bi","bī","bí","bĭ","bì",
-							  "bian","bīan","bían","bĭan","bìan",
-							  "biao", "biāo", "biáo", "biăo", "biào",
-							  "bie", "biē", "bié", "biĕ", "biè",
-							  "bin","bīn","bín","bĭn","bìn",
-							  "bing","bīng","bíng","bĭng","bìng",
-							  "bo", "bō", "bó", "bŏ", "bò",
-							  "bu", "bū", "bú", "bŭ", "bù",
-							  "ca", "cā", "cá", "că", "cà",
-							  "cai", "cāi", "cái", "căi", "cài",
-							  "can", "cān", "cán", "căn", "càn",
-							  "cang", "cāng", "cáng", "căng", "càng",
-							  "cao", "cāo", "cáo", "căo", "cào",
-							  "ce", "cē", "cé", "cĕ", "cè",
-							  "cen", "cēn", "cén", "cĕn", "cèn",
-							  "ceng", "cēng", "céng", "cĕng", "cèng",
-							  "ci","cī","cí","cĭ","cì",
-							  "cong", "cōng", "cóng", "cŏng", "còng",
-							  "cou", "cōu", "cóu", "cŏu", "còu",
-							  "cu", "cū", "cú", "cŭ", "cù",
-							  "cuo", "cuō", "cuó", "cuŏ", "cuò",
-							  "cun", "cūn", "cún", "cŭn", "cùn",
-							  "chi","chī","chí","chĭ","chì",
-							  "da", "dā", "dá", "dă", "dà",
-							  "dai", "dāi", "dái", "dăi", "dài",
-							  "dan", "dān", "dán", "dăn", "dàn",
-							  "dang", "dāng", "dáng", "dăng", "dàng",
-							  "dao", "dāo", "dáo", "dăo", "dào",
-							  "de", "dē", "dé", "dĕ", "dè",
-							  "dei", "dēi", "déi", "dĕi", "dèi",
-							  "deng", "dēng", "déng", "dĕng", "dèng",
-							  "di","dī","dí","dĭ","dì",
-							  "dian","diān","dián","diăn","diàn",
-							  "diao", "diāo", "diáo", "diăo", "diào",
-							  "die", "diē", "dié", "diĕ", "diè",
-							  "ding","dīng","díng","dĭng","dìng",
-							  "diu", "diū", "diú", "diŭ", "diù",
-							  "dong", "dōng", "dóng", "dŏng", "dòng",
-							  "dou", "dōu", "dóu", "dŏu", "dòu",
-							  "du", "dū", "dú", "dŭ", "dù",
-							  "duan", "duān", "duán", "duăn", "duàn",
-							  "dui","duī","duí","duĭ","duì",
-							  "duo", "duō", "duó", "duŏ", "duò",
-							  "dun", "dūn", "dún", "dŭn", "dùn",
-							  "ga", "gā", "gá", "gă", "gà",
-							  "gan", "gān", "gán", "găn", "gàn",
-							  "gang", "gāng", "gáng", "găng", "gàng",
-							  "gao", "gāo", "gáo", "găo", "gào",
-							  "ge", "gē", "gé", "gĕ", "gè",
-							  "gei", "gēi", "géi", "gĕi", "gèi",
-							  "gen", "gēn", "gén", "gĕn", "gèn",
-							  "geng", "gēng", "géng", "gĕng", "gèng",
-							  "gong", "gōng", "góng", "gŏng", "gòng",
-							  "gou", "gōu", "góu", "gŏu", "gòu",
-							  "gu", "gū", "gú", "gŭ", "gù",
-							  "gua", "guā", "guá", "guă", "guà",
-							  "guai","guaī","guaí","guaĭ","guaì",
-							  "guan", "guān", "guán", "guăn", "guàn",
-							  "guang", "guāng", "guáng", "guăng", "guàng",
-							  "gui","guī","guí","guĭ","guì",
-							  "guo", "guō", "guó", "guŏ", "guò",
-							  "gun", "gūn", "gún", "gŭn", "gùn",
-							  "ji","jī","jí","jĭ","jì",
-							  "jia", "jiā", "jiá", "jiă", "jià",
-							  "jian", "jiān", "jián", "jiăn", "jiàn",
-							  "jiang", "jiāng", "jiáng", "jiăng", "jiàng",
-							  "jiao", "jiāo", "jiáo", "jiăo", "jiào",
-							  "jie", "jiē", "jié", "jiĕ", "jiè",
-							  "jin","jīn","jín","jĭn","jìn",
-							  "jing","jīng","jíng","jĭng","jìng",
-							  "jiu", "jiū", "jiú", "jiŭ", "jiù",
-							  "ju", "jū", "jú", "jŭ", "jù",
-							  "juan", "juān", "juán", "juăn", "juàn",
-							  "jue", "juē", "jué", "juĕ", "juè",
-							  "jun", "jūn", "jún", "jŭn", "jùn",
-							  "ka", "kā", "ká", "kă", "kà",
-							  "kai", "kāi", "kái", "kăi", "kài",
-							  "kan", "kān", "kán", "kăn", "kàn",
-							  "kang", "kāng", "káng", "kăng", "kàng",
-							  "kao", "kāo", "káo", "kăo", "kào",
-							  "ke", "kē", "ké", "kĕ", "kè",
-							  "ken", "kēn", "kén", "kĕn", "kèn",
-							  "keng", "kēng", "kéng", "kĕng", "kèng",
-							  "kong", "kōng", "kóng", "kŏng", "kòng",
-							  "kou", "kōu", "kóu", "kŏu", "kòu",
-							  "ku", "kū", "kú", "kŭ", "kù",
-							  "kua", "kuā", "kuá", "kuă", "kuà",
-							  "kuai", "kuāi", "kuái", "kuăi", "kuài",
-							  "kuan", "kuān", "kuán", "kuăn", "kuàn",
-							  "kuang", "kuāng", "kuáng", "kuăng", "kuàng",
-							  "kui","kuī","kuí","kuĭ","kuì",
-							  "kuo", "kuō", "kuó", "kuŏ", "kuò",
-							  "pa", "pā", "pá", "pă", "pà",
-							  "pai", "pāi", "pái", "păi", "pài",
-							  "pan", "pān", "pán", "păn", "pàn",
-							  "pang", "pāng", "páng", "păng", "pàng",
-							  "pao", "pāo", "páo", "păo", "pào",
-							  "pei", "pēi", "péi", "pĕi", "pèi",
-							  "pen", "pēn", "pén", "pĕn", "pèn",
-							  "peng", "pēng", "péng", "pĕng", "pèng",
-							  "pi","pī","pí","pĭ","pì",
-							  "pian", "piān", "pián", "piăn", "piàn",
-							  "piao", "piāo", "piáo", "piăo", "piào",
-							  "pie", "piē", "pié", "piĕ", "piè",
-							  "pin","pīn","pín","pĭn","pìn",
-							  "ping","pīng","píng","pĭng","pìng",
-							  "po", "pō", "pó", "pŏ", "pò",
-							  "pou", "pōu", "póu", "pŏu", "pòu",
-							  "pu", "pū", "pú", "pŭ", "pù",
-							  "qi","qī","qí","qĭ","qì",
-							  "qia", "qiā", "qiá", "qiă", "qià",
-							  "qian", "qiān", "qián", "qiăn", "qiàn",
-							  "qiang", "qiāng", "qiáng", "qiăng", "qiàng",
-							  "qiao", "qiāo", "qiáo", "qiăo", "qiào",
-							  "qie", "qiē", "qié", "qiĕ", "qiè",
-							  "qin","qīn","qín","qĭn","qìn",
-							  "qing","qīng","qíng","qĭng","qìng",
-							  "qiong", "qiōng", "qióng", "qiŏng", "qiòng",
-							  "qiu", "qiū", "qiú", "qiŭ", "qiù",
-							  "qu", "qū", "qú", "qŭ", "qù",
-							  "quan", "quān", "quán", "quăn", "quàn",
-							  "que", "quē", "qué", "quĕ", "què",
-							  "qun", "qūn", "qún", "qŭn", "qùn",
-							  "ta", "tā", "tá", "tă", "tà",
-							  "tai", "tāi", "tái", "tăi", "tài",
-							  "tan", "tān", "tán", "tăn", "tàn",
-							  "tang", "tāng", "táng", "tăng", "tàng",
-							  "tao", "tāo", "táo", "tăo", "tào",
-							  "te", "tē", "té", "tĕ", "tè",
-							  "teng", "tēng", "téng", "tĕng", "tèng",
-							  "ti","tī","tí","tĭ","tì",
-							  "tian","tiān","tián","tiăn","tiàn",
-							  "tiao","tiāo","tiáo","tiăo","tiào",
-							  "tie", "tiē", "tié", "tiĕ", "tiè",
-							  "ting","tīng","tíng","tĭng","tìng",
-							  "tong", "tōng", "tóng", "tŏng", "tòng",
-							  "tou", "tōu", "tóu", "tŏu", "tòu",
-							  "tu", "tū", "tú", "tŭ", "tù",
-							  "tuan", "tuān", "tuán", "tuăn", "tuàn",
-							  "tui","tuī","tuí","tuĭ","tuì",
-							  "tuo", "tuō", "tuó", "tuŏ", "tuò",
-							  "tun", "tūn", "tún", "tŭn", "tùn",
-							  "xi","xī","xí","xĭ","xì",
-							  "xia","xiā","xiá","xiă","xià",
-							  "xian","xiān","xián","xiăn","xiàn",
-							  "xiang","xiāng","xiáng","xiăng","xiàng",
-							  "xiao","xiāo","xiáo","xiăo","xiào",
-							  "xie", "xiē", "xié", "xiĕ", "xiè",
-							  "xin","xīn","xín","xĭn","xìn",
-							  "xing","xīng","xíng","xĭng","xìng",
-							  "xiong", "xiōng", "xióng", "xiŏng", "xiòng",
-							  "xiu", "xiū", "xiú", "xiŭ", "xiù",
-							  "xu", "xū", "xú", "xŭ", "xù",
-							  "xuan", "xuān", "xuán", "xuăn", "xuàn",
-							  "xue", "xuē", "xué", "xuĕ", "xuè",
-							  "xun", "xūn", "xún", "xŭn", "xùn",
-							  "za", "zā", "zá", "ză", "zà",
-							  "zai", "zāi", "zái", "zăi", "zài",
-							  "zan", "zān", "zán", "zăn", "zàn",
-							  "zang", "zāng", "záng", "zăng", "zàng",
-							  "zao", "zāo", "záo", "zăo", "zào",
-							  "ze", "zē", "zé", "zĕ", "zè",
-							  "zei", "zēi", "zéi", "zĕi", "zèi",
-							  "zen", "zēn", "zén", "zĕn", "zèn",
-							  "zeng", "zēng", "zéng", "zĕng", "zèng",
-							  "zi","zī","zí","zĭ","zì",
-							  "zong", "zōng", "zóng", "zŏng", "zòng",
-							  "zou", "zōu", "zóu", "zŏu", "zòu",
-							  "zu", "zū", "zú", "zŭ", "zù",
-							  "zuan", "zuān", "zuán", "zuăn", "zuàn",
-							  "zui","zuī","zuí","zuĭ","zuì",
-							  "zuo", "zuō", "zuó", "zuŏ", "zuò",
-							  "zun", "zūn", "zún", "zŭn", "zùn",
-							  "zha", "zhā", "zhá", "zhă", "zhà",
-							  "zhai", "zhāi", "zhái", "zhăi", "zhài",
-							  "zhan", "zhān", "zhán", "zhăn", "zhàn",
-							  "zhang", "zhāng", "zháng", "zhăng", "zhàng",
-							  "zhao", "zhāo", "zháo", "zhăo", "zhào",
-							  "zhe", "zhē", "zhé", "zhĕ", "zhè",
-							  "zhei", "zhēi", "zhéi", "zhĕi", "zhèi",
-							  "zhen", "zhēn", "zhén", "zhĕn", "zhèn",
-							  "zheng", "zhēng", "zhéng", "zhĕng", "zhèng",
-							  "zhi","zhī","zhí","zhĭ","zhì",
-							  "zhong", "zhōng", "zhóng", "zhŏng", "zhòng",
-							  "zhou", "zhōu", "zhóu", "zhŏu", "zhòu",
-							  "zhu", "zhū", "zhú", "zhŭ", "zhù",
-							  "zhua", "zhuā", "zhuá", "zhuă", "zhuà",
-							  "zhuai", "zhuāi", "zhuái", "zhuăi", "zhuài",
-							  "zhuan", "zhuān", "zhuán", "zhuăn", "zhuàn",
-							  "zhuang", "zhuāng", "zhuáng", "zhuăng", "zhuàng",
-							  "zhui","zhuī","zhuí","zhuĭ","zhuì",
-							  "zhuo", "zhuō", "zhuó", "zhuŏ", "zhuò",
-							  "zhun", "zhūn", "zhún", "zhŭn", "zhùn",
-						  };
-			string[] Km = {
-							  "fëi", "f¡i", "f¢i", "f£i", "f¤i",
-							  "hëi", "h¡i", "h¢i", "h£i", "h¤i",
-							  "lëi", "l¡i", "l¢i", "l£i", "l¤i",
-							  "liën", "li¡n", "li¢n", "li£n", "li¤n",
-							  "lië", "li¡", "li¢", "li£", "li¤",
-							  "luië", "lui¡", "lui¢", "lui£", "lui¤",
-							  "mëi", "m¡i", "m¢i", "m£i", "m¤i",
-							  "miën", "mi¡n", "mi¢n", "mi£n", "mi¤n",
-							  "mië", "mi¡", "mi¢", "mi£", "mi¤",
-							  "nëi", "n¡i", "n¢i", "n£i", "n¤i",
-							  "niën", "ni¡n", "ni¢n", "ni£n", "ni¤n",
-							  "nuië", "nui¡", "nui¢", "nui£", "nui¤",
-							  "re", "rē", "ré", "rĕ", "rè",
-							  "se", "sē", "sé", "sĕ", "sè",
-							  "shëi", "sh¡i", "sh¢i", "sh£i", "sh¤i",
-							  "she", "shē", "shé", "shĕ", "shè",
-							  "wëi", "w¡i", "w¢i", "w£i", "w¤i",
-							  "yë", "y¡", "y¢", "y£", "y¤",
-							  "yuiy", "yūiy", "yúiy", "yŭiy", "yùiy",
-							  "yuën", "yu¡n", "yu¢n", "yu£n", "yu¤n",
-							  "yuë", "yu¡", "yu¢", "yu£", "yu¤",
-							  "yuin", "yūin", "yúin", "yŭin", "yùin",
-							  "pa", "pā", "pá", "pă", "pà",
-							  "pai", "pāi", "pái", "păi", "pài",
-							  "pan", "pān", "pán", "păn", "pàn",
-							  "pang", "pāng", "páng", "păng", "pàng",
-							  "pao", "pāo", "páo", "păo", "pào",
-							  "pëi", "p¡i", "p¢i", "p£i", "p¤i",
-							  "pen", "pēn", "pén", "pĕn", "pèn",
-							  "peng", "pēng", "péng", "pĕng", "pèng",
-							  "pi","pī","pí","pĭ","pì",
-							  "piën", "pi¡n", "pi¢n", "pi£n", "pi¤n",
-							  "piao", "piāo", "piáo", "piăo", "piào",
-							  "pië", "pi¡", "pi¢", "pi£", "pi¤",
-							  "pin","pīn","pín","pĭn","pìn",
-							  "ping","pīng","píng","pĭng","pìng",
-							  "po", "pō", "pó", "pŏ", "pò",
-							  "pu", "pū", "pú", "pŭ", "pù",
-							  "cha", "chā", "chá", "chă", "chà",
-							  "chai", "chāi", "chái", "chăi", "chài",
-							  "chan", "chān", "chán", "chăn", "chàn",
-							  "chang", "chāng", "cháng", "chăng", "chàng",
-							  "chao", "chāo", "cháo", "chăo", "chào",
-							  "che", "chē", "ché", "chĕ", "chè",
-							  "chen", "chēn", "chén", "chĕn", "chèn",
-							  "cheng", "chēng", "chéng", "chĕng", "chèng",
-							  "che", "chē", "ché", "chĕ", "chè",
-							  "chong", "chōng", "chóng", "chŏng", "chòng",
-							  "chou", "chōu", "chóu", "chŏu", "chòu",
-							  "chu", "chū", "chú", "chŭ", "chù",
-							  "chuo", "chuō", "chuó", "chuŏ", "chuò",
-							  "chun", "chūn", "chún", "chŭn", "chùn",
-							  "che", "chē", "ché", "chĕ", "chè",
-							  "ta", "tā", "tá", "tă", "tà",
-							  "tai", "tāi", "tái", "tăi", "tài",
-							  "tan", "tān", "tán", "tăn", "tàn",
-							  "tang", "tāng", "táng", "tăng", "tàng",
-							  "tao", "tāo", "táo", "tăo", "tào",
-							  "te", "tē", "té", "tĕ", "tè",
-							  "tei", "tēi", "téi", "tĕi", "tèi",
-							  "teng", "tēng", "téng", "tĕng", "tèng",
-							  "ti","tī","tí","tĭ","tì",
-							  "tian","tīan","tían","tĭan","tìan",
-							  "tiao", "tiāo", "tiáo", "tiăo", "tiào",
-							  "tie", "tiē", "tié", "tiĕ", "tiè",
-							  "ting","tīng","tíng","tĭng","tìng",
-							  "tiu", "tiū", "tiú", "tiŭ", "tiù",
-							  "tong", "tōng", "tóng", "tŏng", "tòng",
-							  "tou", "tōu", "tóu", "tŏu", "tòu",
-							  "tu", "tū", "tú", "tŭ", "tù",
-							  "tuan", "tuān", "tuán", "tuăn", "tuàn",
-							  "tui","tuī","tuí","tuĭ","tuì",
-							  "tuo", "tuō", "tuó", "tuŏ", "tuò",
-							  "tun", "tūn", "tún", "tŭn", "tùn",
-							  "ka", "kā", "ká", "kă", "kà",
-							  "kan", "kān", "kán", "kăn", "kàn",
-							  "kang", "kāng", "káng", "kăng", "kàng",
-							  "kao", "kāo", "káo", "kăo", "kào",
-							  "ke", "kē", "ké", "kĕ", "kè",
-							  "këi", "k¡i", "k¢i", "k£i", "k¤i",
-							  "ken", "kēn", "kén", "kĕn", "kèn",
-							  "keng", "kēng", "kéng", "kĕng", "kèng",
-							  "kong", "kōng", "kóng", "kŏng", "kòng",
-							  "kou", "kōu", "kóu", "kŏu", "kòu",
-							  "ku", "kū", "kú", "kŭ", "kù",
-							  "kua", "kuā", "kuá", "kuă", "kuà",
-							  "kuai","kuaī","kuaí","kuaĭ","kuaì",
-							  "kuan", "kuān", "kuán", "kuăn", "kuàn",
-							  "kuang", "kuāng", "kuáng", "kuăng", "kuàng",
-							  "kui","kuī","kuí","kuĭ","kuì",
-							  "kuo", "kuō", "kuó", "kuŏ", "kuò",
-							  "kun", "kūn", "kún", "kŭn", "kùn",
-							  "ci","cī","cí","cĭ","cì",
-							  "cia", "ciā", "ciá", "ciă", "cià",
-							  "cian", "ciān", "cián", "ciăn", "ciàn",
-							  "ciang", "ciāng", "ciáng", "ciăng", "ciàng",
-							  "ciao", "ciāo", "ciáo", "ciăo", "ciào",
-							  "cië", "ci¡", "ci¢", "ci£", "ci¤",
-							  "cin","cīn","cín","cĭn","cìn",
-							  "cing","cīng","cíng","cĭng","cìng",
-							  "ciu", "ciū", "ciú", "ciŭ", "ciù",
-							  "cuiy", "cūiy", "cúiy", "cŭiy", "cùiy",
-							  "cuën", "cu¡n", "cu¢n", "cu£n", "cu¤n",
-							  "cuë", "cu¡", "cu¢", "cu£", "cu¤",
-							  "cuin", "cūin", "cúin", "cŭin", "cùin",
-							  "kha", "khā", "khá", "khă", "khà",
-							  "khai", "khāi", "khái", "khăi", "khài",
-							  "khan", "khān", "khán", "khăn", "khàn",
-							  "khang", "khāng", "kháng", "khăng", "khàng",
-							  "khao", "khāo", "kháo", "khăo", "khào",
-							  "khe", "khē", "khé", "khĕ", "khè",
-							  "khen", "khēn", "khén", "khĕn", "khèn",
-							  "kheng", "khēng", "khéng", "khĕng", "khèng",
-							  "khong", "khōng", "khóng", "khŏng", "khòng",
-							  "khou", "khōu", "khóu", "khŏu", "khòu",
-							  "khu", "khū", "khú", "khŭ", "khù",
-							  "khua", "khuā", "khuá", "khuă", "khuà",
-							  "khuai", "khuāi", "khuái", "khuăi", "khuài",
-							  "khuan", "khuān", "khuán", "khuăn", "khuàn",
-							  "khuang", "khuāng", "khuáng", "khuăng", "khuàng",
-							  "khui","khuī","khuí","khuĭ","khuì",
-							  "khuo", "khuō", "khuó", "khuŏ", "khuò",
-							  "pha", "phā", "phá", "phă", "phà",
-							  "phai", "phāi", "phái", "phăi", "phài",
-							  "phan", "phān", "phán", "phăn", "phàn",
-							  "phang", "phāng", "pháng", "phăng", "phàng",
-							  "phao", "phāo", "pháo", "phăo", "phào",
-							  "phëi", "ph¡i", "ph¢i", "ph£i", "ph¤i",
-							  "phen", "phēn", "phén", "phĕn", "phèn",
-							  "pheng", "phēng", "phéng", "phĕng", "phèng",
-							  "phi","phī","phí","phĭ","phì",
-							  "phian", "phiān", "phián", "phiăn", "phiàn",
-							  "phiao", "phiāo", "phiáo", "phiăo", "phiào",
-							  "phië", "phi¡", "phi¢", "phi£", "phi¤",
-							  "phin","phīn","phín","phĭn","phìn",
-							  "phing","phīng","phíng","phĭng","phìng",
-							  "pho", "phō", "phó", "phŏ", "phò",
-							  "phou", "phōu", "phóu", "phŏu", "phòu",
-							  "phu", "phū", "phú", "phŭ", "phù",
-							  "chi","chī","chí","chĭ","chì",
-							  "chia", "chiā", "chiá", "chiă", "chià",
-							  "chian", "chiān", "chián", "chiăn", "chiàn",
-							  "chiang", "chiāng", "chiáng", "chiăng", "chiàng",
-							  "chiao", "chiāo", "chiáo", "chiăo", "chiào",
-							  "chië", "chi¡", "chi¢", "chi£", "chi¤",
-							  "chin","chīn","chín","chĭn","chìn",
-							  "ching","chīng","chíng","chĭng","chìng",
-							  "chiong", "chiōng", "chióng", "chiŏng", "chiòng",
-							  "chiu", "chiū", "chiú", "chiŭ", "chiù",
-							  "chu", "chū", "chú", "chŭ", "chù",
-							  "chuan", "chuān", "chuán", "chuăn", "chuàn",
-							  "chuë", "chu¡", "chu¢", "chu£", "chu¤",
-							  "chun", "chūn", "chún", "chŭn", "chùn",
-							  "tha", "thā", "thá", "thă", "thà",
-							  "thai", "thāi", "thái", "thăi", "thài",
-							  "than", "thān", "thán", "thăn", "thàn",
-							  "thang", "thāng", "tháng", "thăng", "thàng",
-							  "thao", "thāo", "tháo", "thăo", "thào",
-							  "the", "thē", "thé", "thĕ", "thè",
-							  "theng", "thēng", "théng", "thĕng", "thèng",
-							  "thi","thī","thí","thĭ","thì",
-							  "thian","thiān","thián","thiăn","thiàn",
-							  "thiao","thiāo","thiáo","thiăo","thiào",
-							  "thië", "thi¡", "thi¢", "thi£", "thi¤",
-							  "thing","thīng","thíng","thĭng","thìng",
-							  "thong", "thōng", "thóng", "thŏng", "thòng",
-							  "thou", "thōu", "thóu", "thŏu", "thòu",
-							  "thu", "thū", "thú", "thŭ", "thù",
-							  "thuan", "thuān", "thuán", "thuăn", "thuàn",
-							  "thui","thuī","thuí","thuĭ","thuì",
-							  "thuo", "thuō", "thuó", "thuŏ", "thuò",
-							  "thun", "thūn", "thún", "thŭn", "thùn",
-							  "shi","shī","shí","shĭ","shì",
-							  "shia","shiā","shiá","shiă","shià",
-							  "shian","shiān","shián","shiăn","shiàn",
-							  "shiang","shiāng","shiáng","shiăng","shiàng",
-							  "shiao","shiāo","shiáo","shiăo","shiào",
-							  "shië", "shi¡", "shi¢", "shi£", "shi¤",
-							  "shin","shīn","shín","shĭn","shìn",
-							  "shing","shīng","shíng","shĭng","shìng",
-							  "shiong", "shiōng", "shióng", "shiŏng", "shiòng",
-							  "shiu", "shiū", "shiú", "shiŭ", "shiù",
-							  "shu", "shū", "shú", "shŭ", "shù",
-							  "shuan", "shuān", "shuán", "shuăn", "shuàn",
-							  "shuë", "shu¡", "shu¢", "shu£", "shu¤",
-							  "shun", "shūn", "shún", "shŭn", "shùn",
-							  "ca", "cā", "cá", "că", "cà",
-							  "cai", "cāi", "cái", "căi", "cài",
-							  "can", "cān", "cán", "căn", "càn",
-							  "cang", "cāng", "cáng", "căng", "càng",
-							  "cao", "cāo", "cáo", "căo", "cào",
-							  "ce", "cē", "cé", "cĕ", "cè",
-							  "cëi", "c¡i", "c¢i", "c£i", "c¤i",
-							  "cen", "cēn", "cén", "cĕn", "cèn",
-							  "ceng", "cēng", "céng", "cĕng", "cèng",
-							  "ci","cī","cí","cĭ","cì",
-							  "cong", "cōng", "cóng", "cŏng", "còng",
-							  "cou", "cōu", "cóu", "cŏu", "còu",
-							  "cu", "cū", "cú", "cŭ", "cù",
-							  "cuan", "cuān", "cuán", "cuăn", "cuàn",
-							  "cui","cuī","cuí","cuĭ","cuì",
-							  "cuo", "cuō", "cuó", "cuŏ", "cuò",
-							  "cun", "cūn", "cún", "cŭn", "cùn",
-							  "ca", "cā", "cá", "că", "cà",
-							  "cai", "cāi", "cái", "căi", "cài",
-							  "can", "cān", "cán", "căn", "càn",
-							  "cang", "cāng", "cáng", "căng", "càng",
-							  "cao", "cāo", "cáo", "căo", "cào",
-							  "ce", "cē", "cé", "cĕ", "cè",
-							  "cëi", "c¡i", "c¢i", "c£i", "c¤i",
-							  "cen", "cēn", "cén", "cĕn", "cèn",
-							  "ceng", "cēng", "céng", "cĕng", "cèng",
-							  "ci","cī","cí","cĭ","cì",
-							  "cong", "cōng", "cóng", "cŏng", "còng",
-							  "cou", "cōu", "cóu", "cŏu", "còu",
-							  "cu", "cū", "cú", "cŭ", "cù",
-							  "cua", "cuā", "cuá", "cuă", "cuà",
-							  "cuai", "cuāi", "cuái", "cuăi", "cuài",
-							  "cuan", "cuān", "cuán", "cuăn", "cuàn",
-							  "cuang", "cuāng", "cuáng", "cuăng", "cuàng",
-							  "cui","cuī","cuí","cuĭ","cuì",
-							  "cuo", "cuō", "cuó", "cuŏ", "cuò",
-							  "cun", "cūn", "cún", "cŭn", "cùn",
-						  };
+			Dictionary<string, string> values = new Dictionary<string, string>();
+			values.Add("fei", "fëi");
+			values.Add("fēi", "f¡i");
+			values.Add("féi", "f¢i");
+			values.Add("fĕi", "f£i");
+			values.Add("fèi", "f¤i");
+			values.Add("hei", "hëi");
+			values.Add("hēi", "h¡i");
+			values.Add("héi", "h¢i");
+			values.Add("hĕi", "h£i");
+			values.Add("hèi", "h¤i");
+			values.Add("lei", "lëi");
+			values.Add("lēi", "l¡i");
+			values.Add("léi", "l¢i");
+			values.Add("lĕi", "l£i");
+			values.Add("lèi", "l¤i");
+			values.Add("lian", "liën");
+			values.Add("liān", "li¡n");
+			values.Add("lián", "li¢n");
+			values.Add("liăn", "li£n");
+			values.Add("liàn", "li¤n");
+			values.Add("lie", "lië");
+			values.Add("liē", "li¡");
+			values.Add("lié", "li¢");
+			values.Add("liĕ", "li£");
+			values.Add("liè", "li¤");
+			values.Add("lüe", "luië");
+			values.Add("lüē", "lui¡");
+			values.Add("lüé", "lui¢");
+			values.Add("lüĕ", "lui£");
+			values.Add("lüè", "lui¤");
+			values.Add("mei", "mëi");
+			values.Add("mēi", "m¡i");
+			values.Add("méi", "m¢i");
+			values.Add("mĕi", "m£i");
+			values.Add("mèi", "m¤i");
+			values.Add("mian", "miën");
+			values.Add("miān", "mi¡n");
+			values.Add("mián", "mi¢n");
+			values.Add("miăn", "mi£n");
+			values.Add("miàn", "mi¤n");
+			values.Add("mie", "mië");
+			values.Add("miē", "mi¡");
+			values.Add("mié", "mi¢");
+			values.Add("miĕ", "mi£");
+			values.Add("miè", "mi¤");
+			values.Add("nei", "nëi");
+			values.Add("nēi", "n¡i");
+			values.Add("néi", "n¢i");
+			values.Add("nĕi", "n£i");
+			values.Add("nèi", "n¤i");
+			values.Add("nian", "niën");
+			values.Add("niān", "ni¡n");
+			values.Add("nián", "ni¢n");
+			values.Add("niăn", "ni£n");
+			values.Add("niàn", "ni¤n");
+			values.Add("nüe", "nuië");
+			values.Add("nüē", "nui¡");
+			values.Add("nüé", "nui¢");
+			values.Add("nüĕ", "nui£");
+			values.Add("nüè", "nui¤");
+			values.Add("ri", "re");
+			values.Add("rī", "rē");
+			values.Add("rí", "ré");
+			values.Add("rĭ", "rĕ");
+			values.Add("rì", "rè");
+			values.Add("si", "se");
+			values.Add("sī", "sē");
+			values.Add("sí", "sé");
+			values.Add("sĭ", "sĕ");
+			values.Add("sì", "sè");
+			values.Add("shei", "shëi");
+			values.Add("shēi", "sh¡i");
+			values.Add("shéi", "sh¢i");
+			values.Add("shĕi", "sh£i");
+			values.Add("shèi", "sh¤i");
+			values.Add("shi", "she");
+			values.Add("shī", "shē");
+			values.Add("shí", "shé");
+			values.Add("shĭ", "shĕ");
+			values.Add("shì", "shè");
+			values.Add("wei", "wëi");
+			values.Add("wēi", "w¡i");
+			values.Add("wéi", "w¢i");
+			values.Add("wĕi", "w£i");
+			values.Add("wèi", "w¤i");
+			values.Add("ye", "yë");
+			values.Add("yē", "y¡");
+			values.Add("yé", "y¢");
+			values.Add("yĕ", "y£");
+			values.Add("yè", "y¤");
+			values.Add("yu", "yuiy");
+			values.Add("yū", "yūiy");
+			values.Add("yú", "yúiy");
+			values.Add("yŭ", "yŭiy");
+			values.Add("yù", "yùiy");
+			values.Add("yuan", "yuën");
+			values.Add("yuān", "yu¡n");
+			values.Add("yuán", "yu¢n");
+			values.Add("yuăn", "yu£n");
+			values.Add("yuàn", "yu¤n");
+			values.Add("yue", "yuë");
+			values.Add("yuē", "yu¡");
+			values.Add("yué", "yu¢");
+			values.Add("yuĕ", "yu£");
+			values.Add("yuè", "yu¤");
+			values.Add("yun", "yuin");
+			values.Add("yūn", "yūin");
+			values.Add("yún", "yúin");
+			values.Add("yŭn", "yŭin");
+			values.Add("yùn", "yùin");
+			values.Add("ba", "pa");
+			values.Add("bā", "pā");
+			values.Add("bá", "pá");
+			values.Add("bă", "pă");
+			values.Add("bà", "pà");
+			values.Add("bai", "pai");
+			values.Add("bāi", "pāi");
+			values.Add("bái", "pái");
+			values.Add("băi", "păi");
+			values.Add("bài", "pài");
+			values.Add("ban", "pan");
+			values.Add("bān", "pān");
+			values.Add("bán", "pán");
+			values.Add("băn", "păn");
+			values.Add("bàn", "pàn");
+			values.Add("bang", "pang");
+			values.Add("bāng", "pāng");
+			values.Add("báng", "páng");
+			values.Add("băng", "păng");
+			values.Add("bàng", "pàng");
+			values.Add("bao", "pao");
+			values.Add("bāo", "pāo");
+			values.Add("báo", "páo");
+			values.Add("băo", "păo");
+			values.Add("bào", "pào");
+			values.Add("bei", "pëi");
+			values.Add("bēi", "p¡i");
+			values.Add("béi", "p¢i");
+			values.Add("bĕi", "p£i");
+			values.Add("bèi", "p¤i");
+			values.Add("ben", "pen");
+			values.Add("bēn", "pēn");
+			values.Add("bén", "pén");
+			values.Add("bĕn", "pĕn");
+			values.Add("bèn", "pèn");
+			values.Add("beng", "peng");
+			values.Add("bēng", "pēng");
+			values.Add("béng", "péng");
+			values.Add("bĕng", "pĕng");
+			values.Add("bèng", "pèng");
+			values.Add("bi", "pi");
+			values.Add("bī", "pī");
+			values.Add("bí", "pí");
+			values.Add("bĭ", "pĭ");
+			values.Add("bì", "pì");
+			values.Add("bian", "piën");
+			values.Add("bīan", "pi¡n");
+			values.Add("bían", "pi¢n");
+			values.Add("bĭan", "pi£n");
+			values.Add("bìan", "pi¤n");
+			values.Add("biao", "piao");
+			values.Add("biāo", "piāo");
+			values.Add("biáo", "piáo");
+			values.Add("biăo", "piăo");
+			values.Add("biào", "piào");
+			values.Add("bie", "pië");
+			values.Add("biē", "pi¡");
+			values.Add("bié", "pi¢");
+			values.Add("biĕ", "pi£");
+			values.Add("biè", "pi¤");
+			values.Add("bin", "pin");
+			values.Add("bīn", "pīn");
+			values.Add("bín", "pín");
+			values.Add("bĭn", "pĭn");
+			values.Add("bìn", "pìn");
+			values.Add("bing", "ping");
+			values.Add("bīng", "pīng");
+			values.Add("bíng", "píng");
+			values.Add("bĭng", "pĭng");
+			values.Add("bìng", "pìng");
+			values.Add("bo", "po");
+			values.Add("bō", "pō");
+			values.Add("bó", "pó");
+			values.Add("bŏ", "pŏ");
+			values.Add("bò", "pò");
+			values.Add("bu", "pu");
+			values.Add("bū", "pū");
+			values.Add("bú", "pú");
+			values.Add("bŭ", "pŭ");
+			values.Add("bù", "pù");
+			values.Add("ca", "cha");
+			values.Add("cā", "chā");
+			values.Add("cá", "chá");
+			values.Add("că", "chă");
+			values.Add("cà", "chà");
+			values.Add("cai", "chai");
+			values.Add("cāi", "chāi");
+			values.Add("cái", "chái");
+			values.Add("căi", "chăi");
+			values.Add("cài", "chài");
+			values.Add("can", "chan");
+			values.Add("cān", "chān");
+			values.Add("cán", "chán");
+			values.Add("căn", "chăn");
+			values.Add("càn", "chàn");
+			values.Add("cang", "chang");
+			values.Add("cāng", "chāng");
+			values.Add("cáng", "cháng");
+			values.Add("căng", "chăng");
+			values.Add("càng", "chàng");
+			values.Add("cao", "chao");
+			values.Add("cāo", "chāo");
+			values.Add("cáo", "cháo");
+			values.Add("căo", "chăo");
+			values.Add("cào", "chào");
+			values.Add("ce", "che");
+			values.Add("cē", "chē");
+			values.Add("cé", "ché");
+			values.Add("cĕ", "chĕ");
+			values.Add("cè", "chè");
+			values.Add("cen", "chen");
+			values.Add("cēn", "chēn");
+			values.Add("cén", "chén");
+			values.Add("cĕn", "chĕn");
+			values.Add("cèn", "chèn");
+			values.Add("ceng", "cheng");
+			values.Add("cēng", "chēng");
+			values.Add("céng", "chéng");
+			values.Add("cĕng", "chĕng");
+			values.Add("cèng", "chèng");
+			values.Add("ci", "che");
+			values.Add("cī", "chē");
+			values.Add("cí", "ché");
+			values.Add("cĭ", "chĕ");
+			values.Add("cì", "chè");
+			values.Add("cong", "chong");
+			values.Add("cōng", "chōng");
+			values.Add("cóng", "chóng");
+			values.Add("cŏng", "chŏng");
+			values.Add("còng", "chòng");
+			values.Add("cou", "chou");
+			values.Add("cōu", "chōu");
+			values.Add("cóu", "chóu");
+			values.Add("cŏu", "chŏu");
+			values.Add("còu", "chòu");
+			values.Add("cu", "chu");
+			values.Add("cū", "chū");
+			values.Add("cú", "chú");
+			values.Add("cŭ", "chŭ");
+			values.Add("cù", "chù");
+			values.Add("cuo", "chuo");
+			values.Add("cuō", "chuō");
+			values.Add("cuó", "chuó");
+			values.Add("cuŏ", "chuŏ");
+			values.Add("cuò", "chuò");
+			values.Add("cun", "chun");
+			values.Add("cūn", "chūn");
+			values.Add("cún", "chún");
+			values.Add("cŭn", "chŭn");
+			values.Add("cùn", "chùn");
+			values.Add("chi", "che");
+			values.Add("chī", "chē");
+			values.Add("chí", "ché");
+			values.Add("chĭ", "chĕ");
+			values.Add("chì", "chè");
+			values.Add("da", "ta");
+			values.Add("dā", "tā");
+			values.Add("dá", "tá");
+			values.Add("dă", "tă");
+			values.Add("dà", "tà");
+			values.Add("dai", "tai");
+			values.Add("dāi", "tāi");
+			values.Add("dái", "tái");
+			values.Add("dăi", "tăi");
+			values.Add("dài", "tài");
+			values.Add("dan", "tan");
+			values.Add("dān", "tān");
+			values.Add("dán", "tán");
+			values.Add("dăn", "tăn");
+			values.Add("dàn", "tàn");
+			values.Add("dang", "tang");
+			values.Add("dāng", "tāng");
+			values.Add("dáng", "táng");
+			values.Add("dăng", "tăng");
+			values.Add("dàng", "tàng");
+			values.Add("dao", "tao");
+			values.Add("dāo", "tāo");
+			values.Add("dáo", "táo");
+			values.Add("dăo", "tăo");
+			values.Add("dào", "tào");
+			values.Add("de", "te");
+			values.Add("dē", "tē");
+			values.Add("dé", "té");
+			values.Add("dĕ", "tĕ");
+			values.Add("dè", "tè");
+			values.Add("dei", "tei");
+			values.Add("dēi", "tēi");
+			values.Add("déi", "téi");
+			values.Add("dĕi", "tĕi");
+			values.Add("dèi", "tèi");
+			values.Add("deng", "teng");
+			values.Add("dēng", "tēng");
+			values.Add("déng", "téng");
+			values.Add("dĕng", "tĕng");
+			values.Add("dèng", "tèng");
+			values.Add("di", "ti");
+			values.Add("dī", "tī");
+			values.Add("dí", "tí");
+			values.Add("dĭ", "tĭ");
+			values.Add("dì", "tì");
+			values.Add("dian", "tian");
+			values.Add("diān", "tīan");
+			values.Add("dián", "tían");
+			values.Add("diăn", "tĭan");
+			values.Add("diàn", "tìan");
+			values.Add("diao", "tiao");
+			values.Add("diāo", "tiāo");
+			values.Add("diáo", "tiáo");
+			values.Add("diăo", "tiăo");
+			values.Add("diào", "tiào");
+			values.Add("die", "tie");
+			values.Add("diē", "tiē");
+			values.Add("dié", "tié");
+			values.Add("diĕ", "tiĕ");
+			values.Add("diè", "tiè");
+			values.Add("ding", "ting");
+			values.Add("dīng", "tīng");
+			values.Add("díng", "tíng");
+			values.Add("dĭng", "tĭng");
+			values.Add("dìng", "tìng");
+			values.Add("diu", "tiu");
+			values.Add("diū", "tiū");
+			values.Add("diú", "tiú");
+			values.Add("diŭ", "tiŭ");
+			values.Add("diù", "tiù");
+			values.Add("dong", "tong");
+			values.Add("dōng", "tōng");
+			values.Add("dóng", "tóng");
+			values.Add("dŏng", "tŏng");
+			values.Add("dòng", "tòng");
+			values.Add("dou", "tou");
+			values.Add("dōu", "tōu");
+			values.Add("dóu", "tóu");
+			values.Add("dŏu", "tŏu");
+			values.Add("dòu", "tòu");
+			values.Add("du", "tu");
+			values.Add("dū", "tū");
+			values.Add("dú", "tú");
+			values.Add("dŭ", "tŭ");
+			values.Add("dù", "tù");
+			values.Add("duan", "tuan");
+			values.Add("duān", "tuān");
+			values.Add("duán", "tuán");
+			values.Add("duăn", "tuăn");
+			values.Add("duàn", "tuàn");
+			values.Add("dui", "tui");
+			values.Add("duī", "tuī");
+			values.Add("duí", "tuí");
+			values.Add("duĭ", "tuĭ");
+			values.Add("duì", "tuì");
+			values.Add("duo", "tuo");
+			values.Add("duō", "tuō");
+			values.Add("duó", "tuó");
+			values.Add("duŏ", "tuŏ");
+			values.Add("duò", "tuò");
+			values.Add("dun", "tun");
+			values.Add("dūn", "tūn");
+			values.Add("dún", "tún");
+			values.Add("dŭn", "tŭn");
+			values.Add("dùn", "tùn");
+			values.Add("ga", "ka");
+			values.Add("gā", "kā");
+			values.Add("gá", "ká");
+			values.Add("gă", "kă");
+			values.Add("gà", "kà");
+			values.Add("gan", "kan");
+			values.Add("gān", "kān");
+			values.Add("gán", "kán");
+			values.Add("găn", "kăn");
+			values.Add("gàn", "kàn");
+			values.Add("gang", "kang");
+			values.Add("gāng", "kāng");
+			values.Add("gáng", "káng");
+			values.Add("găng", "kăng");
+			values.Add("gàng", "kàng");
+			values.Add("gao", "kao");
+			values.Add("gāo", "kāo");
+			values.Add("gáo", "káo");
+			values.Add("găo", "kăo");
+			values.Add("gào", "kào");
+			values.Add("ge", "ke");
+			values.Add("gē", "kē");
+			values.Add("gé", "ké");
+			values.Add("gĕ", "kĕ");
+			values.Add("gè", "kè");
+			values.Add("gei", "këi");
+			values.Add("gēi", "k¡i");
+			values.Add("géi", "k¢i");
+			values.Add("gĕi", "k£i");
+			values.Add("gèi", "k¤i");
+			values.Add("gen", "ken");
+			values.Add("gēn", "kēn");
+			values.Add("gén", "kén");
+			values.Add("gĕn", "kĕn");
+			values.Add("gèn", "kèn");
+			values.Add("geng", "keng");
+			values.Add("gēng", "kēng");
+			values.Add("géng", "kéng");
+			values.Add("gĕng", "kĕng");
+			values.Add("gèng", "kèng");
+			values.Add("gong", "kong");
+			values.Add("gōng", "kōng");
+			values.Add("góng", "kóng");
+			values.Add("gŏng", "kŏng");
+			values.Add("gòng", "kòng");
+			values.Add("gou", "kou");
+			values.Add("gōu", "kōu");
+			values.Add("góu", "kóu");
+			values.Add("gŏu", "kŏu");
+			values.Add("gòu", "kòu");
+			values.Add("gu", "ku");
+			values.Add("gū", "kū");
+			values.Add("gú", "kú");
+			values.Add("gŭ", "kŭ");
+			values.Add("gù", "kù");
+			values.Add("gua", "kua");
+			values.Add("guā", "kuā");
+			values.Add("guá", "kuá");
+			values.Add("guă", "kuă");
+			values.Add("guà", "kuà");
+			values.Add("guai", "kuai");
+			values.Add("guaī", "kuaī");
+			values.Add("guaí", "kuaí");
+			values.Add("guaĭ", "kuaĭ");
+			values.Add("guaì", "kuaì");
+			values.Add("guan", "kuan");
+			values.Add("guān", "kuān");
+			values.Add("guán", "kuán");
+			values.Add("guăn", "kuăn");
+			values.Add("guàn", "kuàn");
+			values.Add("guang", "kuang");
+			values.Add("guāng", "kuāng");
+			values.Add("guáng", "kuáng");
+			values.Add("guăng", "kuăng");
+			values.Add("guàng", "kuàng");
+			values.Add("gui", "kui");
+			values.Add("guī", "kuī");
+			values.Add("guí", "kuí");
+			values.Add("guĭ", "kuĭ");
+			values.Add("guì", "kuì");
+			values.Add("guo", "kuo");
+			values.Add("guō", "kuō");
+			values.Add("guó", "kuó");
+			values.Add("guŏ", "kuŏ");
+			values.Add("guò", "kuò");
+			values.Add("gun", "kun");
+			values.Add("gūn", "kūn");
+			values.Add("gún", "kún");
+			values.Add("gŭn", "kŭn");
+			values.Add("gùn", "kùn");
+			values.Add("ji", "ci");
+			values.Add("jī", "cī");
+			values.Add("jí", "cí");
+			values.Add("jĭ", "cĭ");
+			values.Add("jì", "cì");
+			values.Add("jia", "cia");
+			values.Add("jiā", "ciā");
+			values.Add("jiá", "ciá");
+			values.Add("jiă", "ciă");
+			values.Add("jià", "cià");
+			values.Add("jian", "cian");
+			values.Add("jiān", "ciān");
+			values.Add("jián", "cián");
+			values.Add("jiăn", "ciăn");
+			values.Add("jiàn", "ciàn");
+			values.Add("jiang", "ciang");
+			values.Add("jiāng", "ciāng");
+			values.Add("jiáng", "ciáng");
+			values.Add("jiăng", "ciăng");
+			values.Add("jiàng", "ciàng");
+			values.Add("jiao", "ciao");
+			values.Add("jiāo", "ciāo");
+			values.Add("jiáo", "ciáo");
+			values.Add("jiăo", "ciăo");
+			values.Add("jiào", "ciào");
+			values.Add("jie", "cië");
+			values.Add("jiē", "ci¡");
+			values.Add("jié", "ci¢");
+			values.Add("jiĕ", "ci£");
+			values.Add("jiè", "ci¤");
+			values.Add("jin", "cin");
+			values.Add("jīn", "cīn");
+			values.Add("jín", "cín");
+			values.Add("jĭn", "cĭn");
+			values.Add("jìn", "cìn");
+			values.Add("jing", "cing");
+			values.Add("jīng", "cīng");
+			values.Add("jíng", "cíng");
+			values.Add("jĭng", "cĭng");
+			values.Add("jìng", "cìng");
+			values.Add("jiu", "ciu");
+			values.Add("jiū", "ciū");
+			values.Add("jiú", "ciú");
+			values.Add("jiŭ", "ciŭ");
+			values.Add("jiù", "ciù");
+			values.Add("ju", "cuiy");
+			values.Add("jū", "cūiy");
+			values.Add("jú", "cúiy");
+			values.Add("jŭ", "cŭiy");
+			values.Add("jù", "cùiy");
+			values.Add("juan", "cuën");
+			values.Add("juān", "cu¡n");
+			values.Add("juán", "cu¢n");
+			values.Add("juăn", "cu£n");
+			values.Add("juàn", "cu¤n");
+			values.Add("jue", "cuë");
+			values.Add("juē", "cu¡");
+			values.Add("jué", "cu¢");
+			values.Add("juĕ", "cu£");
+			values.Add("juè", "cu¤");
+			values.Add("jun", "cuin");
+			values.Add("jūn", "cūin");
+			values.Add("jún", "cúin");
+			values.Add("jŭn", "cŭin");
+			values.Add("jùn", "cùin");
+			values.Add("ka", "kha");
+			values.Add("kā", "khā");
+			values.Add("ká", "khá");
+			values.Add("kă", "khă");
+			values.Add("kà", "khà");
+			values.Add("kai", "khai");
+			values.Add("kāi", "khāi");
+			values.Add("kái", "khái");
+			values.Add("kăi", "khăi");
+			values.Add("kài", "khài");
+			values.Add("kan", "khan");
+			values.Add("kān", "khān");
+			values.Add("kán", "khán");
+			values.Add("kăn", "khăn");
+			values.Add("kàn", "khàn");
+			values.Add("kang", "khang");
+			values.Add("kāng", "khāng");
+			values.Add("káng", "kháng");
+			values.Add("kăng", "khăng");
+			values.Add("kàng", "khàng");
+			values.Add("kao", "khao");
+			values.Add("kāo", "khāo");
+			values.Add("káo", "kháo");
+			values.Add("kăo", "khăo");
+			values.Add("kào", "khào");
+			values.Add("ke", "khe");
+			values.Add("kē", "khē");
+			values.Add("ké", "khé");
+			values.Add("kĕ", "khĕ");
+			values.Add("kè", "khè");
+			values.Add("ken", "khen");
+			values.Add("kēn", "khēn");
+			values.Add("kén", "khén");
+			values.Add("kĕn", "khĕn");
+			values.Add("kèn", "khèn");
+			values.Add("keng", "kheng");
+			values.Add("kēng", "khēng");
+			values.Add("kéng", "khéng");
+			values.Add("kĕng", "khĕng");
+			values.Add("kèng", "khèng");
+			values.Add("kong", "khong");
+			values.Add("kōng", "khōng");
+			values.Add("kóng", "khóng");
+			values.Add("kŏng", "khŏng");
+			values.Add("kòng", "khòng");
+			values.Add("kou", "khou");
+			values.Add("kōu", "khōu");
+			values.Add("kóu", "khóu");
+			values.Add("kŏu", "khŏu");
+			values.Add("kòu", "khòu");
+			values.Add("ku", "khu");
+			values.Add("kū", "khū");
+			values.Add("kú", "khú");
+			values.Add("kŭ", "khŭ");
+			values.Add("kù", "khù");
+			values.Add("kua", "khua");
+			values.Add("kuā", "khuā");
+			values.Add("kuá", "khuá");
+			values.Add("kuă", "khuă");
+			values.Add("kuà", "khuà");
+			values.Add("kuai", "khuai");
+			values.Add("kuāi", "khuāi");
+			values.Add("kuái", "khuái");
+			values.Add("kuăi", "khuăi");
+			values.Add("kuài", "khuài");
+			values.Add("kuan", "khuan");
+			values.Add("kuān", "khuān");
+			values.Add("kuán", "khuán");
+			values.Add("kuăn", "khuăn");
+			values.Add("kuàn", "khuàn");
+			values.Add("kuang", "khuang");
+			values.Add("kuāng", "khuāng");
+			values.Add("kuáng", "khuáng");
+			values.Add("kuăng", "khuăng");
+			values.Add("kuàng", "khuàng");
+			values.Add("kui", "khui");
+			values.Add("kuī", "khuī");
+			values.Add("kuí", "khuí");
+			values.Add("kuĭ", "khuĭ");
+			values.Add("kuì", "khuì");
+			values.Add("kuo", "khuo");
+			values.Add("kuō", "khuō");
+			values.Add("kuó", "khuó");
+			values.Add("kuŏ", "khuŏ");
+			values.Add("kuò", "khuò");
+			values.Add("pa", "pha");
+			values.Add("pā", "phā");
+			values.Add("pá", "phá");
+			values.Add("pă", "phă");
+			values.Add("pà", "phà");
+			values.Add("pai", "phai");
+			values.Add("pāi", "phāi");
+			values.Add("pái", "phái");
+			values.Add("păi", "phăi");
+			values.Add("pài", "phài");
+			values.Add("pan", "phan");
+			values.Add("pān", "phān");
+			values.Add("pán", "phán");
+			values.Add("păn", "phăn");
+			values.Add("pàn", "phàn");
+			values.Add("pang", "phang");
+			values.Add("pāng", "phāng");
+			values.Add("páng", "pháng");
+			values.Add("păng", "phăng");
+			values.Add("pàng", "phàng");
+			values.Add("pao", "phao");
+			values.Add("pāo", "phāo");
+			values.Add("páo", "pháo");
+			values.Add("păo", "phăo");
+			values.Add("pào", "phào");
+			values.Add("pei", "phëi");
+			values.Add("pēi", "ph¡i");
+			values.Add("péi", "ph¢i");
+			values.Add("pĕi", "ph£i");
+			values.Add("pèi", "ph¤i");
+			values.Add("pen", "phen");
+			values.Add("pēn", "phēn");
+			values.Add("pén", "phén");
+			values.Add("pĕn", "phĕn");
+			values.Add("pèn", "phèn");
+			values.Add("peng", "pheng");
+			values.Add("pēng", "phēng");
+			values.Add("péng", "phéng");
+			values.Add("pĕng", "phĕng");
+			values.Add("pèng", "phèng");
+			values.Add("pi", "phi");
+			values.Add("pī", "phī");
+			values.Add("pí", "phí");
+			values.Add("pĭ", "phĭ");
+			values.Add("pì", "phì");
+			values.Add("pian", "phian");
+			values.Add("piān", "phiān");
+			values.Add("pián", "phián");
+			values.Add("piăn", "phiăn");
+			values.Add("piàn", "phiàn");
+			values.Add("piao", "phiao");
+			values.Add("piāo", "phiāo");
+			values.Add("piáo", "phiáo");
+			values.Add("piăo", "phiăo");
+			values.Add("piào", "phiào");
+			values.Add("pie", "phië");
+			values.Add("piē", "phi¡");
+			values.Add("pié", "phi¢");
+			values.Add("piĕ", "phi£");
+			values.Add("piè", "phi¤");
+			values.Add("pin", "phin");
+			values.Add("pīn", "phīn");
+			values.Add("pín", "phín");
+			values.Add("pĭn", "phĭn");
+			values.Add("pìn", "phìn");
+			values.Add("ping", "phing");
+			values.Add("pīng", "phīng");
+			values.Add("píng", "phíng");
+			values.Add("pĭng", "phĭng");
+			values.Add("pìng", "phìng");
+			values.Add("po", "pho");
+			values.Add("pō", "phō");
+			values.Add("pó", "phó");
+			values.Add("pŏ", "phŏ");
+			values.Add("pò", "phò");
+			values.Add("pou", "phou");
+			values.Add("pōu", "phōu");
+			values.Add("póu", "phóu");
+			values.Add("pŏu", "phŏu");
+			values.Add("pòu", "phòu");
+			values.Add("pu", "phu");
+			values.Add("pū", "phū");
+			values.Add("pú", "phú");
+			values.Add("pŭ", "phŭ");
+			values.Add("pù", "phù");
+			values.Add("qi", "chi");
+			values.Add("qī", "chī");
+			values.Add("qí", "chí");
+			values.Add("qĭ", "chĭ");
+			values.Add("qì", "chì");
+			values.Add("qia", "chia");
+			values.Add("qiā", "chiā");
+			values.Add("qiá", "chiá");
+			values.Add("qiă", "chiă");
+			values.Add("qià", "chià");
+			values.Add("qian", "chian");
+			values.Add("qiān", "chiān");
+			values.Add("qián", "chián");
+			values.Add("qiăn", "chiăn");
+			values.Add("qiàn", "chiàn");
+			values.Add("qiang", "chiang");
+			values.Add("qiāng", "chiāng");
+			values.Add("qiáng", "chiáng");
+			values.Add("qiăng", "chiăng");
+			values.Add("qiàng", "chiàng");
+			values.Add("qiao", "chiao");
+			values.Add("qiāo", "chiāo");
+			values.Add("qiáo", "chiáo");
+			values.Add("qiăo", "chiăo");
+			values.Add("qiào", "chiào");
+			values.Add("qie", "chië");
+			values.Add("qiē", "chi¡");
+			values.Add("qié", "chi¢");
+			values.Add("qiĕ", "chi£");
+			values.Add("qiè", "chi¤");
+			values.Add("qin", "chin");
+			values.Add("qīn", "chīn");
+			values.Add("qín", "chín");
+			values.Add("qĭn", "chĭn");
+			values.Add("qìn", "chìn");
+			values.Add("qing", "ching");
+			values.Add("qīng", "chīng");
+			values.Add("qíng", "chíng");
+			values.Add("qĭng", "chĭng");
+			values.Add("qìng", "chìng");
+			values.Add("qiong", "chiong");
+			values.Add("qiōng", "chiōng");
+			values.Add("qióng", "chióng");
+			values.Add("qiŏng", "chiŏng");
+			values.Add("qiòng", "chiòng");
+			values.Add("qiu", "chiu");
+			values.Add("qiū", "chiū");
+			values.Add("qiú", "chiú");
+			values.Add("qiŭ", "chiŭ");
+			values.Add("qiù", "chiù");
+			values.Add("qu", "chu");
+			values.Add("qū", "chū");
+			values.Add("qú", "chú");
+			values.Add("qŭ", "chŭ");
+			values.Add("qù", "chù");
+			values.Add("quan", "chuan");
+			values.Add("quān", "chuān");
+			values.Add("quán", "chuán");
+			values.Add("quăn", "chuăn");
+			values.Add("quàn", "chuàn");
+			values.Add("que", "chuë");
+			values.Add("quē", "chu¡");
+			values.Add("qué", "chu¢");
+			values.Add("quĕ", "chu£");
+			values.Add("què", "chu¤");
+			values.Add("qun", "chun");
+			values.Add("qūn", "chūn");
+			values.Add("qún", "chún");
+			values.Add("qŭn", "chŭn");
+			values.Add("qùn", "chùn");
+			values.Add("ta", "tha");
+			values.Add("tā", "thā");
+			values.Add("tá", "thá");
+			values.Add("tă", "thă");
+			values.Add("tà", "thà");
+			values.Add("tai", "thai");
+			values.Add("tāi", "thāi");
+			values.Add("tái", "thái");
+			values.Add("tăi", "thăi");
+			values.Add("tài", "thài");
+			values.Add("tan", "than");
+			values.Add("tān", "thān");
+			values.Add("tán", "thán");
+			values.Add("tăn", "thăn");
+			values.Add("tàn", "thàn");
+			values.Add("tang", "thang");
+			values.Add("tāng", "thāng");
+			values.Add("táng", "tháng");
+			values.Add("tăng", "thăng");
+			values.Add("tàng", "thàng");
+			values.Add("tao", "thao");
+			values.Add("tāo", "thāo");
+			values.Add("táo", "tháo");
+			values.Add("tăo", "thăo");
+			values.Add("tào", "thào");
+			values.Add("te", "the");
+			values.Add("tē", "thē");
+			values.Add("té", "thé");
+			values.Add("tĕ", "thĕ");
+			values.Add("tè", "thè");
+			values.Add("teng", "theng");
+			values.Add("tēng", "thēng");
+			values.Add("téng", "théng");
+			values.Add("tĕng", "thĕng");
+			values.Add("tèng", "thèng");
+			values.Add("ti", "thi");
+			values.Add("tī", "thī");
+			values.Add("tí", "thí");
+			values.Add("tĭ", "thĭ");
+			values.Add("tì", "thì");
+			values.Add("tian", "thian");
+			values.Add("tiān", "thiān");
+			values.Add("tián", "thián");
+			values.Add("tiăn", "thiăn");
+			values.Add("tiàn", "thiàn");
+			values.Add("tiao", "thiao");
+			values.Add("tiāo", "thiāo");
+			values.Add("tiáo", "thiáo");
+			values.Add("tiăo", "thiăo");
+			values.Add("tiào", "thiào");
+			values.Add("tie", "thië");
+			values.Add("tiē", "thi¡");
+			values.Add("tié", "thi¢");
+			values.Add("tiĕ", "thi£");
+			values.Add("tiè", "thi¤");
+			values.Add("ting", "thing");
+			values.Add("tīng", "thīng");
+			values.Add("tíng", "thíng");
+			values.Add("tĭng", "thĭng");
+			values.Add("tìng", "thìng");
+			values.Add("tong", "thong");
+			values.Add("tōng", "thōng");
+			values.Add("tóng", "thóng");
+			values.Add("tŏng", "thŏng");
+			values.Add("tòng", "thòng");
+			values.Add("tou", "thou");
+			values.Add("tōu", "thōu");
+			values.Add("tóu", "thóu");
+			values.Add("tŏu", "thŏu");
+			values.Add("tòu", "thòu");
+			values.Add("tu", "thu");
+			values.Add("tū", "thū");
+			values.Add("tú", "thú");
+			values.Add("tŭ", "thŭ");
+			values.Add("tù", "thù");
+			values.Add("tuan", "thuan");
+			values.Add("tuān", "thuān");
+			values.Add("tuán", "thuán");
+			values.Add("tuăn", "thuăn");
+			values.Add("tuàn", "thuàn");
+			values.Add("tui", "thui");
+			values.Add("tuī", "thuī");
+			values.Add("tuí", "thuí");
+			values.Add("tuĭ", "thuĭ");
+			values.Add("tuì", "thuì");
+			values.Add("tuo", "thuo");
+			values.Add("tuō", "thuō");
+			values.Add("tuó", "thuó");
+			values.Add("tuŏ", "thuŏ");
+			values.Add("tuò", "thuò");
+			values.Add("tun", "thun");
+			values.Add("tūn", "thūn");
+			values.Add("tún", "thún");
+			values.Add("tŭn", "thŭn");
+			values.Add("tùn", "thùn");
+			values.Add("xi", "shi");
+			values.Add("xī", "shī");
+			values.Add("xí", "shí");
+			values.Add("xĭ", "shĭ");
+			values.Add("xì", "shì");
+			values.Add("xia", "shia");
+			values.Add("xiā", "shiā");
+			values.Add("xiá", "shiá");
+			values.Add("xiă", "shiă");
+			values.Add("xià", "shià");
+			values.Add("xian", "shian");
+			values.Add("xiān", "shiān");
+			values.Add("xián", "shián");
+			values.Add("xiăn", "shiăn");
+			values.Add("xiàn", "shiàn");
+			values.Add("xiang", "shiang");
+			values.Add("xiāng", "shiāng");
+			values.Add("xiáng", "shiáng");
+			values.Add("xiăng", "shiăng");
+			values.Add("xiàng", "shiàng");
+			values.Add("xiao", "shiao");
+			values.Add("xiāo", "shiāo");
+			values.Add("xiáo", "shiáo");
+			values.Add("xiăo", "shiăo");
+			values.Add("xiào", "shiào");
+			values.Add("xie", "shië");
+			values.Add("xiē", "shi¡");
+			values.Add("xié", "shi¢");
+			values.Add("xiĕ", "shi£");
+			values.Add("xiè", "shi¤");
+			values.Add("xin", "shin");
+			values.Add("xīn", "shīn");
+			values.Add("xín", "shín");
+			values.Add("xĭn", "shĭn");
+			values.Add("xìn", "shìn");
+			values.Add("xing", "shing");
+			values.Add("xīng", "shīng");
+			values.Add("xíng", "shíng");
+			values.Add("xĭng", "shĭng");
+			values.Add("xìng", "shìng");
+			values.Add("xiong", "shiong");
+			values.Add("xiōng", "shiōng");
+			values.Add("xióng", "shióng");
+			values.Add("xiŏng", "shiŏng");
+			values.Add("xiòng", "shiòng");
+			values.Add("xiu", "shiu");
+			values.Add("xiū", "shiū");
+			values.Add("xiú", "shiú");
+			values.Add("xiŭ", "shiŭ");
+			values.Add("xiù", "shiù");
+			values.Add("xu", "shu");
+			values.Add("xū", "shū");
+			values.Add("xú", "shú");
+			values.Add("xŭ", "shŭ");
+			values.Add("xù", "shù");
+			values.Add("xuan", "shuan");
+			values.Add("xuān", "shuān");
+			values.Add("xuán", "shuán");
+			values.Add("xuăn", "shuăn");
+			values.Add("xuàn", "shuàn");
+			values.Add("xue", "shuë");
+			values.Add("xuē", "shu¡");
+			values.Add("xué", "shu¢");
+			values.Add("xuĕ", "shu£");
+			values.Add("xuè", "shu¤");
+			values.Add("xun", "shun");
+			values.Add("xūn", "shūn");
+			values.Add("xún", "shún");
+			values.Add("xŭn", "shŭn");
+			values.Add("xùn", "shùn");
+			values.Add("za", "ca");
+			values.Add("zā", "cā");
+			values.Add("zá", "cá");
+			values.Add("ză", "că");
+			values.Add("zà", "cà");
+			values.Add("zai", "cai");
+			values.Add("zāi", "cāi");
+			values.Add("zái", "cái");
+			values.Add("zăi", "căi");
+			values.Add("zài", "cài");
+			values.Add("zan", "can");
+			values.Add("zān", "cān");
+			values.Add("zán", "cán");
+			values.Add("zăn", "căn");
+			values.Add("zàn", "càn");
+			values.Add("zang", "cang");
+			values.Add("zāng", "cāng");
+			values.Add("záng", "cáng");
+			values.Add("zăng", "căng");
+			values.Add("zàng", "càng");
+			values.Add("zao", "cao");
+			values.Add("zāo", "cāo");
+			values.Add("záo", "cáo");
+			values.Add("zăo", "căo");
+			values.Add("zào", "cào");
+			values.Add("ze", "ce");
+			values.Add("zē", "cē");
+			values.Add("zé", "cé");
+			values.Add("zĕ", "cĕ");
+			values.Add("zè", "cè");
+			values.Add("zei", "cëi");
+			values.Add("zēi", "c¡i");
+			values.Add("zéi", "c¢i");
+			values.Add("zĕi", "c£i");
+			values.Add("zèi", "c¤i");
+			values.Add("zen", "cen");
+			values.Add("zēn", "cēn");
+			values.Add("zén", "cén");
+			values.Add("zĕn", "cĕn");
+			values.Add("zèn", "cèn");
+			values.Add("zeng", "ceng");
+			values.Add("zēng", "cēng");
+			values.Add("zéng", "céng");
+			values.Add("zĕng", "cĕng");
+			values.Add("zèng", "cèng");
+			values.Add("zi", "ci");
+			values.Add("zī", "cī");
+			values.Add("zí", "cí");
+			values.Add("zĭ", "cĭ");
+			values.Add("zì", "cì");
+			values.Add("zong", "cong");
+			values.Add("zōng", "cōng");
+			values.Add("zóng", "cóng");
+			values.Add("zŏng", "cŏng");
+			values.Add("zòng", "còng");
+			values.Add("zou", "cou");
+			values.Add("zōu", "cōu");
+			values.Add("zóu", "cóu");
+			values.Add("zŏu", "cŏu");
+			values.Add("zòu", "còu");
+			values.Add("zu", "cu");
+			values.Add("zū", "cū");
+			values.Add("zú", "cú");
+			values.Add("zŭ", "cŭ");
+			values.Add("zù", "cù");
+			values.Add("zuan", "cuan");
+			values.Add("zuān", "cuān");
+			values.Add("zuán", "cuán");
+			values.Add("zuăn", "cuăn");
+			values.Add("zuàn", "cuàn");
+			values.Add("zui", "cui");
+			values.Add("zuī", "cuī");
+			values.Add("zuí", "cuí");
+			values.Add("zuĭ", "cuĭ");
+			values.Add("zuì", "cuì");
+			values.Add("zuo", "cuo");
+			values.Add("zuō", "cuō");
+			values.Add("zuó", "cuó");
+			values.Add("zuŏ", "cuŏ");
+			values.Add("zuò", "cuò");
+			values.Add("zun", "cun");
+			values.Add("zūn", "cūn");
+			values.Add("zún", "cún");
+			values.Add("zŭn", "cŭn");
+			values.Add("zùn", "cùn");
+			values.Add("zha", "ca");
+			values.Add("zhā", "cā");
+			values.Add("zhá", "cá");
+			values.Add("zhă", "că");
+			values.Add("zhà", "cà");
+			values.Add("zhai", "cai");
+			values.Add("zhāi", "cāi");
+			values.Add("zhái", "cái");
+			values.Add("zhăi", "căi");
+			values.Add("zhài", "cài");
+			values.Add("zhan", "can");
+			values.Add("zhān", "cān");
+			values.Add("zhán", "cán");
+			values.Add("zhăn", "căn");
+			values.Add("zhàn", "càn");
+			values.Add("zhang", "cang");
+			values.Add("zhāng", "cāng");
+			values.Add("zháng", "cáng");
+			values.Add("zhăng", "căng");
+			values.Add("zhàng", "càng");
+			values.Add("zhao", "cao");
+			values.Add("zhāo", "cāo");
+			values.Add("zháo", "cáo");
+			values.Add("zhăo", "căo");
+			values.Add("zhào", "cào");
+			values.Add("zhe", "ce");
+			values.Add("zhē", "cē");
+			values.Add("zhé", "cé");
+			values.Add("zhĕ", "cĕ");
+			values.Add("zhè", "cè");
+			values.Add("zhei", "cëi");
+			values.Add("zhēi", "c¡i");
+			values.Add("zhéi", "c¢i");
+			values.Add("zhĕi", "c£i");
+			values.Add("zhèi", "c¤i");
+			values.Add("zhen", "cen");
+			values.Add("zhēn", "cēn");
+			values.Add("zhén", "cén");
+			values.Add("zhĕn", "cĕn");
+			values.Add("zhèn", "cèn");
+			values.Add("zheng", "ceng");
+			values.Add("zhēng", "cēng");
+			values.Add("zhéng", "céng");
+			values.Add("zhĕng", "cĕng");
+			values.Add("zhèng", "cèng");
+			values.Add("zhi", "ci");
+			values.Add("zhī", "cī");
+			values.Add("zhí", "cí");
+			values.Add("zhĭ", "cĭ");
+			values.Add("zhì", "cì");
+			values.Add("zhong", "cong");
+			values.Add("zhōng", "cōng");
+			values.Add("zhóng", "cóng");
+			values.Add("zhŏng", "cŏng");
+			values.Add("zhòng", "còng");
+			values.Add("zhou", "cou");
+			values.Add("zhōu", "cōu");
+			values.Add("zhóu", "cóu");
+			values.Add("zhŏu", "cŏu");
+			values.Add("zhòu", "còu");
+			values.Add("zhu", "cu");
+			values.Add("zhū", "cū");
+			values.Add("zhú", "cú");
+			values.Add("zhŭ", "cŭ");
+			values.Add("zhù", "cù");
+			values.Add("zhua", "cua");
+			values.Add("zhuā", "cuā");
+			values.Add("zhuá", "cuá");
+			values.Add("zhuă", "cuă");
+			values.Add("zhuà", "cuà");
+			values.Add("zhuai", "cuai");
+			values.Add("zhuāi", "cuāi");
+			values.Add("zhuái", "cuái");
+			values.Add("zhuăi", "cuăi");
+			values.Add("zhuài", "cuài");
+			values.Add("zhuan", "cuan");
+			values.Add("zhuān", "cuān");
+			values.Add("zhuán", "cuán");
+			values.Add("zhuăn", "cuăn");
+			values.Add("zhuàn", "cuàn");
+			values.Add("zhuang", "cuang");
+			values.Add("zhuāng", "cuāng");
+			values.Add("zhuáng", "cuáng");
+			values.Add("zhuăng", "cuăng");
+			values.Add("zhuàng", "cuàng");
+			values.Add("zhui", "cui");
+			values.Add("zhuī", "cuī");
+			values.Add("zhuí", "cuí");
+			values.Add("zhuĭ", "cuĭ");
+			values.Add("zhuì", "cuì");
+			values.Add("zhuo", "cuo");
+			values.Add("zhuō", "cuō");
+			values.Add("zhuó", "cuó");
+			values.Add("zhuŏ", "cuŏ");
+			values.Add("zhuò", "cuò");
+			values.Add("zhun", "cun");
+			values.Add("zhūn", "cūn");
+			values.Add("zhún", "cún");
+			values.Add("zhŭn", "cŭn");
+			values.Add("zhùn", "cùn");
+
+			// What to do?
 
 			input = "";
-
-			for (int i = 0; i < Tx.Length; i++)
-			{
-				for (int x = 0; x < Py.Length; x++)
-				{
-					if (Tx[i].Contains(Py[x]))
-					{
-						foreach (string item in File.ReadAllLines("Excluded.lst"))
-						{
-							if (item.Contains(';'))
-							{
-								continue;
-							}
-
-							if (String.Equals(item, Tx[i], StringComparison.CurrentCultureIgnoreCase))
-							{
-								i++;
-								break;
-							}
-						}
-						if (Tx[i].Length > Py[x].Length)
-						{
-							Tx[i] = Tx[i].Replace(Py[x], Km[x]);
-							continue;
-						}
-						else if (Tx[i].Length == Py[x].Length)
-						{
-							Tx[i] = Tx[i].Replace(Py[x], Km[x]);
-							break;
-						}
-					}
-				}
-			}
 
 			for (int i = 0; i < Tx.Length; i++)
 				input = input + Tx[i] + " ";
