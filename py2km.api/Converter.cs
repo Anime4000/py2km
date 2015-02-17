@@ -1160,6 +1160,7 @@ namespace py2km.api
 					string temp = Tx[x].Substring(idx, len);
 					if (dict.TryGetValue(temp, out test))
 					{
+<<<<<<< HEAD
 						Fi[x] += test;
 						idx = pos;
 						pos = Tx[x].Length;
