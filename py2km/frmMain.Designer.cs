@@ -32,12 +32,12 @@
 			this.rtfOutput = new System.Windows.Forms.RichTextBox();
 			this.txtInput = new System.Windows.Forms.TextBox();
 			this.btnClear = new System.Windows.Forms.Button();
+			this.btnToPinyin = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// btnConvert
 			// 
-			this.btnConvert.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnConvert.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnConvert.Location = new System.Drawing.Point(697, 101);
 			this.btnConvert.Name = "btnConvert";
 			this.btnConvert.Size = new System.Drawing.Size(75, 23);
@@ -80,11 +80,23 @@
 			this.btnClear.UseVisualStyleBackColor = true;
 			this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
 			// 
+			// btnToPinyin
+			// 
+			this.btnToPinyin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnToPinyin.Location = new System.Drawing.Point(616, 101);
+			this.btnToPinyin.Name = "btnToPinyin";
+			this.btnToPinyin.Size = new System.Drawing.Size(75, 23);
+			this.btnToPinyin.TabIndex = 5;
+			this.btnToPinyin.Text = "To Pinyin";
+			this.btnToPinyin.UseVisualStyleBackColor = true;
+			this.btnToPinyin.Click += new System.EventHandler(this.btnToPinyin_Click);
+			// 
 			// frmMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(784, 562);
+			this.Controls.Add(this.btnToPinyin);
 			this.Controls.Add(this.btnClear);
 			this.Controls.Add(this.rtfOutput);
 			this.Controls.Add(this.btnConvert);
@@ -106,6 +118,7 @@
 		private System.Windows.Forms.RichTextBox rtfOutput;
 		private System.Windows.Forms.TextBox txtInput;
 		private System.Windows.Forms.Button btnClear;
+		private System.Windows.Forms.Button btnToPinyin;
 	}
 }
 

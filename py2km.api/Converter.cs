@@ -1144,6 +1144,13 @@ namespace py2km.api
 				{"zhǔn", "cǔn"},
 				{"zhùn", "cùn"},
 
+				// Permanent Exemption, a pinyin that similar, example: yang where 'yan' is detected
+				{"yang", "yang"},
+				{"yāng", "yāng"},
+				{"yáng", "yáng"},
+				{"yǎng", "yǎng"},
+				{"yàng", "yàng"},
+
 			}.OrderByDescending(x => x.Key.Length).ThenBy(x => x.Key).ToDictionary(x => x.Key, x => x.Value);
 
 			string[] Tx = input.ToLower().Split(' ');

@@ -32,6 +32,12 @@ namespace py2km
 			Clipboard.SetText(rtfOutput.Rtf, TextDataFormat.Rtf);
 		}
 
+		private void btnToPinyin_Click(object sender, EventArgs e)
+		{
+			rtfOutput.Text = Converter.ToneToPinyin(txtInput.Text);
+			Clipboard.SetText(rtfOutput.Rtf, TextDataFormat.Rtf);
+		}
+
 		private void btnClear_Click(object sender, EventArgs e)
 		{
 			txtInput.Text = "";
