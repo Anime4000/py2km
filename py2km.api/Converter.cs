@@ -1169,6 +1169,13 @@ namespace py2km.api
 					{
 						len--;
 						pos--;
+						if (idx == pos)
+						{
+							Fi[x] += Tx[x].Substring(pos, 1);
+							idx++;
+							pos = Tx[x].Length;
+							len = pos - idx;
+						}
 					}
 				}
 			}
