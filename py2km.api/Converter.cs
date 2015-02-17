@@ -43,6 +43,11 @@ namespace py2km.api
 				{"lüé", "lui¢"},
 				{"lüĕ", "lui£"},
 				{"lüè", "lui¤"},
+				{"lü", "luiy"},
+				{"lǖ", "luīy"},
+				{"lǘ", "luíy"},
+				{"lǚ", "luĭy"},
+				{"lǜ", "luìy"},
 				{"mei", "mëi"},
 				{"mēi", "m¡i"},
 				{"méi", "m¢i"},
@@ -68,6 +73,11 @@ namespace py2km.api
 				{"nián", "ni¢n"},
 				{"niăn", "ni£n"},
 				{"niàn", "ni¤n"},
+				{"nü", "nuiy"},
+				{"nǖ", "nuīy"},
+				{"nǘ", "nuíy"},
+				{"nǚ", "nuĭy"},
+				{"nǜ", "nuìy"},
 				{"nüe", "nuië"},
 				{"nüē", "nui¡"},
 				{"nüé", "nui¢"},
@@ -103,11 +113,16 @@ namespace py2km.api
 				{"yé", "y¢"},
 				{"yĕ", "y£"},
 				{"yè", "y¤"},
+				{"yan", "yën"},
+				{"yān", "y¡n"},
+				{"yán", "y¢n"},
+				{"yăn", "y£n"},
+				{"yàn", "y¤n"},
 				{"yu", "yuiy"},
-				{"yū", "yūiy"},
-				{"yú", "yúiy"},
-				{"yŭ", "yŭiy"},
-				{"yù", "yùiy"},
+				{"yū", "yuīy"},
+				{"yú", "yuíy"},
+				{"yŭ", "yuĭy"},
+				{"yù", "yuìy"},
 				{"yuan", "yuën"},
 				{"yuān", "yu¡n"},
 				{"yuán", "yu¢n"},
@@ -119,10 +134,10 @@ namespace py2km.api
 				{"yuĕ", "yu£"},
 				{"yuè", "yu¤"},
 				{"yun", "yuin"},
-				{"yūn", "yūin"},
-				{"yún", "yúin"},
-				{"yŭn", "yŭin"},
-				{"yùn", "yùin"},
+				{"yūn", "yuīn"},
+				{"yún", "yuín"},
+				{"yŭn", "yuĭn"},
+				{"yùn", "yuìn"},
 				{"ba", "pa"},
 				{"bā", "pā"},
 				{"bá", "pá"},
@@ -758,26 +773,26 @@ namespace py2km.api
 				{"qiú", "chiú"},
 				{"qiŭ", "chiŭ"},
 				{"qiù", "chiù"},
-				{"qu", "chu"},
-				{"qū", "chū"},
-				{"qú", "chú"},
-				{"qŭ", "chŭ"},
-				{"qù", "chù"},
-				{"quan", "chuan"},
-				{"quān", "chuān"},
-				{"quán", "chuán"},
-				{"quăn", "chuăn"},
-				{"quàn", "chuàn"},
+				{"qu", "chuiy"},
+				{"qū", "chuīy"},
+				{"qú", "chuíy"},
+				{"qŭ", "chuĭy"},
+				{"qù", "chuìy"},
+				{"quan", "chuën"},
+				{"quān", "chu¡n"},
+				{"quán", "chu¢n"},
+				{"quăn", "chu£n"},
+				{"quàn", "chu¤n"},
 				{"que", "chuë"},
 				{"quē", "chu¡"},
 				{"qué", "chu¢"},
 				{"quĕ", "chu£"},
 				{"què", "chu¤"},
-				{"qun", "chun"},
-				{"qūn", "chūn"},
-				{"qún", "chún"},
-				{"qŭn", "chŭn"},
-				{"qùn", "chùn"},
+				{"qun", "chuin"},
+				{"qūn", "chuīn"},
+				{"qún", "chuín"},
+				{"qŭn", "chuĭn"},
+				{"qùn", "chuìn"},
 				{"ta", "tha"},
 				{"tā", "thā"},
 				{"tá", "thá"},
@@ -818,11 +833,11 @@ namespace py2km.api
 				{"tí", "thí"},
 				{"tĭ", "thĭ"},
 				{"tì", "thì"},
-				{"tian", "thian"},
-				{"tiān", "thiān"},
-				{"tián", "thián"},
-				{"tiăn", "thiăn"},
-				{"tiàn", "thiàn"},
+				{"tian", "thiën"},
+				{"tiān", "thi¡n"},
+				{"tián", "thi¢n"},
+				{"tiăn", "thi£n"},
+				{"tiàn", "thi¤n"},
 				{"tiao", "thiao"},
 				{"tiāo", "thiāo"},
 				{"tiáo", "thiáo"},
@@ -1132,20 +1147,37 @@ namespace py2km.api
 			}.OrderByDescending(x => x.Key.Length).ThenBy(x => x.Key).ToDictionary(x => x.Key, x => x.Value);
 
 			string[] Tx = input.ToLower().Split(' ');
+			string[] Fi = new string[Tx.Length];
 
 			for (int x = 0; x < Tx.Length; x++)
 			{
-				foreach (var d in dict)
+				int idx = 0;
+				int pos = Tx[x].Length;
+				int len = Tx[x].Length;
+				while (len != 0)
 				{
-					Tx[x] = Tx[x].Replace(d.Key, d.Value);
+					string test;
+					string temp = Tx[x].Substring(idx, len);
+					if (dict.TryGetValue(temp, out test))
+					{
+						Fi[x] += test;
+						idx = pos;
+						pos = Tx[x].Length;
+						len = pos - idx;
+					}
+					else
+					{
+						len--;
+						pos--;
+					}
 				}
 			}
 
 			input = "";
 
-			for (int i = 0; i < Tx.Length; i++)
+			for (int i = 0; i < Fi.Length; i++)
 			{
-				input += Tx[i] + " ";
+				input += Fi[i] + " ";
 			}
 
 			return input;
