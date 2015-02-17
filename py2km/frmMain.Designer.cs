@@ -45,6 +45,8 @@
 			// 
 			// rtfOutput
 			// 
+			this.rtfOutput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.rtfOutput.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.rtfOutput.Font = new System.Drawing.Font("Arial Kwik Mandarin Modified", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.rtfOutput.Location = new System.Drawing.Point(12, 130);
@@ -55,6 +57,8 @@
 			// 
 			// txtInput
 			// 
+			this.txtInput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.txtInput.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.txtInput.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtInput.Location = new System.Drawing.Point(12, 12);

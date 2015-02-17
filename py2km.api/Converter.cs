@@ -1129,22 +1129,39 @@ namespace py2km.api
 			values.Add("zhŭn", "cŭn");
 			values.Add("zhùn", "cùn");
 
+			string[] result = new string[Tx.Length];
 			string test;
 
 			for (int x = 0; x < Tx.Length; x++)
 			{
-				if (values.TryGetValue(Tx[x], out test))
+				int idx = 0;
+				int pos = Tx[x].Length;
+				int len = Tx[x].Length;
+				while (idx < pos)
 				{
-					Tx[x] = Tx[x].Replace(Tx[x], test);
+					string word = Tx[x].Substring(idx, len);
+					if (values.TryGetValue(word, out test))
+					{
+						result[x] += test;
+						idx = pos;
+						pos = Tx[x].Length;
+						len = pos - idx;
+					}
+					else
+					{
+						len = len - 1;
+						pos = len;
+					}
 				}
 			}
 
-			input = "";
+			string final = null;
+			for (int i = 0; i < result.Length; i++)
+			{
+				final += result[i] + " ";
+			}
 
-			for (int i = 0; i < Tx.Length; i++)
-				input = input + Tx[i] + " ";
-
-			return input.Remove(input.Length - 1);
+			return final.Remove(final.Length - 1);
 		}
 
 		public static string ToneToPinyin(string input)
