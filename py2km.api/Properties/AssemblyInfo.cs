@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Anime4000")]
 [assembly: AssemblyProduct("py2km.api")]
-[assembly: AssemblyCopyright("Copyright © 2015 Anime4000")]
+[assembly: AssemblyCopyright("© 2015 Anime4000. All rights reserved.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

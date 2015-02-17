@@ -1,0 +1,16 @@
+﻿; py2km ignore list, all word listed here will not converted to kwik mandarin
+; Each word listed as new line (one word per line)
+; For more pref. list word that have pinyin, for example:
+;                                                        pinyin: de
+;                                                       english: dead
+;                                                        pinyin: bo
+;                                                       english: xbox
+;                                                        pinyin: ke
+;                                                         malay: kedai
+Play
+Station
+Xbox
+Left
+Dead
+Dying
+Light

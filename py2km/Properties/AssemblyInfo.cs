@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Pinyin to Kwik Mandarin")]
-[assembly: AssemblyDescription("Pinyin to Kwik Mandarin text converter")]
+[assembly: AssemblyTitle("Pinyin to Kwik Mandarin UI")]
+[assembly: AssemblyDescription("Front-end Pinyin to Kwik Mandarin text converter")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Kwik Mandarin (M) Sdn. Bhd.")]
 [assembly: AssemblyProduct("py2km")]
-[assembly: AssemblyCopyright("Copyright © 2015 Anime4000")]
+[assembly: AssemblyCopyright("© 2015 Anime4000. All rights reserved.")]
 [assembly: AssemblyTrademark("py2km")]
 [assembly: AssemblyCulture("")]
 
