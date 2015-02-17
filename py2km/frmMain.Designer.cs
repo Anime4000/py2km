@@ -31,10 +31,13 @@
 			this.btnConvert = new System.Windows.Forms.Button();
 			this.rtfOutput = new System.Windows.Forms.RichTextBox();
 			this.txtInput = new System.Windows.Forms.TextBox();
+			this.btnClear = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// btnConvert
 			// 
+			this.btnConvert.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnConvert.Location = new System.Drawing.Point(697, 101);
 			this.btnConvert.Name = "btnConvert";
 			this.btnConvert.Size = new System.Drawing.Size(75, 23);
@@ -67,11 +70,22 @@
 			this.txtInput.Size = new System.Drawing.Size(760, 83);
 			this.txtInput.TabIndex = 0;
 			// 
+			// btnClear
+			// 
+			this.btnClear.Location = new System.Drawing.Point(12, 102);
+			this.btnClear.Name = "btnClear";
+			this.btnClear.Size = new System.Drawing.Size(75, 23);
+			this.btnClear.TabIndex = 4;
+			this.btnClear.Text = "&Clear";
+			this.btnClear.UseVisualStyleBackColor = true;
+			this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+			// 
 			// frmMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(784, 562);
+			this.Controls.Add(this.btnClear);
 			this.Controls.Add(this.rtfOutput);
 			this.Controls.Add(this.btnConvert);
 			this.Controls.Add(this.txtInput);
@@ -91,6 +105,7 @@
 		private System.Windows.Forms.Button btnConvert;
 		private System.Windows.Forms.RichTextBox rtfOutput;
 		private System.Windows.Forms.TextBox txtInput;
+		private System.Windows.Forms.Button btnClear;
 	}
 }
 

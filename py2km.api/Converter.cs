@@ -1183,11 +1183,9 @@ namespace py2km.api
 			input = "";
 
 			for (int i = 0; i < Fi.Length; i++)
-			{
 				input += Fi[i] + " ";
-			}
-
-			return input;
+			
+			return input.Remove(input.Length - 1);
 		}
 
 		public static string ToneToPinyin(string input)

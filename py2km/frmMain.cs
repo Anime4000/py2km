@@ -31,5 +31,11 @@ namespace py2km
 			rtfOutput.Text = Converter.PinyinToKwikMandarin(txtInput.Text);
 			Clipboard.SetText(rtfOutput.Rtf, TextDataFormat.Rtf);
 		}
+
+		private void btnClear_Click(object sender, EventArgs e)
+		{
+			txtInput.Text = "";
+			rtfOutput.Text = "";
+		}
 	}
 }
