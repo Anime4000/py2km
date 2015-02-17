@@ -1187,7 +1187,7 @@ namespace py2km.api
 			
 			return input.Remove(input.Length - 1);
 		}
-		//
+
 		public static string ToneToPinyin(string input)
 		{
 			string[] Tx = input.ToLower().Split(' ');
