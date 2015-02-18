@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("py2km API")]
-[assembly: AssemblyDescription("Allow application to access")]
+[assembly: AssemblyDescription("Allow other .NET to access")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Anime4000")]
 [assembly: AssemblyProduct("py2km.api")]
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.0.1.0")]
-[assembly: AssemblyFileVersion("0.0.1.0")]
+[assembly: AssemblyVersion("0.0.2.0")]
+[assembly: AssemblyFileVersion("0.0.2.0")]
