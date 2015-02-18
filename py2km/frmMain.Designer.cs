@@ -87,7 +87,7 @@
 			this.btnToPinyin.Name = "btnToPinyin";
 			this.btnToPinyin.Size = new System.Drawing.Size(75, 23);
 			this.btnToPinyin.TabIndex = 5;
-			this.btnToPinyin.Text = "To Pinyin";
+			this.btnToPinyin.Text = "To &Pinyin";
 			this.btnToPinyin.UseVisualStyleBackColor = true;
 			this.btnToPinyin.Click += new System.EventHandler(this.btnToPinyin_Click);
 			// 

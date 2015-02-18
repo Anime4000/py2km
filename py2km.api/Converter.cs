@@ -1144,7 +1144,7 @@ namespace py2km.api
 				{"zhǔn", "cǔn"},
 				{"zhùn", "cùn"},
 
-				// Permanent Exemption, a pinyin that similar, example: yang where 'yan' is detected
+				// Permanent Exemption, a pinyin that similar, example: 'yang' where 'yan' is detected
 				{"yang", "yang"},
 				{"yāng", "yāng"},
 				{"yáng", "yáng"},
@@ -1153,51 +1153,55 @@ namespace py2km.api
 
 			}.OrderByDescending(x => x.Key.Length).ThenBy(x => x.Key).ToDictionary(x => x.Key, x => x.Value);
 
-			string[] Tx = input.ToLower().Split(' ');
-			string[] Fi = new string[Tx.Length];
-
-			for (int x = 0; x < Tx.Length; x++)
+			var excl = new Dictionary<string, string>();
+			foreach (var item in File.ReadAllLines("Excluded.lst"))
 			{
-				int idx = 0;
-				int pos = Tx[x].Length;
-				int len = Tx[x].Length;
-				while (len != 0)
+				string t = item.ToLower();
+
+				if (t.Contains(';'))
+					continue;
+
+				if (!excl.ContainsKey(t))
+					excl.Add(t, t);
+			}
+
+			string Tx = input.ToLower();
+			string Fi = null;
+
+			int idx = 0;
+			int pos = Tx.Length;
+			int len = Tx.Length;
+			while (len != 0)
+			{
+				string test;
+				string temp = Tx.Substring(idx, len);
+				if (dict.TryGetValue(temp, out test) || excl.TryGetValue(temp, out test))
 				{
-					string test;
-					string temp = Tx[x].Substring(idx, len);
-					if (dict.TryGetValue(temp, out test))
+					Fi += test;
+					idx = pos;
+					pos = Tx.Length;
+					len = pos - idx;
+				}
+				else
+				{
+					len--;
+					pos--;
+					if (idx == pos)
 					{
-						Fi[x] += test;
-						idx = pos;
-						pos = Tx[x].Length;
+						Fi += Tx.Substring(pos, 1);
+						idx++;
+						pos = Tx.Length;
 						len = pos - idx;
-					}
-					else
-					{
-						len--;
-						pos--;
-						if (idx == pos)
-						{
-							Fi[x] += Tx[x].Substring(pos, 1);
-							idx++;
-							pos = Tx[x].Length;
-							len = pos - idx;
-						}
 					}
 				}
 			}
-
-			input = "";
-
-			for (int i = 0; i < Fi.Length; i++)
-				input += Fi[i] + " ";
 			
-			return input.Remove(input.Length - 1);
+			return Fi;
 		}
 
 		public static string ToneToPinyin(string input)
 		{
-			string[] Tx = input.ToLower().Split(' ');
+			string[] Tx = input.ToLower().Replace("\r", "").Replace("\n", " ").Split(' ');
 
 			input = "";
 
