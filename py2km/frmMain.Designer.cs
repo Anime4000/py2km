@@ -48,13 +48,14 @@
 			// 
 			// rtfOutput
 			// 
-			this.rtfOutput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+			this.rtfOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.rtfOutput.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.rtfOutput.Font = new System.Drawing.Font("Arial Kwik Mandarin Modified", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.rtfOutput.Location = new System.Drawing.Point(12, 130);
 			this.rtfOutput.Name = "rtfOutput";
-			this.rtfOutput.Size = new System.Drawing.Size(760, 173);
+			this.rtfOutput.Size = new System.Drawing.Size(760, 420);
 			this.rtfOutput.TabIndex = 3;
 			this.rtfOutput.Text = "";
 			// 

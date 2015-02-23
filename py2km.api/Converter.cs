@@ -184,10 +184,10 @@ namespace py2km.api
 				{"bǐ", "pǐ"},
 				{"bì", "pì"},
 				{"bian", "piën"},
-				{"bīan", "pi¡n"},
-				{"bían", "pi¢n"},
-				{"bǐan", "pi£n"},
-				{"bìan", "pi¤n"},
+				{"biān", "pi¡n"},
+				{"bián", "pi¢n"},
+				{"biǎn", "pi£n"},
+				{"biàn", "pi¤n"},
 				{"biao", "piao"},
 				{"biāo", "piāo"},
 				{"biáo", "piáo"},
@@ -1221,6 +1221,18 @@ namespace py2km.api
 				{"yǎng", "yǎng"},
 				{"yàng", "yàng"},
 
+				{"tangao","tankao"},
+				{"tāngāo","tānkāo"},
+				{"tángáo","tánkáo"},
+				{"tǎngǎo","tǎnkǎo"},
+				{"tàngào","tànkào"},
+
+				{"liang", "liang"},
+				{"liāng", "liāng"},
+				{"liáng", "liáng"},
+				{"liǎng", "liǎng"},
+				{"liàng", "liàng"},
+
 			}.OrderByDescending(x => x.Key.Length).ThenBy(x => x.Key).ToDictionary(x => x.Key, x => x.Value);
 
 			var excl = new Dictionary<string, string>();
@@ -1235,7 +1247,7 @@ namespace py2km.api
 					excl.Add(t, t);
 			}
 
-			string Tx = input.ToLower();
+			string Tx = input;
 			string Fi = null;
 
 			int idx = 0;
@@ -1245,9 +1257,13 @@ namespace py2km.api
 			{
 				string test;
 				string temp = Tx.Substring(idx, len);
-				if (dict.TryGetValue(temp, out test) || excl.TryGetValue(temp, out test))
+				if (dict.TryGetValue(temp.ToLower(), out test) || excl.TryGetValue(temp.ToLower(), out test))
 				{
-					Fi += test;
+					if (char.IsUpper(temp[0]))
+						Fi += char.ToUpper(test[0]) + test.Substring(1, test.Length - 1);
+					else
+						Fi += test;
+
 					idx = pos;
 					pos = Tx.Length;
 					len = pos - idx;
