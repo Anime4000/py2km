@@ -32,13 +32,15 @@
 			this.rtfOutput = new System.Windows.Forms.RichTextBox();
 			this.txtInput = new System.Windows.Forms.TextBox();
 			this.btnClear = new System.Windows.Forms.Button();
-			this.btnToPinyin = new System.Windows.Forms.Button();
+			this.chkPinyinRules = new System.Windows.Forms.CheckBox();
+			this.cboConversionType = new System.Windows.Forms.ComboBox();
+			this.lblConversionType = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// btnConvert
 			// 
 			this.btnConvert.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnConvert.Location = new System.Drawing.Point(697, 101);
+			this.btnConvert.Location = new System.Drawing.Point(697, 527);
 			this.btnConvert.Name = "btnConvert";
 			this.btnConvert.Size = new System.Drawing.Size(75, 23);
 			this.btnConvert.TabIndex = 2;
@@ -53,9 +55,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.rtfOutput.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.rtfOutput.Font = new System.Drawing.Font("Arial Kwik Mandarin Modified", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.rtfOutput.Location = new System.Drawing.Point(12, 130);
+			this.rtfOutput.Location = new System.Drawing.Point(12, 128);
 			this.rtfOutput.Name = "rtfOutput";
-			this.rtfOutput.Size = new System.Drawing.Size(760, 420);
+			this.rtfOutput.Size = new System.Drawing.Size(760, 393);
 			this.rtfOutput.TabIndex = 3;
 			this.rtfOutput.Text = "";
 			// 
@@ -68,12 +70,13 @@
 			this.txtInput.Location = new System.Drawing.Point(12, 12);
 			this.txtInput.Multiline = true;
 			this.txtInput.Name = "txtInput";
+			this.txtInput.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
 			this.txtInput.Size = new System.Drawing.Size(760, 83);
 			this.txtInput.TabIndex = 0;
 			// 
 			// btnClear
 			// 
-			this.btnClear.Location = new System.Drawing.Point(12, 102);
+			this.btnClear.Location = new System.Drawing.Point(12, 527);
 			this.btnClear.Name = "btnClear";
 			this.btnClear.Size = new System.Drawing.Size(75, 23);
 			this.btnClear.TabIndex = 4;
@@ -81,23 +84,49 @@
 			this.btnClear.UseVisualStyleBackColor = true;
 			this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
 			// 
-			// btnToPinyin
+			// chkPinyinRules
 			// 
-			this.btnToPinyin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnToPinyin.Location = new System.Drawing.Point(616, 101);
-			this.btnToPinyin.Name = "btnToPinyin";
-			this.btnToPinyin.Size = new System.Drawing.Size(75, 23);
-			this.btnToPinyin.TabIndex = 5;
-			this.btnToPinyin.Text = "To &Pinyin";
-			this.btnToPinyin.UseVisualStyleBackColor = true;
-			this.btnToPinyin.Click += new System.EventHandler(this.btnToPinyin_Click);
+			this.chkPinyinRules.AutoSize = true;
+			this.chkPinyinRules.Location = new System.Drawing.Point(578, 531);
+			this.chkPinyinRules.Name = "chkPinyinRules";
+			this.chkPinyinRules.Size = new System.Drawing.Size(113, 17);
+			this.chkPinyinRules.TabIndex = 6;
+			this.chkPinyinRules.Text = "Apply Pinyin &Rules";
+			this.chkPinyinRules.UseVisualStyleBackColor = true;
+			// 
+			// cboConversionType
+			// 
+			this.cboConversionType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.cboConversionType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cboConversionType.FormattingEnabled = true;
+			this.cboConversionType.Items.AddRange(new object[] {
+            "Pinyin to Kwik Mandarin",
+            "Pinyin to Pinyin Rules",
+            "Number to Kwik Mandarin",
+            "Number to Pinyin"});
+			this.cboConversionType.Location = new System.Drawing.Point(472, 101);
+			this.cboConversionType.Name = "cboConversionType";
+			this.cboConversionType.Size = new System.Drawing.Size(300, 21);
+			this.cboConversionType.TabIndex = 7;
+			// 
+			// lblConversionType
+			// 
+			this.lblConversionType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblConversionType.AutoSize = true;
+			this.lblConversionType.Location = new System.Drawing.Point(374, 104);
+			this.lblConversionType.Name = "lblConversionType";
+			this.lblConversionType.Size = new System.Drawing.Size(92, 13);
+			this.lblConversionType.TabIndex = 8;
+			this.lblConversionType.Text = "Conversion Type:";
 			// 
 			// frmMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(784, 562);
-			this.Controls.Add(this.btnToPinyin);
+			this.Controls.Add(this.lblConversionType);
+			this.Controls.Add(this.cboConversionType);
+			this.Controls.Add(this.chkPinyinRules);
 			this.Controls.Add(this.btnClear);
 			this.Controls.Add(this.rtfOutput);
 			this.Controls.Add(this.btnConvert);
@@ -119,7 +148,9 @@
 		private System.Windows.Forms.RichTextBox rtfOutput;
 		private System.Windows.Forms.TextBox txtInput;
 		private System.Windows.Forms.Button btnClear;
-		private System.Windows.Forms.Button btnToPinyin;
+		private System.Windows.Forms.CheckBox chkPinyinRules;
+		private System.Windows.Forms.ComboBox cboConversionType;
+		private System.Windows.Forms.Label lblConversionType;
 	}
 }
 

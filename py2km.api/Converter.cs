@@ -9,7 +9,7 @@ namespace py2km.api
 {
     public class Converter
     {
-		public static string PinyinToKwikMandarin(string input)
+		public static string PinyinToKwikMandarin(string input, bool userule)
 		{
 			var dict = new Dictionary<string, string>
 			{
@@ -1247,7 +1247,7 @@ namespace py2km.api
 					excl.Add(t, t);
 			}
 
-			string Tx = input;
+			string Tx = userule ? RulesOfPinyin(input) : input;
 			string Fi = null;
 
 			int idx = 0;
@@ -1294,6 +1294,12 @@ namespace py2km.api
 			int max = Tx.Length - 1;
 			while (pos != max)
 			{
+				if (new[] { ' ', '\r', '\n' }.Contains(Tx[pos]))
+				{
+					pos++;
+					continue;
+				}
+
 				if (char.ToLower(Tx[pos]) == 'b' && char.ToLower(Tx[++pos]) == 'ù')
 				{
 					mrk = pos++;
@@ -1367,10 +1373,8 @@ namespace py2km.api
 						}
 					}
 				}
-
 				pos++;
 			}
-
 			return new string(Tx);
 		}
 

@@ -24,18 +24,23 @@ namespace py2km
 
 			if (!File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "ArialKwikMandarinModified.ttf")))
 				MessageBox.Show("Font \"ArialKwikMandarinModified.ttf\" not installed on this system!", "Missing Font", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+			cboConversionType.SelectedIndex = 0;
 		}
 
 		private void btnConvert_Click(object sender, EventArgs e)
 		{
-			//rtfOutput.Text = Converter.PinyinToKwikMandarin(txtInput.Text);
-			rtfOutput.Text = Converter.RulesOfPinyin(txtInput.Text);
-			Clipboard.SetText(rtfOutput.Rtf, TextDataFormat.Rtf);
-		}
+			int x = cboConversionType.SelectedIndex;
 
-		private void btnToPinyin_Click(object sender, EventArgs e)
-		{
-			rtfOutput.Text = Converter.ToneToPinyin(txtInput.Text);
+			if (x == 0)
+				rtfOutput.Text = Converter.PinyinToKwikMandarin(txtInput.Text, chkPinyinRules.Checked);
+			else if (x == 1)
+				rtfOutput.Text = Converter.RulesOfPinyin(txtInput.Text);
+			else if (x == 2)
+				rtfOutput.Text = Converter.PinyinToKwikMandarin(Converter.ToneToPinyin(txtInput.Text), chkPinyinRules.Checked);
+			else
+				rtfOutput.Text = Converter.ToneToPinyin(txtInput.Text);
+
 			Clipboard.SetText(rtfOutput.Rtf, TextDataFormat.Rtf);
 		}
 
