@@ -28,7 +28,8 @@ namespace py2km
 
 		private void btnConvert_Click(object sender, EventArgs e)
 		{
-			rtfOutput.Text = Converter.PinyinToKwikMandarin(txtInput.Text);
+			//rtfOutput.Text = Converter.PinyinToKwikMandarin(txtInput.Text);
+			rtfOutput.Text = Converter.RulesOfPinyin(txtInput.Text);
 			Clipboard.SetText(rtfOutput.Rtf, TextDataFormat.Rtf);
 		}
 

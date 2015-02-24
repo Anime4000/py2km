@@ -1285,6 +1285,95 @@ namespace py2km.api
 			return Fi;
 		}
 
+		public static string RulesOfPinyin(string input)
+		{
+			char[] Tx = input.ToCharArray();
+
+			int pos = 0;
+			int mrk = 0;
+			int max = Tx.Length - 1;
+			while (pos != max)
+			{
+				if (char.ToLower(Tx[pos]) == 'b' && char.ToLower(Tx[++pos]) == 'ù')
+				{
+					mrk = pos++;
+					while (char.ToLower(Tx[mrk]) == 'ù')
+					{
+						char temp = char.ToLower(Tx[pos]);
+						if (new[] { 'à', 'è', 'ì', 'ò', 'ù' }.Contains(temp))
+						{
+							Tx[mrk] = 'ú';
+						}
+						else
+						{
+							pos++;
+						}
+					}
+				}
+
+				if (char.ToLower(Tx[pos]) == 'y' && char.ToLower(Tx[++pos]) == 'ī')
+				{
+					mrk = pos++;
+					while (char.ToLower(Tx[mrk]) == 'ī')
+					{
+						char temp = char.ToLower(Tx[pos]);
+						if (new[] { 'à', 'è', 'ì', 'ò', 'ù' }.Contains(temp))
+						{
+							Tx[mrk] = 'í';
+						}
+						else if (new[] { 'ā', 'ē', 'ī', 'ō', 'ū', 'á', 'é', 'í', 'ó', 'ú', 'ǎ', 'ě', 'ǐ', 'ǒ', 'ǔ' }.Contains(temp))
+						{
+							Tx[mrk] = 'ì';
+						}
+						else
+						{
+							pos++;
+						}
+					}
+				}
+
+				if (new[] { 'h', 'n' }.Contains(char.ToLower(Tx[pos])) && new[] { 'ǎ', 'ě', 'ǐ', 'ǒ', 'ǔ' }.Contains(char.ToLower(Tx[++pos])))
+				{
+					mrk = pos++;
+					while (new[] { 'ǎ', 'ě', 'ǐ', 'ǒ', 'ǔ' }.Contains(char.ToLower(Tx[mrk])))
+					{
+						char temp = char.ToLower(Tx[pos]);
+						if (new[] { 'ǎ', 'ě', 'ǐ', 'ǒ', 'ǔ' }.Contains(temp))
+						{
+							switch (char.ToLower(Tx[mrk]))
+							{
+								case 'ǎ':
+									Tx[mrk] = 'á';
+									break;
+								case 'ě':
+									Tx[mrk] = 'é';
+									break;
+								case 'ǐ':
+									Tx[mrk] = 'í';
+									break;
+								case 'ǒ':
+									Tx[mrk] = 'ó';
+									break;
+								case 'ǔ':
+									Tx[mrk] = 'ú';
+									break;
+								default:
+									break;
+							}
+						}
+						else
+						{
+							pos++;
+						}
+					}
+				}
+
+				pos++;
+			}
+
+			return new string(Tx);
+		}
+
 		public static string ToneToPinyin(string input)
 		{
 			string[] Tx = input.ToLower().Replace("\r", "").Replace("\n", " ").Split(' ');
