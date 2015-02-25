@@ -25,7 +25,13 @@ namespace py2km
 			if (!File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "ArialKwikMandarinModified.ttf")))
 				MessageBox.Show("Font \"ArialKwikMandarinModified.ttf\" not installed on this system!", "Missing Font", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
-			cboConversionType.SelectedIndex = 0;
+			cboConversionType.SelectedIndex = Properties.Settings.Default.convType;
+		}
+
+		private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			Properties.Settings.Default.convType = cboConversionType.SelectedIndex;
+			Properties.Settings.Default.Save();
 		}
 
 		private void btnConvert_Click(object sender, EventArgs e)
@@ -49,5 +55,6 @@ namespace py2km
 			txtInput.Text = "";
 			rtfOutput.Text = "";
 		}
+
 	}
 }

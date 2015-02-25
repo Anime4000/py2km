@@ -1292,7 +1292,7 @@ namespace py2km.api
 			int pos = 0;
 			int mrk = 0;
 			int max = Tx.Length - 1;
-			while (pos != max)
+			while (pos <= max)
 			{
 				if (new[] { ' ', '\r', '\n' }.Contains(Tx[pos]))
 				{
@@ -1394,7 +1394,7 @@ namespace py2km.api
 					continue;
 				}
 
-				if ('u' == char.ToLower(Tx[pos]) && 'i' == char.ToLower(Tx[++pos]))
+				if ('u' == char.ToLower(Tx[pos]) && 'i' == char.ToLower(Tx[pos + 1]))
 				{
 					mrk = pos++;
 					continue;
@@ -1427,7 +1427,11 @@ namespace py2km.api
 
 				while (new[] { '1', '2', '3', '4', '5' }.Contains(Tx[pos]))
 				{
-					if (new[] { '6', '7', '8', '9', '0' }.Contains(Tx[pos + 1]))
+					if (max > pos + 1)
+						if (new[] { '6', '7', '8', '9', '0' }.Contains(Tx[pos + 1]))
+							break;
+
+					if (new[] { '6', '7', '8', '9', '0' }.Contains(Tx[pos - 1]))
 						break;
 
 					if ('a' == Tx[mrk])
