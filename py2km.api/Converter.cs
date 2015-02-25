@@ -1380,108 +1380,159 @@ namespace py2km.api
 
 		public static string ToneToPinyin(string input)
 		{
-			string[] Tx = input.ToLower().Replace("\r", "").Replace("\n", " ").Split(' ');
+			char[] Tx = input.ToCharArray();
 
-			input = "";
+			int pos = 0;
+			int mrk = 0;
+			int max = Tx.Length;
 
-			for (int i = 0; i < Tx.Length; i++)
+			while (pos != max)
 			{
-				if (Tx[i].Contains('1'))
+				if (new[] { ' ', '\n', '\r' }.Contains(Tx[pos]))
 				{
-					Tx[i] = MakeToPinyin(Tx[i], 1);
+					pos++;
 					continue;
 				}
-				else if (Tx[i].Contains('2'))
+
+				if ('u' == char.ToLower(Tx[pos]) && 'i' == char.ToLower(Tx[++pos]))
 				{
-					Tx[i] = MakeToPinyin(Tx[i], 2);
+					mrk = pos++;
 					continue;
 				}
-				else if (Tx[i].Contains('3'))
+				else if ('a' == char.ToLower(Tx[pos]))
 				{
-					Tx[i] = MakeToPinyin(Tx[i], 3);
+					mrk = pos++;
 					continue;
 				}
-				else if (Tx[i].Contains('4'))
+				else if ('e' == char.ToLower(Tx[pos]))
 				{
-					Tx[i] = MakeToPinyin(Tx[i], 4);
+					mrk = pos++;
 					continue;
 				}
-				else
+				else if ('o' == char.ToLower(Tx[pos]))
 				{
-					Tx[i] = Regex.Replace(Tx[i], "[5]", "");
+					mrk = pos++;
 					continue;
 				}
+				else if ('u' == char.ToLower(Tx[pos]))
+				{
+					mrk = pos++;
+					continue;
+				}
+				else if ('i' == char.ToLower(Tx[pos]))
+				{
+					mrk = pos++;
+					continue;
+				}
+
+				while (new[] { '1', '2', '3', '4', '5' }.Contains(Tx[pos]))
+				{
+					if (new[] { '6', '7', '8', '9', '0' }.Contains(Tx[pos + 1]))
+						break;
+
+					if ('a' == Tx[mrk])
+						switch (Tx[pos])
+						{
+							case '1':
+								Tx[mrk] = 'ā';
+								break;
+							case '2':
+								Tx[mrk] = 'á';
+								break;
+							case '3':
+								Tx[mrk] = 'ǎ';
+								break;
+							case '4':
+								Tx[mrk] = 'à';
+								break;
+							default:
+								pos++;
+								break;
+						}
+					else if ('e' == Tx[mrk])
+						switch (Tx[pos])
+						{
+							case '1':
+								Tx[mrk] = 'ē';
+								break;
+							case '2':
+								Tx[mrk] = 'é';
+								break;
+							case '3':
+								Tx[mrk] = 'ě';
+								break;
+							case '4':
+								Tx[mrk] = 'è';
+								break;
+							default:
+								pos++;
+								break;
+						}
+					else if ('i' == Tx[mrk])
+						switch (Tx[pos])
+						{
+							case '1':
+								Tx[mrk] = 'ī';
+								break;
+							case '2':
+								Tx[mrk] = 'í';
+								break;
+							case '3':
+								Tx[mrk] = 'ǐ';
+								break;
+							case '4':
+								Tx[mrk] = 'ì';
+								break;
+							default:
+								pos++;
+								break;
+						}
+					else if ('o' == Tx[mrk])
+						switch (Tx[pos])
+						{
+							case '1':
+								Tx[mrk] = 'ō';
+								break;
+							case '2':
+								Tx[mrk] = 'ó';
+								break;
+							case '3':
+								Tx[mrk] = 'ǒ';
+								break;
+							case '4':
+								Tx[mrk] = 'ò';
+								break;
+							default:
+								pos++;
+								break;
+						}
+					else if ('u' == Tx[mrk])
+						switch (Tx[pos])
+						{
+							case '1':
+								Tx[mrk] = 'ū';
+								break;
+							case '2':
+								Tx[mrk] = 'ú';
+								break;
+							case '3':
+								Tx[mrk] = 'ǔ';
+								break;
+							case '4':
+								Tx[mrk] = 'ù';
+								break;
+							default:
+								pos++;
+								break;
+						}
+					Tx[pos] = '\0';
+					break;
+				}
+
+				pos++;
 			}
 
-			for (int i = 0; i < Tx.Length; i++)
-				input = input + Tx[i] + " ";
-
-			return input.Remove(input.Length - 1);
-		}
-
-		private static string MakeToPinyin(string input, int tone)
-		{
-			switch (tone)
-			{
-				case 1:
-					if (input.Contains("ui"))
-						input = input.Replace('i', 'ī');
-					else if (input.Contains('a'))
-						input = input.Replace('a', 'ā');
-					else if (input.Contains('e'))
-						input = input.Replace('e', 'ē');
-					else if (input.Contains('o'))
-						input = input.Replace('o', 'ō');
-					else if (input.Contains('u'))
-						input = input.Replace('u', 'ū');
-					else if (input.Contains('i'))
-						input = input.Replace('i', 'ī');
-					break;
-				case 2:
-					if (input.Contains("ui"))
-						input = input.Replace('i', 'í');
-					else if (input.Contains('a'))
-						input = input.Replace('a', 'á');
-					else if (input.Contains('e'))
-						input = input.Replace('e', 'é');
-					else if (input.Contains('o'))
-						input = input.Replace('o', 'ó');
-					else if (input.Contains('u'))
-						input = input.Replace('u', 'ú');
-					else if (input.Contains('i'))
-						input = input.Replace('i', 'í');
-					break;
-				case 3:
-					if (input.Contains("ui"))
-						input = input.Replace('i', 'ǐ');
-					else if (input.Contains('a'))
-						input = input.Replace('a', 'ǎ');
-					else if (input.Contains('e'))
-						input = input.Replace('e', 'ě');
-					else if (input.Contains('o'))
-						input = input.Replace('o', 'ǒ');
-					else if (input.Contains('u'))
-						input = input.Replace('u', 'ǔ');
-					else if (input.Contains('i'))
-						input = input.Replace('i', 'ǐ');
-					break;
-				case 4:
-					if (input.Contains("ui"))
-						input = input.Replace('i', 'ì');
-					else if (input.Contains('a'))
-						input = input.Replace('a', 'à');
-					else if (input.Contains('e'))
-						input = input.Replace('e', 'è');
-					else if (input.Contains('o'))
-						input = input.Replace('o', 'ò');
-					else if (input.Contains('u'))
-						input = input.Replace('u', 'ù');
-					else if (input.Contains('i'))
-						input = input.Replace('i', 'ì');
-					break;
-			}
-
-			return Regex.Replace(input, "[0-9]", "");
+			return new string(Tx).Replace("\0", "");
 		}
     }
 }
