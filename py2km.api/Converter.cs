@@ -9,7 +9,7 @@ namespace py2km.api
 {
     public class Converter
     {
-		public static string PinyinToKwikMandarin(string input, bool userule)
+		public static string PinyinToKwikMandarin(string input)
 		{
 			var dict = new Dictionary<string, string>
 			{
@@ -1247,7 +1247,7 @@ namespace py2km.api
 					excl.Add(t, t);
 			}
 
-			string Tx = userule ? RulesOfPinyin(input) : input;
+			string Tx = input;
 			string Fi = null;
 
 			int idx = 0;
@@ -1338,6 +1338,9 @@ namespace py2km.api
 					}
 				}
 
+				if (max < pos + 1)
+					break;
+
 				if (new[] { 'h', 'n' }.Contains(char.ToLower(Tx[pos])) && new[] { 'ǎ', 'ě', 'ǐ', 'ǒ', 'ǔ' }.Contains(char.ToLower(Tx[++pos])))
 				{
 					mrk = pos++;
@@ -1394,35 +1397,38 @@ namespace py2km.api
 					continue;
 				}
 
-				if ('u' == char.ToLower(Tx[pos]) && 'i' == char.ToLower(Tx[pos + 1]))
+				if (mrk == 0)
 				{
-					mrk = pos++;
-					continue;
-				}
-				else if ('a' == char.ToLower(Tx[pos]))
-				{
-					mrk = pos++;
-					continue;
-				}
-				else if ('e' == char.ToLower(Tx[pos]))
-				{
-					mrk = pos++;
-					continue;
-				}
-				else if ('o' == char.ToLower(Tx[pos]))
-				{
-					mrk = pos++;
-					continue;
-				}
-				else if ('u' == char.ToLower(Tx[pos]))
-				{
-					mrk = pos++;
-					continue;
-				}
-				else if ('i' == char.ToLower(Tx[pos]))
-				{
-					mrk = pos++;
-					continue;
+					if ('u' == char.ToLower(Tx[pos]) && 'i' == char.ToLower(Tx[pos + 1]))
+					{
+						mrk = pos++;
+						continue;
+					}
+					else if ('a' == char.ToLower(Tx[pos]))
+					{
+						mrk = pos++;
+						continue;
+					}
+					else if ('e' == char.ToLower(Tx[pos]))
+					{
+						mrk = pos++;
+						continue;
+					}
+					else if ('o' == char.ToLower(Tx[pos]))
+					{
+						mrk = pos++;
+						continue;
+					}
+					else if ('u' == char.ToLower(Tx[pos]))
+					{
+						mrk = pos++;
+						continue;
+					}
+					else if ('i' == char.ToLower(Tx[pos]))
+					{
+						mrk = pos++;
+						continue;
+					}
 				}
 
 				while (new[] { '1', '2', '3', '4', '5' }.Contains(Tx[pos]))
@@ -1529,14 +1535,15 @@ namespace py2km.api
 								pos++;
 								break;
 						}
-					Tx[pos] = '\0';
+					mrk = 0; // reset when found
+					Tx[pos] = '\0'; // remove pinyin tone number
 					break;
 				}
 
 				pos++;
 			}
 
-			return new string(Tx).Replace("\0", "");
+			return new string(Tx).Replace("\0", string.Empty);
 		}
     }
 }

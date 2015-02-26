@@ -37,15 +37,16 @@ namespace py2km
 		private void btnConvert_Click(object sender, EventArgs e)
 		{
 			int x = cboConversionType.SelectedIndex;
+			bool rule = chkPinyinRules.Checked;
 
 			if (x == 0)
-				rtfOutput.Text = Converter.PinyinToKwikMandarin(txtInput.Text, chkPinyinRules.Checked);
+				rtfOutput.Text = rule ? Converter.PinyinToKwikMandarin(Converter.RulesOfPinyin(txtInput.Text)) : Converter.PinyinToKwikMandarin(txtInput.Text);
 			else if (x == 1)
-				rtfOutput.Text = Converter.RulesOfPinyin(txtInput.Text);
+				rtfOutput.Text = rule ? Converter.RulesOfPinyin(txtInput.Text) : txtInput.Text;
 			else if (x == 2)
-				rtfOutput.Text = Converter.PinyinToKwikMandarin(Converter.ToneToPinyin(txtInput.Text), chkPinyinRules.Checked);
+				rtfOutput.Text = rule ? Converter.RulesOfPinyin(Converter.PinyinToKwikMandarin(Converter.ToneToPinyin(txtInput.Text))) : Converter.PinyinToKwikMandarin(Converter.ToneToPinyin(txtInput.Text));
 			else
-				rtfOutput.Text = Converter.ToneToPinyin(txtInput.Text);
+				rtfOutput.Text = rule ? Converter.RulesOfPinyin(Converter.ToneToPinyin(txtInput.Text)) : Converter.ToneToPinyin(txtInput.Text);
 
 			Clipboard.SetText(rtfOutput.Rtf, TextDataFormat.Rtf);
 		}
