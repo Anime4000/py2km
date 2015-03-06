@@ -21,6 +21,7 @@ namespace py2km
 		private void frmMain_Load(object sender, EventArgs e)
 		{
 			this.Icon = Properties.Resources.py2km;
+			this.Text = String.Format("py2km build {0} ( '{1}' )", System.Reflection.Assembly.GetExecutingAssembly().GetName().Version, Properties.Resources.CodeName);
 
 			if (!File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "ArialKwikMandarinModified.ttf")))
 				MessageBox.Show("Font \"ArialKwikMandarinModified.ttf\" not installed on this system!", "Missing Font", MessageBoxButtons.OK, MessageBoxIcon.Warning);

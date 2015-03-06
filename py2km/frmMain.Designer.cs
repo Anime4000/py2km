@@ -54,9 +54,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.rtfOutput.Font = new System.Drawing.Font("Arial Kwik Mandarin Modified", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.rtfOutput.Location = new System.Drawing.Point(12, 128);
+			this.rtfOutput.Location = new System.Drawing.Point(12, 233);
 			this.rtfOutput.Name = "rtfOutput";
-			this.rtfOutput.Size = new System.Drawing.Size(760, 393);
+			this.rtfOutput.Size = new System.Drawing.Size(760, 288);
 			this.rtfOutput.TabIndex = 3;
 			this.rtfOutput.Text = "";
 			// 
@@ -69,7 +69,7 @@
 			this.txtInput.Multiline = true;
 			this.txtInput.Name = "txtInput";
 			this.txtInput.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-			this.txtInput.Size = new System.Drawing.Size(760, 83);
+			this.txtInput.Size = new System.Drawing.Size(760, 188);
 			this.txtInput.TabIndex = 0;
 			// 
 			// btnClear
@@ -102,7 +102,7 @@
             "Pinyin to Pinyin Rules",
             "Number to Kwik Mandarin",
             "Number to Pinyin"});
-			this.cboConversionType.Location = new System.Drawing.Point(472, 101);
+			this.cboConversionType.Location = new System.Drawing.Point(472, 206);
 			this.cboConversionType.Name = "cboConversionType";
 			this.cboConversionType.Size = new System.Drawing.Size(300, 21);
 			this.cboConversionType.TabIndex = 7;
@@ -111,7 +111,7 @@
 			// 
 			this.lblConversionType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.lblConversionType.AutoSize = true;
-			this.lblConversionType.Location = new System.Drawing.Point(374, 104);
+			this.lblConversionType.Location = new System.Drawing.Point(374, 209);
 			this.lblConversionType.Name = "lblConversionType";
 			this.lblConversionType.Size = new System.Drawing.Size(92, 13);
 			this.lblConversionType.TabIndex = 8;

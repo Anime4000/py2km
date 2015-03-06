@@ -61,6 +61,15 @@ namespace py2km.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Spirits On Earth.
+        /// </summary>
+        internal static string CodeName {
+            get {
+                return ResourceManager.GetString("CodeName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon py2km {
