@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Collections.Generic;
 
 namespace py2km.api
 {
@@ -22,6 +21,12 @@ namespace py2km.api
 		}
 
 		// Below to search and retrive
+		public static string[] Search(string input)
+		{
+			string[] Data = new string[3]; // 0 = Chinese, 1 = Pinyin, 2 = English
+
+			return Data;
+		}
 	}
 
 	public class CedictData
