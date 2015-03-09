@@ -9,15 +9,15 @@ namespace py2km.api
 	public class CedictProcessor
 	{
 		// Make it outside, load once, to RAM
-		public static Dictionary<string, CedictData> CEDICT = new System.Collections.Generic.Dictionary<string, CedictData>();
+		static Dictionary<string, CedictData> CEDICT = new System.Collections.Generic.Dictionary<string, CedictData>();
+		static CedictData CedictContent = new CedictData()
+		{
+			Pinyin = null,
+			English = null
+		};
+
 		public static void CedictLoad()
 		{
-			CedictData CedictContent = new CedictData()
-			{
-				Pinyin = null,
-				English = null
-			};
-
 			foreach (var item in File.ReadAllLines("cedict_ts.u8"))
 			{
 				if (item[0] == '#')
@@ -75,9 +75,14 @@ namespace py2km.api
 		}
 
 		// Below to search and retrive
-		public static string[] Search(string input)
+		public static string Search(string input)
 		{
-			string[] Data = new string[3]; // 0 = Chinese, 1 = Pinyin, 2 = English
+			string Data = null;
+
+			if (CEDICT.TryGetValue(input, out CedictContent))
+			{
+				Data = String.Format("{0}\n{1}\n{2}", input, CedictContent.Pinyin, CedictContent.English);
+			}
 
 			return Data;
 		}

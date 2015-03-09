@@ -48,9 +48,10 @@ namespace py2km
 				rtfOutput.Text = rule ? Converter.RulesOfPinyin(txtInput.Text) : txtInput.Text;
 			else if (x == 2)
 				rtfOutput.Text = rule ? Converter.RulesOfPinyin(Converter.PinyinToKwikMandarin(Converter.ToneToPinyin(txtInput.Text))) : Converter.PinyinToKwikMandarin(Converter.ToneToPinyin(txtInput.Text));
-			else
+			else if (x == 3)
 				rtfOutput.Text = rule ? Converter.RulesOfPinyin(Converter.ToneToPinyin(txtInput.Text)) : Converter.ToneToPinyin(txtInput.Text);
-
+			else
+				rtfOutput.Text = CedictProcessor.Search(txtInput.Text);
 			Clipboard.SetText(rtfOutput.Rtf, TextDataFormat.Rtf);
 		}
 
