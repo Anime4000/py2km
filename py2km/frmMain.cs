@@ -27,6 +27,8 @@ namespace py2km
 				MessageBox.Show("Font \"ArialKwikMandarinModified.ttf\" not installed on this system!", "Missing Font", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
 			cboConversionType.SelectedIndex = Properties.Settings.Default.convType;
+
+			CedictProcessor.CedictLoad();
 		}
 
 		private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
