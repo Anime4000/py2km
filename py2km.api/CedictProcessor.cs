@@ -67,15 +67,10 @@ namespace py2km.api
 				CedictContent.Pinyin = py;
 				CedictContent.English = en;
 
-				if (tc == sc)
-				{
-					CEDICT.Add(sc, CedictContent);
-				}
-				else
-				{
-					CEDICT.Add(sc, CedictContent);
+				if (!CEDICT.ContainsKey(tc))
 					CEDICT.Add(tc, CedictContent);
-				}
+				if (!CEDICT.ContainsKey(sc))
+					CEDICT.Add(sc, CedictContent);
 			}
 		}
 
