@@ -1285,6 +1285,11 @@ namespace py2km.api
 			return Fi;
 		}
 
+		public static string HanziToPinyin(string input)
+		{
+			return ToneToPinyin(Cedict.ToPinyin(input));
+		}
+
 		public static string RulesOfPinyin(string input)
 		{
 			char[] Tx = input.ToCharArray();
@@ -1433,6 +1438,9 @@ namespace py2km.api
 
 				while (new[] { '1', '2', '3', '4', '5' }.Contains(Tx[pos]))
 				{
+					if (max <= 2)
+						break;
+
 					if (max > pos + 1)
 						if (new[] { '6', '7', '8', '9', '0' }.Contains(Tx[pos + 1]))
 							break;
@@ -1456,7 +1464,6 @@ namespace py2km.api
 								Tx[mrk] = 'à';
 								break;
 							default:
-								pos++;
 								break;
 						}
 					else if ('e' == Tx[mrk])
@@ -1475,7 +1482,6 @@ namespace py2km.api
 								Tx[mrk] = 'è';
 								break;
 							default:
-								pos++;
 								break;
 						}
 					else if ('i' == Tx[mrk])
@@ -1494,7 +1500,6 @@ namespace py2km.api
 								Tx[mrk] = 'ì';
 								break;
 							default:
-								pos++;
 								break;
 						}
 					else if ('o' == Tx[mrk])
@@ -1513,7 +1518,6 @@ namespace py2km.api
 								Tx[mrk] = 'ò';
 								break;
 							default:
-								pos++;
 								break;
 						}
 					else if ('u' == Tx[mrk])
@@ -1532,14 +1536,12 @@ namespace py2km.api
 								Tx[mrk] = 'ù';
 								break;
 							default:
-								pos++;
 								break;
 						}
 					mrk = 0; // reset when found
 					Tx[pos] = '\0'; // remove pinyin tone number
 					break;
 				}
-
 				pos++;
 			}
 

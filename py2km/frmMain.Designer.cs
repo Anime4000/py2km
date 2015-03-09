@@ -102,7 +102,7 @@
             "Pinyin to Pinyin Rules",
             "Number to Kwik Mandarin",
             "Number to Pinyin",
-            "Hanzi to Dictionary"});
+            "Hanzi to Pinyin"});
 			this.cboConversionType.Location = new System.Drawing.Point(472, 206);
 			this.cboConversionType.Name = "cboConversionType";
 			this.cboConversionType.Size = new System.Drawing.Size(300, 21);

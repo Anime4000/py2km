@@ -28,7 +28,7 @@ namespace py2km
 
 			cboConversionType.SelectedIndex = Properties.Settings.Default.convType;
 
-			CedictProcessor.CedictLoad();
+			Cedict.Load();
 		}
 
 		private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -51,7 +51,8 @@ namespace py2km
 			else if (x == 3)
 				rtfOutput.Text = rule ? Converter.RulesOfPinyin(Converter.ToneToPinyin(txtInput.Text)) : Converter.ToneToPinyin(txtInput.Text);
 			else
-				rtfOutput.Text = CedictProcessor.Search(txtInput.Text);
+				rtfOutput.Text = Converter.HanziToPinyin(txtInput.Text);
+
 			Clipboard.SetText(rtfOutput.Rtf, TextDataFormat.Rtf);
 		}
 

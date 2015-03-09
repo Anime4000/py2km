@@ -6,11 +6,11 @@ using System.IO;
 
 namespace py2km.api
 {
-	public class CedictProcessor
+	public class Cedict
 	{
 		// Make it outside, load once, to RAM
 		static Dictionary<string, CedictData> CEDICT = new System.Collections.Generic.Dictionary<string, CedictData>();
-		public static void CedictLoad()
+		public static void Load()
 		{
 			foreach (var item in File.ReadAllLines("cedict_ts.u8"))
 			{
@@ -86,6 +86,45 @@ namespace py2km.api
 			}
 
 			return Data;
+		}
+
+		// Below converting to Pinyin (number)
+		public static string ToPinyin(string input)
+		{
+			string Tx = input;
+			string Fi = null;
+
+			int idx = 0; // Index
+			int pos = Tx.Length; // Current position
+			int len = Tx.Length; // Current length
+
+			while (len != 0)
+			{
+				CedictData test;
+				string temp = Tx.Substring(idx, len);
+				if (CEDICT.TryGetValue(temp, out test))
+				{
+					Fi += test.Pinyin.Replace(" ", "") + " ";
+
+					idx = pos; // Once found, move index to current position
+					pos = Tx.Length; // then new position restart
+					len = pos - idx; // then new length
+				}
+				else
+				{
+					len--; // Length of string
+					pos--; // Go next character
+					if (idx == pos)
+					{
+						Fi += Tx.Substring(pos, 1);
+						idx++;
+						pos = Tx.Length;
+						len = pos - idx;
+					}
+				}
+			}
+
+			return Fi;
 		}
 	}
 
