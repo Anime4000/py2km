@@ -10,16 +10,16 @@ namespace py2km.api
 	{
 		// Make it outside, load once, to RAM
 		static Dictionary<string, CedictData> CEDICT = new System.Collections.Generic.Dictionary<string, CedictData>();
-		static CedictData CedictContent = new CedictData()
-		{
-			Pinyin = null,
-			English = null
-		};
-
 		public static void CedictLoad()
 		{
 			foreach (var item in File.ReadAllLines("cedict_ts.u8"))
 			{
+				CedictData CedictContent = new CedictData()
+				{
+					Pinyin = null,
+					English = null
+				};
+
 				if (item[0] == '#')
 					continue;
 
@@ -78,10 +78,11 @@ namespace py2km.api
 		public static string Search(string input)
 		{
 			string Data = null;
+			CedictData temp;
 
-			if (CEDICT.TryGetValue(input, out CedictContent))
+			if (CEDICT.TryGetValue(input, out temp))
 			{
-				Data = String.Format("{0}\n{1}\n{2}", input, CedictContent.Pinyin, CedictContent.English);
+				Data = String.Format("{0}\n{1}\n{2}", input, temp.Pinyin, temp.English);
 			}
 
 			return Data;
