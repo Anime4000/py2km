@@ -39,7 +39,7 @@
 			// 
 			// btnConvert
 			// 
-			this.btnConvert.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnConvert.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnConvert.Location = new System.Drawing.Point(697, 527);
 			this.btnConvert.Name = "btnConvert";
 			this.btnConvert.Size = new System.Drawing.Size(75, 23);
@@ -74,6 +74,7 @@
 			// 
 			// btnClear
 			// 
+			this.btnClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.btnClear.Location = new System.Drawing.Point(12, 527);
 			this.btnClear.Name = "btnClear";
 			this.btnClear.Size = new System.Drawing.Size(75, 23);
@@ -84,6 +85,7 @@
 			// 
 			// chkPinyinRules
 			// 
+			this.chkPinyinRules.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.chkPinyinRules.AutoSize = true;
 			this.chkPinyinRules.Location = new System.Drawing.Point(578, 531);
 			this.chkPinyinRules.Name = "chkPinyinRules";

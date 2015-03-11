@@ -104,7 +104,7 @@ namespace py2km.api
 				string temp = Tx.Substring(idx, len);
 				if (CEDICT.TryGetValue(temp, out test))
 				{
-					Fi += test.Pinyin.Replace(" ", "") + " ";
+					Fi += test.Pinyin + " ";
 
 					idx = pos; // Once found, move index to current position
 					pos = Tx.Length; // then new position restart
@@ -124,7 +124,7 @@ namespace py2km.api
 				}
 			}
 
-			return Fi;
+			return Fi.ToLower();
 		}
 	}
 
