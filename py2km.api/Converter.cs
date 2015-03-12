@@ -1288,6 +1288,19 @@ namespace py2km.api
 
 		public static string HanziToPinyin(string input)
 		{
+			// Remove unicode notes
+			input = input.Replace('。', '.');
+			input = input.Replace('，', ',');
+			input = input.Replace('；', ';');
+			input = input.Replace('（', '(');
+			input = input.Replace('）', ')');
+			input = input.Replace('《', '[');
+			input = input.Replace('》', ']');
+			input = input.Replace('「', '[');
+			input = input.Replace('」', ']');
+			input = input.Replace('、', ',');
+			input = input.Replace('：', ':');
+
 			return ToneToPinyin(Cedict.ToPinyin(input));
 		}
 
@@ -1392,17 +1405,6 @@ namespace py2km.api
 
 		public static string ToneToPinyin(string input)
 		{
-			// Remove unicode notes
-			input = input.Replace('。', '.');
-			input = input.Replace('，', ',');
-			input = input.Replace('；', ';');
-			input = input.Replace('（', '(');
-			input = input.Replace('）', ')');
-			input = input.Replace('《', '[');
-			input = input.Replace('》', ']');
-			input = input.Replace('「', '[');
-			input = input.Replace('」', ']');
-
 			char[] Tx = input.ToCharArray();
 
 			int pos = 0;

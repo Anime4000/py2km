@@ -34,6 +34,8 @@
 			this.rtfInput = new System.Windows.Forms.RichTextBox();
 			this.cboSource = new System.Windows.Forms.ComboBox();
 			this.chkPinyinRules = new System.Windows.Forms.CheckBox();
+			this.BGThread = new System.ComponentModel.BackgroundWorker();
+			this.btnSendLeft = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// btnConvert
@@ -109,11 +111,28 @@
 			this.chkPinyinRules.UseVisualStyleBackColor = true;
 			this.chkPinyinRules.CheckedChanged += new System.EventHandler(this.chkPinyinRules_CheckedChanged);
 			// 
+			// BGThread
+			// 
+			this.BGThread.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BGThread_DoWork);
+			this.BGThread.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BGThread_RunWorkerCompleted);
+			// 
+			// btnSendLeft
+			// 
+			this.btnSendLeft.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnSendLeft.Location = new System.Drawing.Point(551, 12);
+			this.btnSendLeft.Name = "btnSendLeft";
+			this.btnSendLeft.Size = new System.Drawing.Size(75, 23);
+			this.btnSendLeft.TabIndex = 12;
+			this.btnSendLeft.Text = "< &Send";
+			this.btnSendLeft.UseVisualStyleBackColor = true;
+			this.btnSendLeft.Click += new System.EventHandler(this.btnSendLeft_Click);
+			// 
 			// frmMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 600);
+			this.Controls.Add(this.btnSendLeft);
 			this.Controls.Add(this.chkPinyinRules);
 			this.Controls.Add(this.btnClear);
 			this.Controls.Add(this.cboSource);
@@ -140,6 +159,8 @@
 		private System.Windows.Forms.RichTextBox rtfInput;
 		private System.Windows.Forms.ComboBox cboSource;
 		private System.Windows.Forms.CheckBox chkPinyinRules;
+		private System.ComponentModel.BackgroundWorker BGThread;
+		private System.Windows.Forms.Button btnSendLeft;
 	}
 }
 

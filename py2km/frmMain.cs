@@ -36,38 +36,15 @@ namespace py2km
 
 		private void btnConvert_Click(object sender, EventArgs e)
 		{
-			bool x = chkPinyinRules.Checked;
-			int i = cboSource.SelectedIndex;
-			string input = rtfInput.Text;
-			string output = rtfOutput.Text;
-
-			switch (i)
+			List<object> something = new List<object>
 			{
-				case 0:
-					output = x ? Converter.RulesOfPinyin(Converter.ToneToPinyin(input)) : Converter.ToneToPinyin(input);
-					break;
-				case 1:
-					output = x ? Converter.PinyinToKwikMandarin(Converter.RulesOfPinyin(Converter.ToneToPinyin(input))) : Converter.PinyinToKwikMandarin(Converter.ToneToPinyin(input));
-					break;
-				case 2:
-					output = x ? Converter.RulesOfPinyin(output) : Converter.RulesOfPinyin(output);
-					break;
-				case 3:
-					output = x ? Converter.RulesOfPinyin(Converter.PinyinToKwikMandarin(input)) : Converter.PinyinToKwikMandarin(input);
-					break;
-				case 4:
-					output = x ? Converter.RulesOfPinyin(Converter.HanziToPinyin(input)) : Converter.HanziToPinyin(input);
-					break;
-				case 5:
-					output = x ? Converter.PinyinToKwikMandarin(Converter.RulesOfPinyin(Converter.HanziToPinyin(input))) : Converter.PinyinToKwikMandarin(Converter.HanziToPinyin(input));
-					break;
-				default:
-					break;
-			}
+				chkPinyinRules.Checked,
+				cboSource.SelectedIndex,
+				rtfInput.Text
+			};
 
-			rtfOutput.Text = output;
-			Properties.Settings.Default.convSrc = i;
-			Clipboard.SetText(rtfOutput.Rtf, TextDataFormat.Rtf);
+			rtfOutput.Text = "Loading...";
+			BGThread.RunWorkerAsync(something);
 		}
 
 		private void btnClear_Click(object sender, EventArgs e)
@@ -94,6 +71,55 @@ namespace py2km
 		private void chkPinyinRules_CheckedChanged(object sender, EventArgs e)
 		{
 			Properties.Settings.Default.pyRules = chkPinyinRules.Checked;
+		}
+
+		private void BGThread_DoWork(object sender, DoWorkEventArgs e)
+		{
+			List<object> argsList = e.Argument as List<object>;
+			bool x = (bool)argsList[0];
+			int i = (int)argsList[1];
+			string input = (string)argsList[2];
+			string output = "";
+
+			switch (i)
+			{
+				case 0:
+					output = x ? Converter.RulesOfPinyin(Converter.ToneToPinyin(input)) : Converter.ToneToPinyin(input);
+					break;
+				case 1:
+					output = x ? Converter.PinyinToKwikMandarin(Converter.RulesOfPinyin(Converter.ToneToPinyin(input))) : Converter.PinyinToKwikMandarin(Converter.ToneToPinyin(input));
+					break;
+				case 2:
+					output = x ? Converter.RulesOfPinyin(output) : Converter.RulesOfPinyin(output);
+					break;
+				case 3:
+					output = x ? Converter.RulesOfPinyin(Converter.PinyinToKwikMandarin(input)) : Converter.PinyinToKwikMandarin(input);
+					break;
+				case 4:
+					output = x ? Converter.RulesOfPinyin(Converter.HanziToPinyin(input)) : Converter.HanziToPinyin(input);
+					break;
+				case 5:
+					output = x ? Converter.PinyinToKwikMandarin(Converter.RulesOfPinyin(Converter.HanziToPinyin(input))) : Converter.PinyinToKwikMandarin(Converter.HanziToPinyin(input));
+					break;
+				default:
+					break;
+			}
+
+			if (this.InvokeRequired)
+				BeginInvoke(new MethodInvoker(() => rtfOutput.Text = output));
+			else
+				rtfOutput.Text = output;
+		}
+
+		private void BGThread_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+		{
+			Clipboard.SetText(rtfOutput.Rtf, TextDataFormat.Rtf);
+		}
+
+		private void btnSendLeft_Click(object sender, EventArgs e)
+		{
+			rtfInput.Text = rtfOutput.Text;
+			rtfOutput.Text = "";
 		}
 
 	}
