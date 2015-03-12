@@ -107,6 +107,7 @@
 			this.chkPinyinRules.TabIndex = 11;
 			this.chkPinyinRules.Text = "&Apply Pinyin Rules";
 			this.chkPinyinRules.UseVisualStyleBackColor = true;
+			this.chkPinyinRules.CheckedChanged += new System.EventHandler(this.chkPinyinRules_CheckedChanged);
 			// 
 			// frmMain
 			// 

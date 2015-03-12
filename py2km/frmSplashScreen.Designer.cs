@@ -39,7 +39,6 @@
 			// 
 			// pictSplashScreen
 			// 
-			this.pictSplashScreen.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.pictSplashScreen.Image = global::py2km.Properties.Resources.SplashScreen;
 			this.pictSplashScreen.Location = new System.Drawing.Point(0, 0);
 			this.pictSplashScreen.Name = "pictSplashScreen";
@@ -49,8 +48,7 @@
 			// 
 			// lblWho
 			// 
-			this.lblWho.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblWho.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.lblWho.BackColor = System.Drawing.Color.Transparent;
 			this.lblWho.Location = new System.Drawing.Point(288, 365);
 			this.lblWho.Name = "lblWho";

@@ -23,9 +23,6 @@ namespace py2km
 			this.Icon = Properties.Resources.py2km;
 			this.Text = String.Format("py2km build {0} ( '{1}' )", System.Reflection.Assembly.GetExecutingAssembly().GetName().Version, Properties.Resources.CodeName);
 
-			if (!File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "ArialKwikMandarinModified.ttf")))
-				MessageBox.Show("Font \"ArialKwikMandarinModified.ttf\" not installed on this system!", "Missing Font", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
 			cboSource.SelectedIndex = Properties.Settings.Default.convSrc;
 
 			frmSplashScreen SS = new frmSplashScreen();
@@ -89,9 +86,14 @@ namespace py2km
 			}
 			else
 			{
-				chkPinyinRules.Checked = true;
+				chkPinyinRules.Checked = Properties.Settings.Default.pyRules;
 				chkPinyinRules.Enabled = true;
 			}
+		}
+
+		private void chkPinyinRules_CheckedChanged(object sender, EventArgs e)
+		{
+			Properties.Settings.Default.pyRules = chkPinyinRules.Checked;
 		}
 
 	}

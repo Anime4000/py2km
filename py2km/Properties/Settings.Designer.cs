@@ -34,5 +34,17 @@ namespace py2km.Properties {
                 this["convSrc"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool pyRules {
+            get {
+                return ((bool)(this["pyRules"]));
+            }
+            set {
+                this["pyRules"] = value;
+            }
+        }
     }
 }

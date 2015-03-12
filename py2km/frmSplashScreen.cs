@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
 using py2km.api;
 
 namespace py2km
@@ -15,18 +16,27 @@ namespace py2km
 		public frmSplashScreen()
 		{
 			InitializeComponent();
-			lblWho.Parent = pictSplashScreen;
 		}
 
 		private void SplashScreen_Load(object sender, EventArgs e)
 		{
-			this.Opacity = 0.0;
-			tmrFadeIn.Start();
+			if (OS.IsLinux)
+			{
+				this.Width = 600;
+				this.Height = 400;
+				BGThread.RunWorkerAsync();
+			}
+			else
+			{
+				lblWho.Parent = pictSplashScreen;
+				this.Opacity = 0.0;
+				tmrFadeIn.Start();
+			}
 		}
 
 		private void tmrFadeIn_Tick(object sender, EventArgs e)
 		{
-			this.Opacity += 0.04;
+			this.Opacity += 0.035;
 			if (this.Opacity >= 1)
 			{
 				BGThread.RunWorkerAsync();
@@ -51,7 +61,13 @@ namespace py2km
 
 		private void BGThread_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
 		{
-			tmrFadeOut.Start();
+			if (OS.IsLinux)
+				this.Close();
+			else
+				tmrFadeOut.Start();
+
+			if (!File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "ArialKwikMandarinModified.ttf")))
+				MessageBox.Show("Font \"ArialKwikMandarinModified.ttf\" not installed on this system!", "Missing Font", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 		}
 	}
 }
