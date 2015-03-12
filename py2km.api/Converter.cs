@@ -1352,7 +1352,7 @@ namespace py2km.api
 					mrk = pos++;
 					while (new[] { 'ǎ', 'ě', 'ǐ', 'ǒ', 'ǔ' }.Contains(char.ToLower(Tx[mrk])))
 					{
-						if (max > pos)
+						if (pos >= max)
 							break;
 
 						char temp = char.ToLower(Tx[pos]);

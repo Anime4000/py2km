@@ -26,43 +26,72 @@ namespace py2km
 			if (!File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "ArialKwikMandarinModified.ttf")))
 				MessageBox.Show("Font \"ArialKwikMandarinModified.ttf\" not installed on this system!", "Missing Font", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
+			cboSource.SelectedIndex = Properties.Settings.Default.convSrc;
+
 			frmSplashScreen SS = new frmSplashScreen();
 			SS.ShowDialog();
-
-			cboConversionType.SelectedIndex = Properties.Settings.Default.convType;
 		}
 
 		private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
 		{
-			Properties.Settings.Default.convType = cboConversionType.SelectedIndex;
 			Properties.Settings.Default.Save();
 		}
 
 		private void btnConvert_Click(object sender, EventArgs e)
 		{
-			int x = cboConversionType.SelectedIndex;
-			bool rule = chkPinyinRules.Checked;
+			bool x = chkPinyinRules.Checked;
+			int i = cboSource.SelectedIndex;
+			string input = rtfInput.Text;
+			string output = rtfOutput.Text;
 
-			if (x == 0)
-				rtfOutput.Text = rule ? Converter.PinyinToKwikMandarin(Converter.RulesOfPinyin(txtInput.Text)) : Converter.PinyinToKwikMandarin(txtInput.Text);
-			else if (x == 1)
-				rtfOutput.Text = rule ? Converter.RulesOfPinyin(txtInput.Text) : txtInput.Text;
-			else if (x == 2)
-				rtfOutput.Text = rule ? Converter.RulesOfPinyin(Converter.PinyinToKwikMandarin(Converter.ToneToPinyin(txtInput.Text))) : Converter.PinyinToKwikMandarin(Converter.ToneToPinyin(txtInput.Text));
-			else if (x == 3)
-				rtfOutput.Text = rule ? Converter.RulesOfPinyin(Converter.ToneToPinyin(txtInput.Text)) : Converter.ToneToPinyin(txtInput.Text);
-			else if (x == 4)
-				rtfOutput.Text = rule ? Converter.PinyinToKwikMandarin(Converter.RulesOfPinyin(Converter.HanziToPinyin(txtInput.Text))) : Converter.PinyinToKwikMandarin(Converter.RulesOfPinyin(Converter.HanziToPinyin(txtInput.Text)));
-			else
-				rtfOutput.Text = rule ? Converter.RulesOfPinyin(Converter.HanziToPinyin(txtInput.Text)) : Converter.HanziToPinyin(txtInput.Text);
+			switch (i)
+			{
+				case 0:
+					output = x ? Converter.RulesOfPinyin(Converter.ToneToPinyin(input)) : Converter.ToneToPinyin(input);
+					break;
+				case 1:
+					output = x ? Converter.PinyinToKwikMandarin(Converter.RulesOfPinyin(Converter.ToneToPinyin(input))) : Converter.PinyinToKwikMandarin(Converter.ToneToPinyin(input));
+					break;
+				case 2:
+					output = x ? Converter.RulesOfPinyin(output) : Converter.RulesOfPinyin(output);
+					break;
+				case 3:
+					output = x ? Converter.RulesOfPinyin(Converter.PinyinToKwikMandarin(input)) : Converter.PinyinToKwikMandarin(input);
+					break;
+				case 4:
+					output = x ? Converter.RulesOfPinyin(Converter.HanziToPinyin(input)) : Converter.HanziToPinyin(input);
+					break;
+				case 5:
+					output = x ? Converter.PinyinToKwikMandarin(Converter.RulesOfPinyin(Converter.HanziToPinyin(input))) : Converter.PinyinToKwikMandarin(Converter.HanziToPinyin(input));
+					break;
+				default:
+					break;
+			}
 
+			rtfOutput.Text = output;
+			Properties.Settings.Default.convSrc = i;
 			Clipboard.SetText(rtfOutput.Rtf, TextDataFormat.Rtf);
 		}
 
 		private void btnClear_Click(object sender, EventArgs e)
 		{
-			txtInput.Text = "";
+			rtfInput.Text = "";
 			rtfOutput.Text = "";
+		}
+
+		private void cboSource_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			int i = cboSource.SelectedIndex;
+			if (i == 2)
+			{
+				chkPinyinRules.Checked = true;
+				chkPinyinRules.Enabled = false;
+			}
+			else
+			{
+				chkPinyinRules.Checked = true;
+				chkPinyinRules.Enabled = true;
+			}
 		}
 
 	}
