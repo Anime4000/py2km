@@ -26,9 +26,10 @@ namespace py2km
 			if (!File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "ArialKwikMandarinModified.ttf")))
 				MessageBox.Show("Font \"ArialKwikMandarinModified.ttf\" not installed on this system!", "Missing Font", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
-			cboConversionType.SelectedIndex = Properties.Settings.Default.convType;
+			frmSplashScreen SS = new frmSplashScreen();
+			SS.ShowDialog();
 
-			Cedict.Load();
+			cboConversionType.SelectedIndex = Properties.Settings.Default.convType;
 		}
 
 		private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -50,8 +51,10 @@ namespace py2km
 				rtfOutput.Text = rule ? Converter.RulesOfPinyin(Converter.PinyinToKwikMandarin(Converter.ToneToPinyin(txtInput.Text))) : Converter.PinyinToKwikMandarin(Converter.ToneToPinyin(txtInput.Text));
 			else if (x == 3)
 				rtfOutput.Text = rule ? Converter.RulesOfPinyin(Converter.ToneToPinyin(txtInput.Text)) : Converter.ToneToPinyin(txtInput.Text);
+			else if (x == 4)
+				rtfOutput.Text = rule ? Converter.PinyinToKwikMandarin(Converter.RulesOfPinyin(Converter.HanziToPinyin(txtInput.Text))) : Converter.PinyinToKwikMandarin(Converter.RulesOfPinyin(Converter.HanziToPinyin(txtInput.Text)));
 			else
-				rtfOutput.Text = Converter.HanziToPinyin(txtInput.Text);
+				rtfOutput.Text = rule ? Converter.RulesOfPinyin(Converter.HanziToPinyin(txtInput.Text)) : Converter.HanziToPinyin(txtInput.Text);
 
 			Clipboard.SetText(rtfOutput.Rtf, TextDataFormat.Rtf);
 		}
