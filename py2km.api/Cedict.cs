@@ -68,24 +68,60 @@ namespace py2km.api
 				CedictContent.English = en;
 
 				if (!CEDICT.ContainsKey(tc))
+				{
+					CedictContent.Chinese = tc;
 					CEDICT.Add(tc, CedictContent);
+				}
 				if (!CEDICT.ContainsKey(sc))
+				{
+					CedictContent.Chinese = sc;
 					CEDICT.Add(sc, CedictContent);
+				}
 			}
 		}
 
-		// Below to search and retrive
-		public static string Search(string input)
+		// Below converting to Pinyin (number)
+		public static string ToDict(string input)
 		{
-			string Data = null;
-			CedictData temp;
+			string Tx = input;
+			string Fi = null;
 
-			if (CEDICT.TryGetValue(input, out temp))
+			int idx = 0; // Index
+			int pos = Tx.Length; // Current position
+			int len = Tx.Length; // Current length
+
+			while (len != 0)
 			{
-				Data = String.Format("{0}\n{1}\n{2}", input, temp.Pinyin, temp.English);
-			}
+				CedictData test;
+				string temp = Tx.Substring(idx, len);
+				if (CEDICT.TryGetValue(temp, out test))
+				{
+					string hanzi = test.Chinese;
+					string pinyin = Converter.ToneToPinyin(test.Pinyin);
+					string kwikman = Converter.PinyinToKwikMandarin(Converter.ToneToPinyin(test.Pinyin));
+					string english = test.English;
 
-			return Data;
+					string holder = Properties.Resources.HtmlContentDict;
+
+					Fi += String.Format(holder, hanzi, pinyin, kwikman, english);
+
+					idx = pos; // Once found, move index to current position
+					pos = Tx.Length; // then new position restart
+					len = pos - idx; // then new length
+				}
+				else
+				{
+					len--; // Length of string
+					pos--; // Go next character
+					if (idx == pos)
+					{
+						idx++;
+						pos = Tx.Length;
+						len = pos - idx;
+					}
+				}
+			}
+			return Fi;
 		}
 
 		// Below converting to Pinyin (number)
@@ -116,20 +152,20 @@ namespace py2km.api
 					pos--; // Go next character
 					if (idx == pos)
 					{
-						Fi += Tx.Substring(pos, 1);
+						Fi += Tx.Substring(pos, 1); // Copy unknown character, such as period, comma, symbols
 						idx++;
 						pos = Tx.Length;
 						len = pos - idx;
 					}
 				}
 			}
-
 			return Fi.ToLower();
 		}
 	}
 
 	public class CedictData
 	{
+		public string Chinese { get; set; }
 		public string Pinyin { get; set; }
 		public string English { get; set; }
 	}

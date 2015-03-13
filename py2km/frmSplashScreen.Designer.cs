@@ -52,12 +52,12 @@
 			this.lblWho.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.lblWho.BackColor = System.Drawing.Color.Transparent;
 			this.lblWho.ForeColor = System.Drawing.Color.White;
-			this.lblWho.Location = new System.Drawing.Point(288, 365);
+			this.lblWho.Location = new System.Drawing.Point(258, 365);
 			this.lblWho.Name = "lblWho";
-			this.lblWho.Size = new System.Drawing.Size(300, 26);
+			this.lblWho.Size = new System.Drawing.Size(330, 26);
 			this.lblWho.TabIndex = 1;
-			this.lblWho.Text = "Programmed by Ilham (Anime4000)\r\nCopyright © 2015 Kwik Mandarin. All rights reser" +
-    "ved.";
+			this.lblWho.Text = "Programmed by Ilham (Anime4000)\r\nCopyright © 2009-{0} Kwik Mandarin. All rights r" +
+    "eserved.";
 			this.lblWho.TextAlign = System.Drawing.ContentAlignment.TopRight;
 			// 
 			// tmrFadeIn

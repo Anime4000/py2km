@@ -1282,25 +1282,16 @@ namespace py2km.api
 					}
 				}
 			}
-			
 			return Fi;
+		}
+
+		public static string GetDictionary(string input)
+		{
+			return Cedict.ToDict(input);
 		}
 
 		public static string HanziToPinyin(string input)
 		{
-			// Remove unicode notes
-			input = input.Replace('。', '.');
-			input = input.Replace('，', ',');
-			input = input.Replace('；', ';');
-			input = input.Replace('（', '(');
-			input = input.Replace('）', ')');
-			input = input.Replace('《', '[');
-			input = input.Replace('》', ']');
-			input = input.Replace('「', '[');
-			input = input.Replace('」', ']');
-			input = input.Replace('、', ',');
-			input = input.Replace('：', ':');
-
 			return ToneToPinyin(Cedict.ToPinyin(input));
 		}
 
@@ -1455,7 +1446,7 @@ namespace py2km.api
 
 				while (new[] { '1', '2', '3', '4', '5' }.Contains(Tx[pos]))
 				{
-					if (max <= 2)
+					if (max <= 1)
 						break;
 
 					if (max > pos + 1)
@@ -1562,7 +1553,6 @@ namespace py2km.api
 				}
 				pos++;
 			}
-
 			return new string(Tx).Replace("\0", string.Empty);
 		}
     }

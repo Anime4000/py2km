@@ -43,14 +43,14 @@ namespace py2km
 				rtfInput.Text
 			};
 
-			rtfOutput.Text = "Loading...";
+			webView.DocumentText = "Loading...";
 			BGThread.RunWorkerAsync(something);
 		}
 
 		private void btnClear_Click(object sender, EventArgs e)
 		{
 			rtfInput.Text = "";
-			rtfOutput.Text = "";
+			webView.Navigate("about:blank");
 		}
 
 		private void cboSource_SelectedIndexChanged(object sender, EventArgs e)
@@ -101,26 +101,33 @@ namespace py2km
 				case 5:
 					output = x ? Converter.PinyinToKwikMandarin(Converter.RulesOfPinyin(Converter.HanziToPinyin(input))) : Converter.PinyinToKwikMandarin(Converter.HanziToPinyin(input));
 					break;
+				case 6:
+					output = Converter.GetDictionary(input);
+					break;
 				default:
 					break;
 			}
 
+			output = Html.Builder(output);
+
 			if (this.InvokeRequired)
-				BeginInvoke(new MethodInvoker(() => rtfOutput.Text = output));
+			{
+				BeginInvoke(new MethodInvoker(() => webView.DocumentText = output));
+			}
 			else
-				rtfOutput.Text = output;
+			{
+				webView.DocumentText = output;
+			}
 		}
 
 		private void BGThread_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
 		{
-			Clipboard.SetText(rtfOutput.Rtf, TextDataFormat.Rtf);
+			
 		}
 
-		private void btnSendLeft_Click(object sender, EventArgs e)
+		private void btnPrint_Click(object sender, EventArgs e)
 		{
-			rtfInput.Text = rtfOutput.Text;
-			rtfOutput.Text = "";
+			webView.ShowPrintDialog();
 		}
-
 	}
 }

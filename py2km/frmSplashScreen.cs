@@ -17,6 +17,7 @@ namespace py2km
 		{
 			InitializeComponent();
 			lblVersion.Text = String.Format(lblVersion.Text, Globals.Version);
+			lblWho.Text = String.Format(lblWho.Text, DateTime.Now.Year);
 		}
 
 		private void SplashScreen_Load(object sender, EventArgs e)
