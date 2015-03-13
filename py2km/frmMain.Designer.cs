@@ -36,6 +36,7 @@
 			this.BGThread = new System.ComponentModel.BackgroundWorker();
 			this.webView = new System.Windows.Forms.WebBrowser();
 			this.btnPrint = new System.Windows.Forms.Button();
+			this.lblInsertSample = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// btnConvert
@@ -128,11 +129,25 @@
 			this.btnPrint.UseVisualStyleBackColor = true;
 			this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
 			// 
+			// lblInsertSample
+			// 
+			this.lblInsertSample.AutoSize = true;
+			this.lblInsertSample.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.lblInsertSample.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblInsertSample.ForeColor = System.Drawing.Color.Blue;
+			this.lblInsertSample.Location = new System.Drawing.Point(238, 17);
+			this.lblInsertSample.Name = "lblInsertSample";
+			this.lblInsertSample.Size = new System.Drawing.Size(72, 13);
+			this.lblInsertSample.TabIndex = 14;
+			this.lblInsertSample.Text = "Insert sample";
+			this.lblInsertSample.Click += new System.EventHandler(this.lblInsertSample_Click);
+			// 
 			// frmMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(800, 600);
+			this.ClientSize = new System.Drawing.Size(800, 601);
+			this.Controls.Add(this.lblInsertSample);
 			this.Controls.Add(this.btnPrint);
 			this.Controls.Add(this.webView);
 			this.Controls.Add(this.chkPinyinRules);
@@ -162,6 +177,7 @@
 		private System.ComponentModel.BackgroundWorker BGThread;
 		private System.Windows.Forms.WebBrowser webView;
 		private System.Windows.Forms.Button btnPrint;
+		private System.Windows.Forms.Label lblInsertSample;
 	}
 }
 

@@ -1313,6 +1313,9 @@ namespace py2km.api
 				if (char.ToLower(Tx[pos]) == 'b' && char.ToLower(Tx[++pos]) == 'ù')
 				{
 					mrk = pos++;
+					if (pos <= max)
+						break;
+
 					while (char.ToLower(Tx[mrk]) == 'ù')
 					{
 						char temp = char.ToLower(Tx[pos]);

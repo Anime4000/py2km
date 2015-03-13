@@ -63,19 +63,23 @@ namespace py2km.api
 					i++;
 				}
 
+				// Drop non dict info, eg: surname
+				if (en.ToLower().Contains("surname"))
+					continue;
+
 				// Add to dictionary
 				CedictContent.Pinyin = py;
 				CedictContent.English = en;
 
-				if (!CEDICT.ContainsKey(tc))
-				{
-					CedictContent.Chinese = tc;
-					CEDICT.Add(tc, CedictContent);
-				}
 				if (!CEDICT.ContainsKey(sc))
 				{
 					CedictContent.Chinese = sc;
 					CEDICT.Add(sc, CedictContent);
+				}
+				if (!CEDICT.ContainsKey(tc))
+				{
+					CedictContent.Chinese = tc;
+					CEDICT.Add(tc, CedictContent);
 				}
 			}
 		}

@@ -61,15 +61,29 @@ namespace py2km
 				chkPinyinRules.Checked = true;
 				chkPinyinRules.Enabled = false;
 			}
+			else if (i == 6)
+			{
+				chkPinyinRules.Checked = false;
+				chkPinyinRules.Enabled = false;
+			}
 			else
 			{
 				chkPinyinRules.Checked = Properties.Settings.Default.pyRules;
 				chkPinyinRules.Enabled = true;
 			}
+
+			if (i >= 4)
+				lblInsertSample.Visible = true;
+			else
+				lblInsertSample.Visible = false;
 		}
 
 		private void chkPinyinRules_CheckedChanged(object sender, EventArgs e)
 		{
+			int i = cboSource.SelectedIndex;
+			if (i == 2 || i == 6)
+				return;
+			
 			Properties.Settings.Default.pyRules = chkPinyinRules.Checked;
 		}
 
@@ -128,6 +142,11 @@ namespace py2km
 		private void btnPrint_Click(object sender, EventArgs e)
 		{
 			webView.ShowPrintDialog();
+		}
+
+		private void lblInsertSample_Click(object sender, EventArgs e)
+		{
+			rtfInput.Text = Properties.Resources.TestChinese;
 		}
 	}
 }

@@ -131,6 +131,13 @@
   </data>
   <data name="HtmlContentOpen" xml:space="preserve">
     <value>&lt;!DOCTYPE html&gt;
+&lt;!-- 
+	HTML5 Generator for py2km converter
+	py2km created by Ilham (Anime4000) @ 2015 (https://github.com/Anime4000)
+	With my best friend, Paan (Lc_black) @ 2015
+	Build with Love &lt;3
+	If you read this, you are awesome!
+--&gt;
 &lt;html&gt;
 &lt;head&gt;
 	&lt;meta charset="utf-8"&gt;
