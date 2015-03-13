@@ -16,6 +16,7 @@ namespace py2km
 		public frmSplashScreen()
 		{
 			InitializeComponent();
+			lblVersion.Text = String.Format(lblVersion.Text, Globals.Version);
 		}
 
 		private void SplashScreen_Load(object sender, EventArgs e)
@@ -29,6 +30,7 @@ namespace py2km
 			else
 			{
 				lblWho.Parent = pictSplashScreen;
+				lblVersion.Parent = pictSplashScreen;
 				this.Opacity = 0.0;
 				tmrFadeIn.Start();
 			}
@@ -55,6 +57,10 @@ namespace py2km
 
 		private void BGThread_DoWork(object sender, DoWorkEventArgs e)
 		{
+			// For Fun :)
+			System.Threading.Thread.Sleep(3000);
+
+			// Load to MEM
 			Cedict.Load();
 			Converter.Load();
 		}

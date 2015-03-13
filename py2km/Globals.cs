@@ -7,7 +7,10 @@ namespace py2km
 {
 	class Globals
 	{
-
+		public static string Version
+		{
+			get { return System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString(); }
+		}
 	}
 
 	class OS

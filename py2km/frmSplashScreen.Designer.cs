@@ -34,6 +34,7 @@
 			this.tmrFadeIn = new System.Windows.Forms.Timer(this.components);
 			this.tmrFadeOut = new System.Windows.Forms.Timer(this.components);
 			this.BGThread = new System.ComponentModel.BackgroundWorker();
+			this.lblVersion = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.pictSplashScreen)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -50,6 +51,7 @@
 			// 
 			this.lblWho.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.lblWho.BackColor = System.Drawing.Color.Transparent;
+			this.lblWho.ForeColor = System.Drawing.Color.White;
 			this.lblWho.Location = new System.Drawing.Point(288, 365);
 			this.lblWho.Name = "lblWho";
 			this.lblWho.Size = new System.Drawing.Size(300, 26);
@@ -73,11 +75,24 @@
 			this.BGThread.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BGThread_DoWork);
 			this.BGThread.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BGThread_RunWorkerCompleted);
 			// 
+			// lblVersion
+			// 
+			this.lblVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblVersion.BackColor = System.Drawing.Color.Transparent;
+			this.lblVersion.ForeColor = System.Drawing.Color.White;
+			this.lblVersion.Location = new System.Drawing.Point(255, 267);
+			this.lblVersion.Name = "lblVersion";
+			this.lblVersion.Size = new System.Drawing.Size(260, 13);
+			this.lblVersion.TabIndex = 2;
+			this.lblVersion.Text = "ver.: {0}";
+			this.lblVersion.TextAlign = System.Drawing.ContentAlignment.TopRight;
+			// 
 			// frmSplashScreen
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(600, 400);
+			this.Controls.Add(this.lblVersion);
 			this.Controls.Add(this.lblWho);
 			this.Controls.Add(this.pictSplashScreen);
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -99,5 +114,6 @@
 		private System.Windows.Forms.Timer tmrFadeIn;
 		private System.Windows.Forms.Timer tmrFadeOut;
 		private System.ComponentModel.BackgroundWorker BGThread;
+		private System.Windows.Forms.Label lblVersion;
 	}
 }

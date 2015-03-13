@@ -21,7 +21,7 @@ namespace py2km
 		private void frmMain_Load(object sender, EventArgs e)
 		{
 			this.Icon = Properties.Resources.py2km;
-			this.Text = String.Format("py2km build {0} ( '{1}' )", System.Reflection.Assembly.GetExecutingAssembly().GetName().Version, Properties.Resources.CodeName);
+			this.Text = String.Format("py2km build {0} ( '{1}' )", Globals.Version, Properties.Resources.CodeName);
 
 			cboSource.SelectedIndex = Properties.Settings.Default.convSrc;
 
