@@ -105,8 +105,8 @@ namespace py2km.api
 					string kwikman = Converter.PinyinToKwikMandarin(Converter.ToneToPinyin(test.Pinyin));
 					string english = test.English;
 
+					// Make HTML based result
 					string holder = Properties.Resources.HtmlContentDict;
-
 					Fi += String.Format(holder, hanzi, pinyin, kwikman, english);
 
 					idx = pos; // Once found, move index to current position

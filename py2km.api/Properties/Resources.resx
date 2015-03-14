@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ChineseExample" xml:space="preserve">
+    <value>六王毕，四海一，蜀山兀，阿房出。覆压三百余里，隔离天日。骊山北构而西折，直走咸阳。二川溶溶，流入宫墙。五步一楼，十步一阁；廊腰缦回，檐牙高啄；各抱地势，钩心斗角。盘盘焉，囷囷焉，蜂房水涡，矗不知乎几千万落。长桥卧波，未云何龙？复道行空，不霁何虹？高低冥迷，不知西东。歌台暖响，春光融融；舞殿冷袖，风雨凄凄。一日之内，一宫之间，而气候不齐。(不知乎 一作：不知其)</value>
+  </data>
   <data name="HtmlContentClose" xml:space="preserve">
     <value>&lt;/body&gt;
 &lt;/html&gt;</value>
@@ -128,6 +131,225 @@
 	&lt;span id="kwikman"&gt;{2}&lt;/span&gt;&lt;br/&gt;
 	&lt;span id="english"&gt;{3}&lt;/span&gt;
 &lt;/p&gt;</value>
+  </data>
+  <data name="HtmlContentLoading" xml:space="preserve">
+    <value>&lt;!DOCTYPE html&gt;
+&lt;!-- 
+	HTML5 Generator for py2km converter
+	py2km created by Ilham (Anime4000) @ 2015 (https://github.com/Anime4000)
+	With my best friend, Paan (Lc_black) @ 2015
+	Build with Love &lt;3
+	If you read this, you are awesome!
+--&gt;
+&lt;html&gt;
+&lt;head&gt;
+	&lt;meta charset="utf-8"&gt;
+	&lt;meta http-equiv='X-UA-Compatible' content='IE=edge'/&gt;
+	&lt;title&gt;Super Loading...&lt;/title&gt;
+	&lt;style&gt;
+	@import url(http://fonts.googleapis.com/css?family=Open+Sans:300);
+
+	body {
+		background-color: #f1c40f;
+		overflow: hidden;
+	}
+
+	h1 {
+		position: absolute;
+		font-family: Open Sans;
+		font-weight: 600;
+		font-size: 12px;;
+		text-transform: uppercase;
+		left: 50%;
+		top: 58%;
+		margin-left: -20px;
+	}
+
+	.body {
+		position: absolute;
+		top: 50%;
+		margin-left: -50px;
+		left: 50%;
+		animation: speeder .4s linear infinite;
+	}
+
+	.body &gt; span {
+		height: 5px;
+		width: 35px;
+		background: #000;
+		position: absolute;
+		top: -19px;
+		left: 60px;
+		border-radius: 2px 10px 1px 0;
+	}
+
+	.base span {
+		position: absolute;
+		width: 0;
+		height: 0;
+		border-top: 6px solid transparent;
+		border-right: 100px solid #000;
+		border-bottom: 6px solid transparent;
+	}
+
+	.base span:after {
+		content: "";
+		height: 22px;
+		width: 22px;
+		border-radius: 50%;
+		background: #000;
+		position: absolute;
+		right: -110px;
+		top: -16px;
+	}
+
+	.base span:before {
+		content: "";
+		position: absolute;
+		width: 0;
+		height: 0;
+		border-top: 0 solid transparent;
+		border-right: 55px solid #000;
+		border-bottom: 16px solid transparent;
+		top: -16px;
+		right: -98px;
+	}
+
+	.face {
+		position: absolute;
+		height: 12px;
+		width: 20px;
+		background: #000;
+		border-radius: 20px 20px 0 0;
+		transform: rotate(-40deg);
+		right: -125px;
+		top: -15px;
+	}
+
+	.face:after {
+		content: "";
+		height: 12px;
+		width: 12px;
+		background: #000;
+		right: 4px;
+		top: 7px;
+		position: absolute;
+		transform: rotate(40deg);
+		transform-origin: 50% 50%;
+		border-radius: 0 0 0 2px;
+	}
+
+	.body &gt; span &gt; span:nth-child(1),
+	.body &gt; span &gt; span:nth-child(2),
+	.body &gt; span &gt; span:nth-child(3),
+	.body &gt; span &gt; span:nth-child(4){
+		width: 30px;
+		height: 1px;
+		background: #000;
+		position: absolute;
+		animation: fazer1 .2s linear infinite;
+	}
+
+	.body &gt; span &gt; span:nth-child(2) {
+		top: 3px;
+		animation: fazer2 .4s linear infinite;
+	}
+
+	.body &gt; span &gt; span:nth-child(3) {
+		top: 1px;
+		animation: fazer3 .4s linear infinite;
+		animation-delay: -1s;
+	}
+
+	.body &gt; span &gt; span:nth-child(4) {
+		top: 4px;
+		animation: fazer4 1s linear infinite;
+		animation-delay: -1s;
+	}
+
+	@keyframes fazer1 {0% {left: 0;} 100% {left: -80px;opacity: 0;}}
+	@keyframes fazer2 {0% {left: 0;} 100% {left: -100px;opacity: 0;}}
+	@keyframes fazer3 {0% {left: 0;} 100% {left: -50px;opacity: 0;}}
+	@keyframes fazer4 {0% {left: 0;} 100% {left: -150px;opacity: 0;}}
+
+	@keyframes speeder {
+		0% { transform: translate(2px, 1px) rotate(0deg); }
+		10% { transform: translate(-1px, -3px) rotate(-1deg); }
+		20% { transform: translate(-2px, 0px) rotate(1deg); }
+		30% { transform: translate(1px, 2px) rotate(0deg); }
+		40% { transform: translate(1px, -1px) rotate(1deg); }
+		50% { transform: translate(-1px, 3px) rotate(-1deg); }
+		60% { transform: translate(-1px, 1px) rotate(0deg); }
+		70% { transform: translate(3px, 1px) rotate(-1deg); }
+		80% { transform: translate(-2px, -1px) rotate(1deg); }
+		90% { transform: translate(2px, 1px) rotate(0deg); }
+		100% { transform: translate(1px, -2px) rotate(-1deg); }
+	}
+
+	.longfazers {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+	}
+
+	.longfazers span {
+		position: absolute;
+		height: 2px;
+		width: 20%;
+		background: #000;
+	}
+
+	.longfazers span:nth-child(1) {
+		top: 20%;
+		animation: lf .6s linear infinite;
+		animation-delay: -5s;
+	}
+
+	.longfazers span:nth-child(2) {
+		top: 40%;
+		animation: lf2 .8s linear infinite; 
+		animation-delay: -1s;
+	}
+
+	.longfazers span:nth-child(3) {
+		top: 60%;
+		animation: lf3 .6s linear infinite; 
+	}
+
+	.longfazers span:nth-child(4) {
+		top: 80%;
+		animation: lf4 .5s linear infinite; 
+		animation-delay: -3s;
+	}
+
+	@keyframes lf {0% {left: 200%;} 100% {left: -200%;opacity: 0;}}
+	@keyframes lf2 {0% {left: 200%;} 100% {left: -200%;opacity: 0;}}
+	@keyframes lf3 {0% {left: 200%;} 100% {left: -100%;opacity: 0;}}
+	@keyframes lf4 {0% {left: 200%;} 100% {left: -100%;opacity: 0;}}
+	&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+	&lt;div class="body"&gt;
+		&lt;span&gt;
+			&lt;span&gt;&lt;/span&gt;
+			&lt;span&gt;&lt;/span&gt;
+			&lt;span&gt;&lt;/span&gt;
+			&lt;span&gt;&lt;/span&gt;
+		&lt;/span&gt;
+		&lt;div class="base"&gt;
+			&lt;span&gt;&lt;/span&gt;
+			&lt;div class="face"&gt;&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class="longfazers"&gt;
+		&lt;span&gt;&lt;/span&gt;
+		&lt;span&gt;&lt;/span&gt;
+		&lt;span&gt;&lt;/span&gt;
+		&lt;span&gt;&lt;/span&gt;
+	&lt;/div&gt;
+	&lt;h1&gt;Loading........&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</value>
   </data>
   <data name="HtmlContentOpen" xml:space="preserve">
     <value>&lt;!DOCTYPE html&gt;

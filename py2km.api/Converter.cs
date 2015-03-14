@@ -1290,8 +1290,27 @@ namespace py2km.api
 			return Cedict.ToDict(input);
 		}
 
+		public static string GetExample()
+		{
+			return Properties.Resources.ChineseExample;
+		}
+
 		public static string HanziToPinyin(string input)
 		{
+			// Remove unicode notes
+			input = input.Replace('。', '.');
+			input = input.Replace('，', ',');
+			input = input.Replace('；', ';');
+			input = input.Replace('（', '(');
+			input = input.Replace('）', ')');
+			input = input.Replace('《', '[');
+			input = input.Replace('》', ']');
+			input = input.Replace('「', '[');
+			input = input.Replace('」', ']');
+			input = input.Replace('、', ',');
+			input = input.Replace('：', ':');
+			input = input.Replace('？', '?');
+
 			return ToneToPinyin(Cedict.ToPinyin(input));
 		}
 

@@ -13,5 +13,10 @@ namespace py2km.api
 			string B = Properties.Resources.HtmlContentClose;
 			return A + input + B;
 		}
+
+		public static string Loading()
+		{
+			return Properties.Resources.HtmlContentLoading;
+		}
 	}
 }

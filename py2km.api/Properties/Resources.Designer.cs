@@ -61,6 +61,15 @@ namespace py2km.api.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 六王毕，四海一，蜀山兀，阿房出。覆压三百余里，隔离天日。骊山北构而西折，直走咸阳。二川溶溶，流入宫墙。五步一楼，十步一阁；廊腰缦回，檐牙高啄；各抱地势，钩心斗角。盘盘焉，囷囷焉，蜂房水涡，矗不知乎几千万落。长桥卧波，未云何龙？复道行空，不霁何虹？高低冥迷，不知西东。歌台暖响，春光融融；舞殿冷袖，风雨凄凄。一日之内，一宫之间，而气候不齐。(不知乎 一作：不知其).
+        /// </summary>
+        internal static string ChineseExample {
+            get {
+                return ResourceManager.GetString("ChineseExample", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;/body&gt;
         ///&lt;/html&gt;.
         /// </summary>
@@ -81,6 +90,33 @@ namespace py2km.api.Properties {
         internal static string HtmlContentDict {
             get {
                 return ResourceManager.GetString("HtmlContentDict", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;!DOCTYPE html&gt;
+        ///&lt;!-- 
+        ///	HTML5 Generator for py2km converter
+        ///	py2km created by Ilham (Anime4000) @ 2015 (https://github.com/Anime4000)
+        ///	With my best friend, Paan (Lc_black) @ 2015
+        ///	Build with Love &lt;3
+        ///	If you read this, you are awesome!
+        ///--&gt;
+        ///&lt;html&gt;
+        ///&lt;head&gt;
+        ///	&lt;meta charset=&quot;utf-8&quot;&gt;
+        ///	&lt;meta http-equiv=&apos;X-UA-Compatible&apos; content=&apos;IE=edge&apos;/&gt;
+        ///	&lt;title&gt;Super Loading...&lt;/title&gt;
+        ///	&lt;style&gt;
+        ///	@import url(http://fonts.googleapis.com/css?family=Open+Sans:300);
+        ///
+        ///	body {
+        ///		background-color: #f1c40f;
+        ///		overflow: hi [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string HtmlContentLoading {
+            get {
+                return ResourceManager.GetString("HtmlContentLoading", resourceCulture);
             }
         }
         

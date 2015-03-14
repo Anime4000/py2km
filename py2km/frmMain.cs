@@ -43,7 +43,7 @@ namespace py2km
 				rtfInput.Text
 			};
 
-			webView.DocumentText = "Loading...";
+			webView.DocumentText = Html.Loading();
 			BGThread.RunWorkerAsync(something);
 		}
 
@@ -51,25 +51,43 @@ namespace py2km
 		{
 			rtfInput.Text = "";
 			webView.Navigate("about:blank");
+			
+			if (BGThread.IsBusy)
+				BGThread.CancelAsync();
 		}
 
 		private void cboSource_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			int i = cboSource.SelectedIndex;
-			if (i == 2)
+
+			// check box pinyin
+			switch (i)
 			{
-				chkPinyinRules.Checked = true;
-				chkPinyinRules.Enabled = false;
+				case 2:
+					chkPinyinRules.Checked = true;
+					chkPinyinRules.Enabled = false;
+					break;
+				case 6:
+					chkPinyinRules.Checked = false;
+					chkPinyinRules.Enabled = false;
+					break;
+				default:
+					chkPinyinRules.Checked = Properties.Settings.Default.pyRules;
+					chkPinyinRules.Enabled = true;
+					break;
 			}
-			else if (i == 6)
+
+			// button send
+			switch (i)
 			{
-				chkPinyinRules.Checked = false;
-				chkPinyinRules.Enabled = false;
-			}
-			else
-			{
-				chkPinyinRules.Checked = Properties.Settings.Default.pyRules;
-				chkPinyinRules.Enabled = true;
+				case 0:
+				case 2:
+				case 4:
+					btnCopyTo.Enabled = true;
+					break;
+				default:
+					btnCopyTo.Enabled = false;
+					break;
 			}
 
 			if (i >= 4)
@@ -87,6 +105,23 @@ namespace py2km
 			Properties.Settings.Default.pyRules = chkPinyinRules.Checked;
 		}
 
+		private void btnPrint_Click(object sender, EventArgs e)
+		{
+			webView.ShowPrintDialog();
+		}
+
+		private void lblInsertSample_Click(object sender, EventArgs e)
+		{
+			rtfInput.Text = Converter.GetExample();
+		}
+
+		private void btnCopyTo_Click(object sender, EventArgs e)
+		{
+			rtfInput.Text = webView.Document.Body.InnerText;
+			webView.Navigate("about:blank");
+			cboSource.SelectedIndex = 3;
+		}
+
 		private void BGThread_DoWork(object sender, DoWorkEventArgs e)
 		{
 			List<object> argsList = e.Argument as List<object>;
@@ -94,6 +129,9 @@ namespace py2km
 			int i = (int)argsList[1];
 			string input = (string)argsList[2];
 			string output = "";
+
+			// HTML based
+			input = input.Replace("\n", "<br />");
 
 			switch (i)
 			{
@@ -122,31 +160,18 @@ namespace py2km
 					break;
 			}
 
+			// HTML result
 			output = Html.Builder(output);
 
 			if (this.InvokeRequired)
-			{
 				BeginInvoke(new MethodInvoker(() => webView.DocumentText = output));
-			}
 			else
-			{
 				webView.DocumentText = output;
-			}
 		}
 
 		private void BGThread_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
 		{
 			
-		}
-
-		private void btnPrint_Click(object sender, EventArgs e)
-		{
-			webView.ShowPrintDialog();
-		}
-
-		private void lblInsertSample_Click(object sender, EventArgs e)
-		{
-			rtfInput.Text = Properties.Resources.TestChinese;
 		}
 	}
 }

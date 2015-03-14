@@ -37,12 +37,13 @@
 			this.webView = new System.Windows.Forms.WebBrowser();
 			this.btnPrint = new System.Windows.Forms.Button();
 			this.lblInsertSample = new System.Windows.Forms.Label();
+			this.btnCopyTo = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// btnConvert
 			// 
 			this.btnConvert.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnConvert.Location = new System.Drawing.Point(713, 12);
+			this.btnConvert.Location = new System.Drawing.Point(937, 12);
 			this.btnConvert.Name = "btnConvert";
 			this.btnConvert.Size = new System.Drawing.Size(75, 23);
 			this.btnConvert.TabIndex = 2;
@@ -53,7 +54,7 @@
 			// btnClear
 			// 
 			this.btnClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnClear.Location = new System.Drawing.Point(632, 12);
+			this.btnClear.Location = new System.Drawing.Point(856, 12);
 			this.btnClear.Name = "btnClear";
 			this.btnClear.Size = new System.Drawing.Size(75, 23);
 			this.btnClear.TabIndex = 4;
@@ -69,7 +70,7 @@
 			this.rtfInput.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.rtfInput.Location = new System.Drawing.Point(12, 41);
 			this.rtfInput.Name = "rtfInput";
-			this.rtfInput.Size = new System.Drawing.Size(387, 547);
+			this.rtfInput.Size = new System.Drawing.Size(387, 546);
 			this.rtfInput.TabIndex = 9;
 			this.rtfInput.Text = "";
 			// 
@@ -115,13 +116,13 @@
 			this.webView.Location = new System.Drawing.Point(401, 41);
 			this.webView.MinimumSize = new System.Drawing.Size(20, 20);
 			this.webView.Name = "webView";
-			this.webView.Size = new System.Drawing.Size(387, 547);
+			this.webView.Size = new System.Drawing.Size(611, 546);
 			this.webView.TabIndex = 12;
 			// 
 			// btnPrint
 			// 
 			this.btnPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnPrint.Location = new System.Drawing.Point(551, 12);
+			this.btnPrint.Location = new System.Drawing.Point(775, 12);
 			this.btnPrint.Name = "btnPrint";
 			this.btnPrint.Size = new System.Drawing.Size(75, 23);
 			this.btnPrint.TabIndex = 13;
@@ -142,11 +143,23 @@
 			this.lblInsertSample.Text = "Insert sample";
 			this.lblInsertSample.Click += new System.EventHandler(this.lblInsertSample_Click);
 			// 
+			// btnCopyTo
+			// 
+			this.btnCopyTo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnCopyTo.Location = new System.Drawing.Point(694, 12);
+			this.btnCopyTo.Name = "btnCopyTo";
+			this.btnCopyTo.Size = new System.Drawing.Size(75, 23);
+			this.btnCopyTo.TabIndex = 15;
+			this.btnCopyTo.Text = "< &Send";
+			this.btnCopyTo.UseVisualStyleBackColor = true;
+			this.btnCopyTo.Click += new System.EventHandler(this.btnCopyTo_Click);
+			// 
 			// frmMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(800, 601);
+			this.ClientSize = new System.Drawing.Size(1024, 600);
+			this.Controls.Add(this.btnCopyTo);
 			this.Controls.Add(this.lblInsertSample);
 			this.Controls.Add(this.btnPrint);
 			this.Controls.Add(this.webView);
@@ -156,7 +169,7 @@
 			this.Controls.Add(this.rtfInput);
 			this.Controls.Add(this.btnConvert);
 			this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.MinimumSize = new System.Drawing.Size(816, 639);
+			this.MinimumSize = new System.Drawing.Size(1024, 600);
 			this.Name = "frmMain";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "py2km";
@@ -178,6 +191,7 @@
 		private System.Windows.Forms.WebBrowser webView;
 		private System.Windows.Forms.Button btnPrint;
 		private System.Windows.Forms.Label lblInsertSample;
+		private System.Windows.Forms.Button btnCopyTo;
 	}
 }
 
