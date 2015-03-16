@@ -1434,10 +1434,21 @@ namespace py2km.api
 
 				if (mrk == 0)
 				{
-					if ('u' == char.ToLower(Tx[pos]) && 'i' == char.ToLower(Tx[pos + 1]))
+					if ('i' == char.ToLower(Tx[pos]))
 					{
-						mrk = pos++;
-						continue;
+						if ('u' == char.ToLower(Tx[pos + 1]))
+						{
+							mrk = pos++ + 1; // mark u (ahead)
+							continue;
+						}
+					}
+					else if ('u' == char.ToLower(Tx[pos]))
+					{
+						if ('i' == char.ToLower(Tx[pos + 1]))
+						{
+							mrk = pos++ + 1; // mark i (ahead)
+							continue;
+						}
 					}
 					else if ('a' == char.ToLower(Tx[pos]))
 					{
@@ -1515,6 +1526,24 @@ namespace py2km.api
 							default:
 								break;
 						}
+					else if ('u' == Tx[mrk])
+						switch (Tx[pos])
+						{
+							case '1':
+								Tx[mrk] = 'ū';
+								break;
+							case '2':
+								Tx[mrk] = 'ú';
+								break;
+							case '3':
+								Tx[mrk] = 'ǔ';
+								break;
+							case '4':
+								Tx[mrk] = 'ù';
+								break;
+							default:
+								break;
+						}
 					else if ('i' == Tx[mrk])
 						switch (Tx[pos])
 						{
@@ -1547,24 +1576,6 @@ namespace py2km.api
 								break;
 							case '4':
 								Tx[mrk] = 'ò';
-								break;
-							default:
-								break;
-						}
-					else if ('u' == Tx[mrk])
-						switch (Tx[pos])
-						{
-							case '1':
-								Tx[mrk] = 'ū';
-								break;
-							case '2':
-								Tx[mrk] = 'ú';
-								break;
-							case '3':
-								Tx[mrk] = 'ǔ';
-								break;
-							case '4':
-								Tx[mrk] = 'ù';
 								break;
 							default:
 								break;

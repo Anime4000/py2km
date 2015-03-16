@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using System.Web;
 
 namespace py2km.api
 {
@@ -104,10 +105,11 @@ namespace py2km.api
 					string pinyin = Converter.ToneToPinyin(test.Pinyin);
 					string kwikman = Converter.PinyinToKwikMandarin(Converter.ToneToPinyin(test.Pinyin));
 					string english = test.English;
+					string uri = Uri.EscapeDataString(hanzi);
 
 					// Make HTML based result
 					string holder = Properties.Resources.HtmlContentDict;
-					Fi += String.Format(holder, hanzi, pinyin, kwikman, english);
+					Fi += String.Format(holder, hanzi, pinyin, kwikman, english, uri);
 
 					idx = pos; // Once found, move index to current position
 					pos = Tx.Length; // then new position restart
@@ -125,7 +127,7 @@ namespace py2km.api
 					}
 				}
 			}
-			return Fi;
+			return Fi + Properties.Resources.HtmlContentJsAudio;
 		}
 
 		// Below converting to Pinyin (number)

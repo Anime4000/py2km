@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 
 namespace py2km.api
 {
@@ -17,6 +18,16 @@ namespace py2km.api
 		public static string Loading()
 		{
 			return Properties.Resources.HtmlContentLoading;
+		}
+
+		public static string TempFile()
+		{
+			string path = Path.Combine(Path.GetTempPath(), "py2km");
+
+			if (!Directory.Exists(path))
+				Directory.CreateDirectory(path);
+
+			return Path.Combine(path, "paan.html");
 		}
 	}
 }

@@ -126,11 +126,27 @@
   </data>
   <data name="HtmlContentDict" xml:space="preserve">
     <value>&lt;p&gt;
-	&lt;span id="chinese"&gt;{0}&lt;/span&gt;&lt;br/&gt;
+	&lt;span id="chinese" onClick="updateSource('{4}')"&gt;{0}&lt;/span&gt;&lt;br/&gt;
 	&lt;span&gt;{1}&lt;/span&gt;&lt;br/&gt;
 	&lt;span id="kwikman"&gt;{2}&lt;/span&gt;&lt;br/&gt;
 	&lt;span id="english"&gt;{3}&lt;/span&gt;
 &lt;/p&gt;</value>
+  </data>
+  <data name="HtmlContentJsAudio" xml:space="preserve">
+    <value>&lt;audio id="player"&gt;
+	&lt;source id="mp3Source" src="" type="audio/mp3"&gt;
+	Your browser does not support the audio format. Please upgrade your browser.
+&lt;/audio&gt;
+&lt;script type="text/javascript"&gt;
+function updateSource(ctrl) { 
+	var player=document.getElementById('player');
+	var sourceMp3=document.getElementById('mp3Source');
+
+	sourceMp3.src="http://translate.google.com/translate_tts?tl=zh-CN&amp;q=" + ctrl;
+	player.load();
+	player.play();
+}
+&lt;/script&gt;</value>
   </data>
   <data name="HtmlContentLoading" xml:space="preserve">
     <value>&lt;!DOCTYPE html&gt;
@@ -150,7 +166,7 @@
 	@import url(http://fonts.googleapis.com/css?family=Open+Sans:300);
 
 	body {
-		background-color: #f1c40f;
+		background-color: #fff;
 		overflow: hidden;
 	}
 
@@ -363,6 +379,7 @@
 &lt;html&gt;
 &lt;head&gt;
 	&lt;meta charset="utf-8"&gt;
+	&lt;meta http-equiv='X-UA-Compatible' content='IE=edge'/&gt;
 	&lt;title&gt;py2km Converter&lt;/title&gt;
 	&lt;style&gt;
 		body{padding: 0; margin: 0;font-size: 14pt;font-family: 'Arial Kwik Mandarin Modified', Arial, 'Open Sans', Ubuntu;}

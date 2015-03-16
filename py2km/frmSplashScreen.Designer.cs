@@ -51,7 +51,7 @@
 			// 
 			this.lblWho.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.lblWho.BackColor = System.Drawing.Color.Transparent;
-			this.lblWho.ForeColor = System.Drawing.Color.White;
+			this.lblWho.ForeColor = System.Drawing.Color.Black;
 			this.lblWho.Location = new System.Drawing.Point(258, 365);
 			this.lblWho.Name = "lblWho";
 			this.lblWho.Size = new System.Drawing.Size(330, 26);
@@ -79,7 +79,7 @@
 			// 
 			this.lblVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.lblVersion.BackColor = System.Drawing.Color.Transparent;
-			this.lblVersion.ForeColor = System.Drawing.Color.White;
+			this.lblVersion.ForeColor = System.Drawing.Color.Black;
 			this.lblVersion.Location = new System.Drawing.Point(255, 267);
 			this.lblVersion.Name = "lblVersion";
 			this.lblVersion.Size = new System.Drawing.Size(260, 13);

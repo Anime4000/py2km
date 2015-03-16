@@ -105,6 +105,8 @@
 			// 
 			// BGThread
 			// 
+			this.BGThread.WorkerReportsProgress = true;
+			this.BGThread.WorkerSupportsCancellation = true;
 			this.BGThread.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BGThread_DoWork);
 			this.BGThread.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BGThread_RunWorkerCompleted);
 			// 

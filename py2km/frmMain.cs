@@ -162,16 +162,17 @@ namespace py2km
 
 			// HTML result
 			output = Html.Builder(output);
+			File.WriteAllText(Html.TempFile(), output);
 
-			if (this.InvokeRequired)
-				BeginInvoke(new MethodInvoker(() => webView.DocumentText = output));
+			/*if (this.InvokeRequired)
+				BeginInvoke(new MethodInvoker(() => webView.Navigate(Html.TempFile())));
 			else
-				webView.DocumentText = output;
+				webView.Navigate(Html.TempFile());*/
 		}
 
 		private void BGThread_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
 		{
-			
+			webView.Navigate(Html.TempFile());
 		}
 	}
 }
