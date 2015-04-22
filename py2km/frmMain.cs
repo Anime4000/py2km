@@ -21,7 +21,7 @@ namespace py2km
 		private void frmMain_Load(object sender, EventArgs e)
 		{
 			this.Icon = Properties.Resources.py2km;
-			this.Text = String.Format("py2km build {0} ( '{1}' )", Globals.Version, Properties.Resources.CodeName);
+			this.Text = String.Format("py2km build {0} ( '{1}' ) [EXPERIMENTAL DEVELOPMENT]", Globals.Version, Properties.Resources.CodeName);
 
 			cboSource.SelectedIndex = Properties.Settings.Default.convSrc;
 
@@ -136,10 +136,10 @@ namespace py2km
 			switch (i)
 			{
 				case 0:
-					output = x ? Converter.RulesOfPinyin(Converter.ToneToPinyin(input)) : Converter.ToneToPinyin(input);
+					output = x ? Converter.RulesOfPinyin(Converter.ToneToPinyin2(input)) : Converter.ToneToPinyin2(input);
 					break;
 				case 1:
-					output = x ? Converter.PinyinToKwikMandarin(Converter.RulesOfPinyin(Converter.ToneToPinyin(input))) : Converter.PinyinToKwikMandarin(Converter.ToneToPinyin(input));
+					output = x ? Converter.PinyinToKwikMandarin(Converter.RulesOfPinyin(Converter.ToneToPinyin2(input))) : Converter.PinyinToKwikMandarin(Converter.ToneToPinyin2(input));
 					break;
 				case 2:
 					output = x ? Converter.RulesOfPinyin(output) : Converter.RulesOfPinyin(output);

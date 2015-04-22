@@ -383,7 +383,7 @@ function updateSource(ctrl) {
 	&lt;title&gt;py2km Converter&lt;/title&gt;
 	&lt;style&gt;
 		body{padding: 0; margin: 0;font-size: 14pt;font-family: 'Arial Kwik Mandarin Modified', Arial, 'Open Sans', Ubuntu;}
-		#chinese{font-size: 20pt;font-family: KaiTi, 'Microsoft YaHei', 'Microsoft JhengHei';}
+		#chinese{font-size: 20pt;font-family: KaiTi, 'Microsoft YaHei', 'Microsoft JhengHei';cursor: pointer; cursor: hand;}
 		#kwikman{color: #c00;}
 		#english{color: #00f;}
 	&lt;/style&gt;

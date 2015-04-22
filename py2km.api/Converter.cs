@@ -1311,7 +1311,7 @@ namespace py2km.api
 			input = input.Replace('：', ':');
 			input = input.Replace('？', '?');
 
-			return ToneToPinyin(Cedict.ToPinyin(input));
+			return ToneToPinyin2(Cedict.ToPinyin(input));
 		}
 
 		public static string RulesOfPinyin(string input)
@@ -1416,6 +1416,111 @@ namespace py2km.api
 			return new string(Tx);
 		}
 
+        public static string ToneToPinyin2(string input)
+        {
+            char[] Tx = input.ToLower().ToCharArray();
+
+            int mrk = 0;
+            int max = Tx.Length;
+
+            for (int i = 0; i < max; i++)
+            {
+                if (new[] { 'a', 'e', 'i', 'o', 'u', 'v', '1', '2', '3', '4', '5' }.Contains(Tx[i]))
+                {
+                    if (new[] { 'a', 'e', 'i', 'o', 'u', 'v' }.Contains(Tx[i]))
+                        mrk = i;
+
+                    if (i + 1 < max)
+                        if ('i' == Tx[i] && 'u' == char.ToLower(Tx[i + 1]))
+                            mrk = i + 1;
+                        else if ('u' == Tx[i] && 'i' == char.ToLower(Tx[i + 1]))
+                            mrk = i + 1;
+
+                    int n;
+                    var s = Tx[i].ToString();
+                    if (int.TryParse(s, out n))
+                    {
+                        switch (n)
+                        {
+                            case 1:
+                                if (Tx[mrk] == 'a')
+                                    Tx[mrk] = 'ā';
+                                else if (Tx[mrk] == 'e')
+                                    Tx[mrk] = 'ē';
+                                else if (Tx[mrk] == 'i')
+                                    Tx[mrk] = 'ī';
+                                else if (Tx[mrk] == 'o')
+                                    Tx[mrk] = 'ō';
+                                else if (Tx[mrk] == 'u')
+                                    Tx[mrk] = 'ū';
+                                else if (Tx[mrk] == 'v')
+                                    Tx[mrk] = 'ǖ';
+
+                                Tx[i] = ' ';
+                                break;
+                            case 2:
+                                if (Tx[mrk] == 'a')
+                                    Tx[mrk] = 'á';
+                                else if (Tx[mrk] == 'e')
+                                    Tx[mrk] = 'é';
+                                else if (Tx[mrk] == 'i')
+                                    Tx[mrk] = 'í';
+                                else if (Tx[mrk] == 'o')
+                                    Tx[mrk] = 'ó';
+                                else if (Tx[mrk] == 'u')
+                                    Tx[mrk] = 'ú';
+                                else if (Tx[mrk] == 'v')
+                                    Tx[mrk] = 'ǘ';
+
+                                Tx[i] = ' ';
+                                break;
+                            case 3:
+                                if (Tx[mrk] == 'a')
+                                    Tx[mrk] = 'ǎ';
+                                else if (Tx[mrk] == 'e')
+                                    Tx[mrk] = 'ě';
+                                else if (Tx[mrk] == 'i')
+                                    Tx[mrk] = 'ǐ';
+                                else if (Tx[mrk] == 'o')
+                                    Tx[mrk] = 'ǒ';
+                                else if (Tx[mrk] == 'u')
+                                    Tx[mrk] = 'ǔ';
+                                else if (Tx[mrk] == 'v')
+                                    Tx[mrk] = 'ǚ';
+
+                                Tx[i] = ' ';
+                                break;
+                            case 4:
+                                if (Tx[mrk] == 'a')
+                                    Tx[mrk] = 'à';
+                                else if (Tx[mrk] == 'e')
+                                    Tx[mrk] = 'è';
+                                else if (Tx[mrk] == 'i')
+                                    Tx[mrk] = 'ì';
+                                else if (Tx[mrk] == 'o')
+                                    Tx[mrk] = 'ò';
+                                else if (Tx[mrk] == 'u')
+                                    Tx[mrk] = 'ù';
+                                else if (Tx[mrk] == 'v')
+                                    Tx[mrk] = 'ǜ';
+
+                                Tx[i] = ' ';
+                                break;
+                            case 5:
+                                if (Tx[mrk] == 'v')
+                                    Tx[mrk] = 'ü';
+
+                                Tx[i] = ' ';
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }
+            }
+            return new string(Tx);
+        }
+
 		public static string ToneToPinyin(string input)
 		{
 			char[] Tx = input.ToCharArray();
@@ -1475,19 +1580,24 @@ namespace py2km.api
 						mrk = pos++;
 						continue;
 					}
+                    else if ('v' == char.ToLower(Tx[pos]))
+                    {
+                        mrk = pos++;
+                        continue;
+                    }
 				}
 
-				while (new[] { '1', '2', '3', '4', '5' }.Contains(Tx[pos]))
+				while (new[] { '1', '2', '3', '4' }.Contains(Tx[pos]))
 				{
 					if (max <= 1)
 						break;
 
 					if (max > pos + 1)
-						if (new[] { '6', '7', '8', '9', '0' }.Contains(Tx[pos + 1]))
+						if (new[] { '5', '6', '7', '8', '9', '0' }.Contains(Tx[pos + 1]))
 							break;
 
 					if (max < pos - 1)
-						if (new[] { '6', '7', '8', '9', '0' }.Contains(Tx[pos - 1]))
+						if (new[] { '5', '6', '7', '8', '9', '0' }.Contains(Tx[pos - 1]))
 							break;
 
 					if ('a' == Tx[mrk])
@@ -1580,6 +1690,25 @@ namespace py2km.api
 							default:
 								break;
 						}
+                    else if ('v' == Tx[mrk])
+                        switch (Tx[pos])
+                        {
+                            case '1':
+                                Tx[mrk] = 'ǖ';
+                                break;
+                            case '2':
+                                Tx[mrk] = 'ǘ';
+                                break;
+                            case '3':
+                                Tx[mrk] = 'ǚ';
+                                break;
+                            case '4':
+                                Tx[mrk] = 'ǜ';
+                                break;
+                            default:
+                                Tx[mrk] = 'ü';
+                                break;
+                        }
 					mrk = 0; // reset when found
 					Tx[pos] = '\0'; // remove pinyin tone number
 					break;

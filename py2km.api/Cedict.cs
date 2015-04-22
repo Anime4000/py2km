@@ -10,7 +10,9 @@ namespace py2km.api
 	public class Cedict
 	{
 		// Make it outside, load once, to RAM
-		static Dictionary<string, CedictData> CEDICT = new System.Collections.Generic.Dictionary<string, CedictData>();
+		static Dictionary<string, CedictData> CEDICT_TC = new System.Collections.Generic.Dictionary<string, CedictData>();
+        static Dictionary<string, CedictData> CEDICT_SC = new System.Collections.Generic.Dictionary<string, CedictData>();
+
 		public static void Load()
 		{
 			foreach (var item in File.ReadAllLines("cedict_ts.u8"))
@@ -72,16 +74,19 @@ namespace py2km.api
 				CedictContent.Pinyin = py;
 				CedictContent.English = en;
 
-				if (!CEDICT.ContainsKey(sc))
-				{
-					CedictContent.Chinese = sc;
-					CEDICT.Add(sc, CedictContent);
-				}
-				if (!CEDICT.ContainsKey(tc))
-				{
-					CedictContent.Chinese = tc;
-					CEDICT.Add(tc, CedictContent);
-				}
+                // Traditional Chinese
+                if (!CEDICT_TC.ContainsKey(tc))
+                {
+                    CedictContent.Chinese = tc;
+                    CEDICT_TC.Add(tc, CedictContent);
+                }
+
+                // Simplified Chinese
+                if (!CEDICT_SC.ContainsKey(sc))
+                {
+                    CedictContent.Chinese = sc;
+                    CEDICT_SC.Add(sc, CedictContent);
+                }
 			}
 		}
 
@@ -99,7 +104,7 @@ namespace py2km.api
 			{
 				CedictData test;
 				string temp = Tx.Substring(idx, len);
-				if (CEDICT.TryGetValue(temp, out test))
+                if (CEDICT_TC.TryGetValue(temp, out test) || CEDICT_SC.TryGetValue(temp, out test))
 				{
 					string hanzi = test.Chinese;
 					string pinyin = Converter.ToneToPinyin(test.Pinyin);
@@ -144,7 +149,7 @@ namespace py2km.api
 			{
 				CedictData test;
 				string temp = Tx.Substring(idx, len);
-				if (CEDICT.TryGetValue(temp, out test))
+                if (CEDICT_TC.TryGetValue(temp, out test) || CEDICT_SC.TryGetValue(temp, out test))
 				{
 					Fi += test.Pinyin + " ";
 
