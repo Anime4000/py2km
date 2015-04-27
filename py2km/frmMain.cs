@@ -174,5 +174,11 @@ namespace py2km
 		{
 			webView.Navigate(Html.TempFile());
 		}
+
+        private void btnFlashCard_Click(object sender, EventArgs e)
+        {
+            Form FC = new frmFlashCard();
+            FC.Show();
+        }
 	}
 }

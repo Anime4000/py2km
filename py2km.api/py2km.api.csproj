@@ -32,6 +32,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,6 +43,12 @@
   <ItemGroup>
     <Compile Include="Cedict.cs" />
     <Compile Include="Converter.cs" />
+    <Compile Include="frmFlashCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFlashCard.Designer.cs">
+      <DependentUpon>frmFlashCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Html.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -55,6 +63,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frmFlashCard.resx">
+      <DependentUpon>frmFlashCard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

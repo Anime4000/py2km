@@ -13,6 +13,10 @@ namespace py2km.api
 		static Dictionary<string, CedictData> CEDICT_TC = new System.Collections.Generic.Dictionary<string, CedictData>();
         static Dictionary<string, CedictData> CEDICT_SC = new System.Collections.Generic.Dictionary<string, CedictData>();
 
+        // Total Listed CEDICT
+        public static int COUNT_SC;
+        public static int COUNT_TC;
+
 		public static void Load()
 		{
 			foreach (var item in File.ReadAllLines("cedict_ts.u8"))
@@ -88,6 +92,9 @@ namespace py2km.api
                     CEDICT_SC.Add(sc, CedictContent);
                 }
 			}
+
+            COUNT_TC = CEDICT_TC.Count;
+            COUNT_SC = CEDICT_SC.Count;
 		}
 
 		// Below converting to Pinyin (number)
@@ -172,6 +179,23 @@ namespace py2km.api
 			}
 			return Fi.ToLower();
 		}
+
+        public static string[] ToFlashCard(int pos)
+        {
+            string[] m = new string[3];
+            int i = 0;
+            foreach (var item in CEDICT_SC)
+            {
+                if (i++ == pos)
+                {
+                    m[0] = item.Value.Chinese;
+                    m[1] = item.Value.Pinyin;
+                    m[2] = item.Value.English;
+                    break;
+                }
+            }
+            return m;
+        }
 	}
 
 	public class CedictData

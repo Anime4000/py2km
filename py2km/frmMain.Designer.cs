@@ -38,6 +38,7 @@
             this.btnPrint = new System.Windows.Forms.Button();
             this.lblInsertSample = new System.Windows.Forms.Label();
             this.btnCopyTo = new System.Windows.Forms.Button();
+            this.btnFlashCard = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnConvert
@@ -156,11 +157,23 @@
             this.btnCopyTo.UseVisualStyleBackColor = true;
             this.btnCopyTo.Click += new System.EventHandler(this.btnCopyTo_Click);
             // 
+            // btnFlashCard
+            // 
+            this.btnFlashCard.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFlashCard.Location = new System.Drawing.Point(597, 12);
+            this.btnFlashCard.Name = "btnFlashCard";
+            this.btnFlashCard.Size = new System.Drawing.Size(75, 23);
+            this.btnFlashCard.TabIndex = 16;
+            this.btnFlashCard.Text = "&Flash Card";
+            this.btnFlashCard.UseVisualStyleBackColor = true;
+            this.btnFlashCard.Click += new System.EventHandler(this.btnFlashCard_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 562);
+            this.Controls.Add(this.btnFlashCard);
             this.Controls.Add(this.btnCopyTo);
             this.Controls.Add(this.lblInsertSample);
             this.Controls.Add(this.btnPrint);
@@ -194,6 +207,7 @@
 		private System.Windows.Forms.Button btnPrint;
 		private System.Windows.Forms.Label lblInsertSample;
 		private System.Windows.Forms.Button btnCopyTo;
+        private System.Windows.Forms.Button btnFlashCard;
 	}
 }
 
