@@ -17,7 +17,8 @@ For example:
 * Printable
 
 # License
-py2km API is an open-source project and free api for retrieve translation and dictionary of CC-CEDICT database. py2km api is available to anyone under the terms of the **GNU GPL 2** license. py2km API is also available to commercial companies who wish to distribute py2km API without the open-source restrictions that the GPL license imposes. *in short meaning, additional fee is applied.*
+:troll: I no longer work on that company, you can learn the tricks that I did :+1:
+*GNU GPL* is applied
 
 # Contribute
 py2km written in C#!, feel free to improve and modify, also we accept *merge request!*
