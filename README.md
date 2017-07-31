@@ -2,8 +2,8 @@ py2km
 =====
 Pinyin 2 Kwik Mandarin converter
 
-# What is Kwik Mandarin
-Kwik Mandarin is a Pinyin alternative for native speaker of Bahasa Melayu, Bahasa Indonesia (Around South East Asia). Due to `Baku` style of spelling, users incapable to spell Pinyin.
+# What is this
+Pinyin alternative for native speaker of Bahasa Melayu, Bahasa Indonesia (Around South East Asia). Due to `Baku` style of spelling, users incapable to spell Pinyin.
 
 For example:
 **xing** become *zing* (shing)
